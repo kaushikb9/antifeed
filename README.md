@@ -30,8 +30,11 @@ A two-part system:
 ## Deploy
 
 ```sh
-npx wrangler pages deploy site --project-name=antifeed
+./deploy.sh   # always use this — it verifies the Functions bundle shipped
 ```
+
+(Deploying with raw wrangler from a subdirectory silently omits `functions/`
+and breaks `/api/*` — the script guards against that.)
 
 First time:
 

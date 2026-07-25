@@ -45,5 +45,4 @@ if [ -n "$AF_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
     && echo "inbox cleared" || echo "warning: could not clear inbox"
 fi
 
-npx wrangler pages deploy site --project-name=antifeed --commit-dirty=true \
-  || echo "deploy failed — run 'npx wrangler pages deploy site --project-name=antifeed' manually"
+./deploy.sh || echo "deploy failed — run ./deploy.sh manually"
