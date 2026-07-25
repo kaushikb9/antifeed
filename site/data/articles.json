@@ -359,6 +359,69 @@
       "published": "2026-07-24",
       "hn_points": 579,
       "hn_comments": 189
+    },
+    {
+      "id": "2026-07-25-last-technical-interview",
+      "date": "2026-07-25",
+      "title": "The Last Technical Interview",
+      "author": "Steve Yegge",
+      "source": "Steve Yegge (Medium)",
+      "url": "https://steve-yegge.medium.com/the-last-technical-interview-bc13ddcf4564",
+      "hn_url": "https://news.ycombinator.com/item?id=48328405",
+      "read_minutes": 20,
+      "hook": "Your timeline kept recommending this one, and the timeline was right: Yegge argues the technical interview is dying right now — AI has poisoned every whiteboard and take-home signal, and Google's own committees famously rejected their own anonymized packets. His replacement is the 'campfire' model: paid multi-day work on real code, with portable credentials the candidate keeps either way. You sit on both sides of this collapse — hiring engineers while driving the AI adoption that broke the old signal — and the 275-comment HN thread is half the value.",
+      "evergreen": false,
+      "tags": [
+        "hiring",
+        "engineering-management"
+      ],
+      "tier": "must",
+      "published": "2026-05-29",
+      "hn_points": 271,
+      "hn_comments": 275,
+      "mine": true
+    },
+    {
+      "id": "2026-07-25-mid-career-satisfaction",
+      "date": "2026-07-25",
+      "title": "On mid-career (dis)satisfaction",
+      "author": "Shreyas Doshi",
+      "source": "Shreyas Doshi (Substack)",
+      "url": "https://shreyasdoshi.substack.com/p/on-mid-career-satisfaction",
+      "hn_url": null,
+      "read_minutes": 4,
+      "hook": "You followed Shreyas on Twitter for exactly this register: four minutes on why the next title, comp, or scope bump 'will stop making you happy starting the very first day of your new job.' His sharpest move is treating career choices like product design — understand your actual needs (competence, flow, culture fit) before optimizing the external markers everyone else can see. Short enough to read twice; the second read is where the career-envy diagnosis lands.",
+      "evergreen": true,
+      "tags": [
+        "career",
+        "personal-growth"
+      ],
+      "tier": "more",
+      "published": "2026-05-31",
+      "hn_points": null,
+      "hn_comments": null,
+      "mine": true
+    },
+    {
+      "id": "2026-07-25-agency-is-a-virtue",
+      "date": "2026-07-25",
+      "title": "Agency IS a virtue, actually",
+      "author": "Gena Gorlin",
+      "source": "Building the Builders (Substack)",
+      "url": "https://builders.genagorlin.com/p/agency-is-a-virtue-actually",
+      "hn_url": null,
+      "read_minutes": 12,
+      "hook": "The 'high agency' discourse usually stops at doing-things-without-permission; Gorlin (the psychologist behind the builder's-mindset framing) argues that's only the muscle, and the hard part is the heart — actually forming the values that tell you what's worth doing. For someone who spends nights architecting his own systems instead of executing society's prefab blueprint, this is a useful mirror: her test isn't 'are you moving fast,' it's 'are you doing what you honestly judge best.' Substantive personal-growth writing with no hustle-culture residue.",
+      "evergreen": true,
+      "tags": [
+        "agency",
+        "personal-growth"
+      ],
+      "tier": "more",
+      "published": "2026-06-15",
+      "hn_points": null,
+      "hn_comments": null,
+      "mine": true
     }
   ]
 }
