@@ -44,16 +44,18 @@ header { margin-bottom: 1.75rem; }
 .pending .t a { color: var(--muted); font-style: italic; font-weight: 500; }
 .pending .sub { font-style: normal; }
 
-#add-form { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+#add-form { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2rem; }
 #add-form[hidden] { display: none; }
+#add-form .kicker { margin-bottom: 0.2rem; }
 #add-form input {
-  background: var(--card); color: var(--ink);
+  background: var(--bg); color: var(--ink);
   border: 1px solid var(--line); border-radius: 10px;
   padding: 0.6rem 0.85rem; font: inherit; font-size: 0.92rem;
 }
 #add-form input:focus { outline: none; border-color: var(--gold); }
 #add-form input::placeholder { color: var(--muted); }
-#add-form .go { align-self: flex-start; border: none; cursor: pointer; font: inherit; font-weight: 700; font-size: 0.88rem; }
+#add-form .actions { margin-top: 0.35rem; }
+#add-form .go { border: none; cursor: pointer; font: inherit; font-weight: 700; }
 .wordmark { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
 .wordmark span { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 2px; font-weight: 600; }
 .tagline { color: var(--muted); font-size: 0.9rem; margin-top: 0.15rem; }

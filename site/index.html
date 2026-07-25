@@ -22,10 +22,13 @@
 </nav>
 
 <main>
-  <form id="add-form" hidden autocomplete="off">
+  <form id="add-form" class="card mini" hidden autocomplete="off">
+    <div class="kicker">save for later</div>
     <input id="add-url" type="text" inputmode="url" placeholder="paste a link worth keeping…" required>
     <input id="add-note" type="text" placeholder="note — who shared it / why it caught you (optional)">
-    <button class="go" type="submit">save</button>
+    <div class="actions">
+      <button class="go" type="submit">Save it →</button>
+    </div>
   </form>
 
   <section id="today" aria-label="Today's read"></section>
