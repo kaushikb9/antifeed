@@ -64,6 +64,11 @@ signal for a future brain-learning feature.
   redeploy before expecting the function to see it.
 - The production alias (antifeed.pages.dev) lags a fresh deployment by
   ~10–30s and caches app.js; cache-bust when verifying.
+- style.css is linked with a manual `?v=` param in index.html — BUMP IT on
+  every CSS change, or clients pair stale CSS with fresh HTML (this broke
+  the blog's theme toggle once; kb-blog now auto-hashes, antifeed is manual).
+- Masthead geometry (body width/padding, wordmark size) intentionally
+  mirrors kaushikbhat.com — change them in both repos or not at all.
 - HN data comes from the Algolia API (`hn.algolia.com/api/v1/...`) — URL-encode
   `>` in numericFilters or you get an HTML error page.
 
