@@ -58,6 +58,8 @@ received from his inner circle. These are his finds, so the default is IN:
 - Tier: `"must"` only if it genuinely clears the sacred bar — being his own
   find earns inclusion, not the home page. Otherwise `"more"`. Keep the real
   source name; add "via inner circle" to the hook rather than the source.
+- Always set `"mine": true` on inbox-sourced entries — that's what routes
+  them to the "mine" tab in the app.
 - A dead or paywalled-to-unreadable link: skip it and say so in your summary.
 
 ## Quality bar

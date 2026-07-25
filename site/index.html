@@ -18,10 +18,16 @@
 <nav class="tabs" id="tabs">
   <button data-tab="must" class="active">must reads</button>
   <button data-tab="more">more</button>
-  <button id="add-link" class="add" title="add a link you found or were sent">+ link</button>
+  <button data-tab="mine">mine</button>
 </nav>
 
 <main>
+  <form id="add-form" hidden autocomplete="off">
+    <input id="add-url" type="text" inputmode="url" placeholder="paste a link worth keeping…" required>
+    <input id="add-note" type="text" placeholder="note — who shared it / why it caught you (optional)">
+    <button class="go" type="submit">save</button>
+  </form>
+
   <section id="today" aria-label="Today's read"></section>
 
   <section id="archive-section" aria-label="Archive">

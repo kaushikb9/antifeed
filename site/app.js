@@ -95,7 +95,11 @@ function isSkipped(a) {
 function visibleList() {
   if (filter === "x") return articles.filter(isSkipped);
   if (filter !== "all") return articles.filter((a) => flags[a.id]?.[filter] && !isSkipped(a));
-  return articles.filter((a) => (a.tier || "must") === tab && !isSkipped(a));
+  if (tab === "mine") return articles.filter((a) => a.mine && !isSkipped(a));
+  // "more" excludes mine items (they live in their own tab); "must" keeps
+  // promoted mine picks — dope is dope.
+  return articles.filter((a) =>
+    (a.tier || "must") === tab && !(tab === "more" && a.mine) && !isSkipped(a));
 }
 
 function renderToday(a) {
@@ -125,7 +129,7 @@ function renderToday(a) {
 }
 
 function inboxRows() {
-  if (tab !== "more" || filter !== "all" || !inbox.length) return "";
+  if (tab !== "mine" || filter !== "all" || !inbox.length) return "";
   return inbox.map((i) => {
     let label = i.url;
     try {
@@ -183,9 +187,9 @@ function renderArchive(list) {
   empty.hidden = list.length > 0 || pre !== "";
   if (!empty.hidden) {
     empty.textContent = {
-      all: tab === "must"
-        ? "nothing here yet — the archive grows one read at a time."
-        : "no extra reads yet.",
+      all: { must: "nothing here yet — the archive grows one read at a time.",
+             more: "no extra reads yet.",
+             mine: "nothing saved — paste a link above." }[tab],
       r: "nothing marked read yet.",
       f: "nothing starred yet.",
       x: "nothing skipped. ruthless is good.",
@@ -198,6 +202,7 @@ function render() {
     $("#today").innerHTML = `<p class="empty">no picks yet — run the brain.</p>`;
     return;
   }
+  $("#add-form").hidden = tab !== "mine" || filter !== "all";
   const list = visibleList();
   if (tab === "must" && filter === "all") {
     renderToday(list[0]);
@@ -207,7 +212,7 @@ function render() {
     $("#today").innerHTML = "";
     renderArchive(list);
     $("#archive-title").textContent =
-      filter === "all" ? "when you feel like wandering" :
+      filter === "all" ? (tab === "mine" ? "saved by me" : "when you feel like wandering") :
       { r: "read", f: "starred", x: "skipped" }[filter];
   }
 }
@@ -267,23 +272,21 @@ $("#archive").addEventListener("click", (e) => {
   render();
 });
 
-$("#add-link").addEventListener("click", async () => {
-  if (!token) { alert("connect sync first (footer) — added links live in the shared store."); return; }
-  let url = prompt("paste the link:");
+$("#add-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!token) { alert("connect sync first (footer) — saved links live in the shared store."); return; }
+  let url = $("#add-url").value.trim();
   if (!url) return;
-  url = url.trim();
   if (!/^https?:\/\//i.test(url)) url = "https://" + url;
   const norm = (s) => s.replace(/\/+$/, "");
   if (articles.some((a) => norm(a.url) === norm(url))) { alert("already in the list."); return; }
-  if (inbox.some((i) => norm(i.url) === norm(url))) { alert("already waiting in the inbox."); return; }
-  const note = prompt("note — who shared it / why it caught you (optional):") || "";
+  if (inbox.some((i) => norm(i.url) === norm(url))) { alert("already saved."); return; }
   try {
-    const res = await api("inbox", "POST", { url, note });
+    const res = await api("inbox", "POST", { url, note: $("#add-note").value.trim() });
     inbox = res.inbox;
-    if (res.dup) { alert("already waiting in the inbox."); return; }
-    tab = "more"; filter = "all";
-    document.querySelectorAll("#tabs button").forEach((b) =>
-      b.classList.toggle("active", b.dataset.tab === "more"));
+    if (res.dup) { alert("already saved."); return; }
+    $("#add-url").value = "";
+    $("#add-note").value = "";
     render();
   } catch {
     alert("couldn't save the link — check sync.");

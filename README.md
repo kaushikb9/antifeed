@@ -23,9 +23,15 @@ A two-part system:
 ## Daily use
 
 ```sh
-./brain/curate.sh            # pick today's article, commit, deploy
+./brain/curate.sh              # daily: sweep sources + inbox, commit, deploy
+./brain/inbox.sh               # fast: process ONLY manually added links
 ./brain/curate.sh backfill 15  # one-time: seed ~15 picks from recent weeks
 ```
+
+Links added via the **mine** tab's form land in the KV inbox, appear
+immediately as "awaiting the brain", and become full entries (`mine: true`,
+staying in the mine tab — or promoted to the home page if truly dope) on the
+next brain run.
 
 ## Deploy
 
