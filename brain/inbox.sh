@@ -34,6 +34,7 @@ node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))" \
 
 git add site/data/articles.json
 git commit -m "inbox: $(date +%F)" || echo "nothing new committed"
+git push -q || echo "push failed — run 'git push' manually"
 
 # remove ONLY snapshot inbox items that made it into articles.json —
 # skipped links and anything added mid-run stay in the inbox

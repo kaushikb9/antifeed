@@ -9,6 +9,9 @@ cd "$(dirname "$0")/.."
 # picks are a morning ritual — don't curate in the middle of the night
 [ "$(date +%H)" -ge 7 ] || exit 0
 
+# sync first — the other laptop may have curated already
+git pull --rebase -q || exit 0
+
 # already curated today? (source of truth: the data itself, not a stamp file)
 LATEST=$(node -e "const a=require('./site/data/articles.json').articles;console.log(a.map(x=>x.date).sort().pop())")
 [ "$LATEST" = "$(date +%F)" ] && exit 0
