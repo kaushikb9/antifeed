@@ -48,6 +48,11 @@ body {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 1rem; margin-bottom: 0.15rem;
 }
+.site-head nav { display: flex; gap: 1rem; align-items: baseline; }
+.site-head nav a {
+  color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;
+}
+.site-head nav a:hover { color: var(--gold); }
 #theme-btn {
   background: none; border: none; cursor: pointer; color: var(--muted);
   padding: 0.15rem; line-height: 1;
@@ -175,6 +180,11 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .mini .flag.on { background: none; }
 
 .empty { color: var(--muted); font-size: 0.9rem; padding: 1.5rem 0; }
+
+.about p { margin-bottom: 1.05rem; font-size: 1rem; }
+.about a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.about a:hover { text-decoration: underline; }
+.about .colophon { color: var(--muted); font-size: 0.85rem; margin-top: 2rem; }
 
 footer { margin-top: 4rem; color: var(--muted); font-size: 0.78rem; }
 footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
