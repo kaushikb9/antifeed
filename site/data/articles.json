@@ -299,6 +299,66 @@
       "published": "2025-04-15",
       "hn_points": 38,
       "hn_comments": 1
+    },
+    {
+      "id": "2026-07-25-inference-engineering",
+      "date": "2026-07-25",
+      "title": "What is inference engineering? Deepdive",
+      "author": "Gergely Orosz with Philip Kiely",
+      "source": "Substack · The Pragmatic Engineer",
+      "url": "https://newsletter.pragmaticengineer.com/p/what-is-inference-engineering",
+      "hn_url": null,
+      "read_minutes": 37,
+      "hook": "Your own find — you flagged it from your Twitter feed as important for agentic development, and you're right: inference is the layer that decides the latency and cost of every agent loop you run. Philip Kiely (Baseten) walks the whole stack from CUDA to Kubernetes, including the five optimization techniques that separate a demo from a production deployment. Long at ~37 minutes, but it's the map of a discipline you may soon be hiring for as open-weight models make self-hosting a real option.",
+      "evergreen": false,
+      "tags": [
+        "llm-systems",
+        "inference"
+      ],
+      "tier": "more",
+      "published": "2026-03-31",
+      "hn_points": null,
+      "hn_comments": null
+    },
+    {
+      "id": "2026-07-25-kimi-k3-cyber-assessment",
+      "date": "2026-07-25",
+      "title": "UK AISI / CAISI Preliminary Assessment of Kimi K3's Cyber Capabilities",
+      "author": "UK AISI & US CAISI",
+      "source": "UK AISI / NIST",
+      "url": "https://www.nist.gov/news-events/news/2026/07/uk-aisi-caisi-preliminary-assessment-kimi-k3s-cyber-capabilities",
+      "hn_url": "https://news.ycombinator.com/item?id=49044492",
+      "read_minutes": 5,
+      "hook": "The first government-grade numbers on the model behind the open-weight panic you've been following: Kimi K3 lands well below US frontier models on exploit development — zero arbitrary-code-execution wins versus 20 of 41 for the leaders — yet its safeguards never once refused to try. Five minutes of concrete benchmarks with confidence intervals, useful the next time the 'are Chinese models dangerous' question comes up at work. Pairs with the Stratechery and Kimi K3 Moment pieces already in your feed.",
+      "evergreen": false,
+      "tags": [
+        "open-weights",
+        "security"
+      ],
+      "tier": "more",
+      "published": "2026-07-23",
+      "hn_points": 49,
+      "hn_comments": 14
+    },
+    {
+      "id": "2026-07-25-camera-github-token",
+      "date": "2026-07-25",
+      "title": "My security camera shipped a GitHub admin token in its login page",
+      "author": "hhh.hn",
+      "source": "HN",
+      "url": "https://hhh.hn/hanwha-github-token/",
+      "hn_url": "https://news.ycombinator.com/item?id=49034292",
+      "read_minutes": 5,
+      "hook": "A researcher decrypts camera firmware (with AI doing the reverse-engineering grunt work) and finds a GitHub org-admin token baked into the login page — because a Vite build config exposed the entire CI environment as a client-side JavaScript variable. That failure mode could exist in any frontend your teams ship; this is a five-minute prompt to go check. The 189-comment HN thread adds more horror stories of build-time secrets leaking into bundles.",
+      "evergreen": false,
+      "tags": [
+        "security",
+        "war-story"
+      ],
+      "tier": "more",
+      "published": "2026-07-24",
+      "hn_points": 579,
+      "hn_comments": 189
     }
   ]
 }
