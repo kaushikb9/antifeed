@@ -40,6 +40,10 @@ header { margin-bottom: 1.75rem; }
   padding: 0.4rem 0.75rem; border-bottom: 2px solid transparent; margin-bottom: -1px;
 }
 .tabs button.active { color: var(--ink); border-bottom-color: var(--gold); }
+.tabs .add { margin-left: auto; color: var(--gold); }
+.archive li.pending { cursor: default; }
+.pending .t a { color: var(--muted); font-style: italic; font-weight: 500; }
+.pending .sub { font-style: normal; }
 .wordmark { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
 .wordmark span { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 2px; font-weight: 600; }
 .tagline { color: var(--muted); font-size: 0.9rem; margin-top: 0.15rem; }

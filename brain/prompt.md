@@ -43,6 +43,23 @@ Every entry has a `"tier"`:
   Add 0–3 per daily run. When in doubt, `more` — a diluted must list kills
   the product.
 
+## Manual inbox
+
+The task message may include a MANUAL INBOX — links Kaushik added himself or
+received from his inner circle. These are his finds, so the default is IN:
+
+- Process every item. First dedupe: if the URL (normalized) already exists in
+  `articles.json`, drop it silently.
+- For each new link: fetch the page for title/author/publication date,
+  estimate read time, and search Algolia by URL for an HN thread
+  (https://hn.algolia.com/api/v1/search?restrictSearchableAttributes=url&query=<url>).
+- Write the hook as usual, weaving in his note (who shared it / why it caught
+  him) when one exists.
+- Tier: `"must"` only if it genuinely clears the sacred bar — being his own
+  find earns inclusion, not the home page. Otherwise `"more"`. Keep the real
+  source name; add "via inner circle" to the hook rather than the source.
+- A dead or paywalled-to-unreadable link: skip it and say so in your summary.
+
 ## Quality bar
 
 Ask of every candidate: would a sharp EM building agents say "glad I read

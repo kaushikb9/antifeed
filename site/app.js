@@ -13,6 +13,7 @@ let tab = "must";
 let filter = "all";
 let token = localStorage.getItem(TOKEN_KEY);
 let synced = false;
+let inbox = [];
 const expanded = new Set();
 
 const $ = (sel) => document.querySelector(sel);
@@ -23,8 +24,8 @@ function saveLocal() {
   localStorage.setItem(LS_KEY, JSON.stringify(flags));
 }
 
-async function api(method, body) {
-  const r = await fetch("api/flags", {
+async function api(path, method, body) {
+  const r = await fetch("api/" + path, {
     method,
     headers: { "x-af-token": token, "content-type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
@@ -38,11 +39,12 @@ async function syncLoad() {
   try {
     if (!localStorage.getItem(MERGED_KEY)) {
       // first connect from this device: push local flags up, take the union
-      flags = (await api("POST", { merge: flags })).flags;
+      flags = (await api("flags", "POST", { merge: flags })).flags;
       localStorage.setItem(MERGED_KEY, "1");
     } else {
-      flags = (await api("GET")).flags;
+      flags = (await api("flags", "GET")).flags;
     }
+    inbox = (await api("inbox", "GET")).inbox;
     synced = true;
     saveLocal();
   } catch (e) {
@@ -59,7 +61,7 @@ function toggleFlag(id, key) {
   saveLocal();
   render();
   if (token) {
-    api("POST", { id, key, value: f[key] }).catch(() => {
+    api("flags", "POST", { id, key, value: f[key] }).catch(() => {
       synced = false;
       paintSync();
     });
@@ -122,8 +124,30 @@ function renderToday(a) {
   </article>`;
 }
 
+function inboxRows() {
+  if (tab !== "more" || filter !== "all" || !inbox.length) return "";
+  return inbox.map((i) => {
+    let label = i.url;
+    try {
+      const u = new URL(i.url);
+      label = u.hostname.replace(/^www\./, "") + (u.pathname.length > 1 ? u.pathname : "");
+    } catch {}
+    if (label.length > 60) label = label.slice(0, 57) + "…";
+    return `<li class="pending">
+      <div class="row">
+        <span class="when">${fmtDate(i.added)}</span>
+        <span class="t">
+          <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(label)}</a>
+          <div class="sub">added by you${i.note ? " · " + esc(i.note) : ""} · awaiting the brain</div>
+        </span>
+      </div>
+    </li>`;
+  }).join("");
+}
+
 function renderArchive(list) {
-  $("#archive").innerHTML = list.map((a) => {
+  const pre = inboxRows();
+  $("#archive").innerHTML = pre + list.map((a) => {
     const hn = a.hn_url
       ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN</a>` : "";
     const ever = a.evergreen ? " · evergreen" : "";
@@ -155,7 +179,7 @@ function renderArchive(list) {
   }).join("");
 
   const empty = $("#empty");
-  empty.hidden = list.length > 0;
+  empty.hidden = list.length > 0 || pre !== "";
   if (!empty.hidden) {
     empty.textContent = {
       all: tab === "must"
@@ -213,7 +237,7 @@ $("#sync-btn").addEventListener("click", () => {
 
 $("#tabs").addEventListener("click", (e) => {
   const btn = e.target.closest("button");
-  if (!btn) return;
+  if (!btn || !btn.dataset.tab) return;
   tab = btn.dataset.tab;
   filter = "all";
   document.querySelectorAll("#tabs button").forEach((b) =>
@@ -236,8 +260,33 @@ $("#archive").addEventListener("click", (e) => {
   if (e.target.closest("a, button")) return;
   const li = e.target.closest("li[data-id]");
   if (!li) return;
-  expanded.has(li.dataset.id) ? expanded.delete(li.dataset.id) : expanded.add(li.dataset.id);
+  const wasOpen = expanded.has(li.dataset.id);
+  expanded.clear(); // accordion: only one open at a time
+  if (!wasOpen) expanded.add(li.dataset.id);
   render();
+});
+
+$("#add-link").addEventListener("click", async () => {
+  if (!token) { alert("connect sync first (footer) — added links live in the shared store."); return; }
+  let url = prompt("paste the link:");
+  if (!url) return;
+  url = url.trim();
+  if (!/^https?:\/\//i.test(url)) url = "https://" + url;
+  const norm = (s) => s.replace(/\/+$/, "");
+  if (articles.some((a) => norm(a.url) === norm(url))) { alert("already in the list."); return; }
+  if (inbox.some((i) => norm(i.url) === norm(url))) { alert("already waiting in the inbox."); return; }
+  const note = prompt("note — who shared it / why it caught you (optional):") || "";
+  try {
+    const res = await api("inbox", "POST", { url, note });
+    inbox = res.inbox;
+    if (res.dup) { alert("already waiting in the inbox."); return; }
+    tab = "more"; filter = "all";
+    document.querySelectorAll("#tabs button").forEach((b) =>
+      b.classList.toggle("active", b.dataset.tab === "more"));
+    render();
+  } catch {
+    alert("couldn't save the link — check sync.");
+  }
 });
 
 fetch("data/articles.json")
