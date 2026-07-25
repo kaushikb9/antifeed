@@ -26,6 +26,17 @@ hard-won gotchas; `IDEAS.md` for the backlog.
 
 ## Daily use
 
+Curation runs itself: a launchd agent fires `brain/auto.sh` hourly while the
+laptop is awake and no-ops unless today's pick is missing (so a shut laptop
+just means it runs on next open, after 7am). Install once:
+
+```sh
+cp brain/com.kb.antifeed.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.kb.antifeed.plist
+```
+
+Logs land in `brain/auto.log` (gitignored). Manual runs still work anytime:
+
 ```sh
 ./brain/curate.sh              # daily: sweep sources + inbox, commit, deploy
 ./brain/inbox.sh               # fast: process ONLY manually added links
