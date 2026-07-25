@@ -69,6 +69,12 @@ signal for a future brain-learning feature.
   the blog's theme toggle once; kb-blog now auto-hashes, antifeed is manual).
 - Masthead geometry (body width/padding, wordmark size) intentionally
   mirrors kaushikbhat.com — change them in both repos or not at all.
+  Nav pattern both sites: [content] · [other property] · about · theme.
+  antifeed's nav links back to the blog as "kb"; `/about/` is a standalone
+  static page holding the product philosophy.
+- antifeed deliberately stays on antifeed.pages.dev, NOT a kaushikbhat.com
+  subdomain — KB may spin it out as an independent product (own name/domain)
+  later. Don't suggest the subdomain.
 - HN data comes from the Algolia API (`hn.algolia.com/api/v1/...`) — URL-encode
   `>` in numericFilters or you get an HTML error page.
 
