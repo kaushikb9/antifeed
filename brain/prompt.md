@@ -60,7 +60,9 @@ received from his inner circle. These are his finds, so the default is IN:
   source name; add "via inner circle" to the hook rather than the source.
 - Always set `"mine": true` on inbox-sourced entries — that's what routes
   them to the "mine" tab in the app.
-- A dead or paywalled-to-unreadable link: skip it and say so in your summary.
+- A dead or paywalled-to-unreadable link: skip it, and append one line per
+  skipped link with the reason to `brain/last-run.txt` (create if missing) —
+  skipped links stay in the inbox, so KB needs to see why.
 
 ## Quality bar
 

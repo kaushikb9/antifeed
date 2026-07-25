@@ -1,6 +1,7 @@
 const LS_KEY = "antifeed:flags";
 const TOKEN_KEY = "antifeed:token";
 const MERGED_KEY = "antifeed:merged";
+const QUEUE_KEY = "antifeed:queue";
 const FLAG_DEFS = [
   { key: "r", glyph: "✓", label: "mark as read" },
   { key: "f", glyph: "★", label: "star — favorite / for later" },
@@ -9,6 +10,7 @@ const FLAG_DEFS = [
 
 let articles = [];
 let flags = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]");
 let tab = "must";
 let filter = "all";
 let token = localStorage.getItem(TOKEN_KEY);
@@ -22,6 +24,26 @@ const $ = (sel) => document.querySelector(sel);
 
 function saveLocal() {
   localStorage.setItem(LS_KEY, JSON.stringify(flags));
+}
+
+function saveQueue() {
+  localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
+}
+
+// replay unsent toggle deltas in order; false = server unreachable
+async function flushQueue() {
+  while (queue.length) {
+    try {
+      await api("flags", "POST", queue[0]);
+      queue.shift();
+      saveQueue();
+    } catch (e) {
+      synced = false;
+      paintSync();
+      return false;
+    }
+  }
+  return true;
 }
 
 async function api(path, method, body) {
@@ -41,7 +63,11 @@ async function syncLoad() {
       // first connect from this device: push local flags up, take the union
       flags = (await api("flags", "POST", { merge: flags })).flags;
       localStorage.setItem(MERGED_KEY, "1");
+      queue = [];
+      saveQueue();
     } else {
+      // replay offline toggles BEFORE pulling, or the GET would erase them
+      if (!(await flushQueue())) throw new Error("queue not flushed");
       flags = (await api("flags", "GET")).flags;
     }
     inbox = (await api("inbox", "GET")).inbox;
@@ -59,11 +85,12 @@ function toggleFlag(id, key) {
   f[key] = !f[key];
   flags[id] = f;
   saveLocal();
+  queue.push({ id, key, value: f[key] });
+  saveQueue();
   render();
   if (token) {
-    api("flags", "POST", { id, key, value: f[key] }).catch(() => {
-      synced = false;
-      paintSync();
+    flushQueue().then((ok) => {
+      if (ok && !synced) { synced = true; paintSync(); }
     });
   }
 }
@@ -291,7 +318,7 @@ $("#add-form").addEventListener("submit", async (e) => {
   }
 });
 
-fetch("data/articles.json")
+fetch("data/articles.json", { cache: "no-cache" })
   .then((r) => r.json())
   .then((d) => {
     articles = d.articles.slice().sort((x, y) => y.date.localeCompare(x.date));

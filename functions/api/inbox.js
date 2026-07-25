@@ -18,6 +18,11 @@ export async function onRequestPost({ request, env }) {
   let inbox = (await env.ANTIFEED_KV.get(KEY, "json")) || [];
   if (body.clear) {
     inbox = [];
+  } else if (Array.isArray(body.remove)) {
+    // targeted removal: only the URLs a brain run actually ingested —
+    // links added mid-run or skipped by the brain stay put
+    const gone = new Set(body.remove.map(norm));
+    inbox = inbox.filter((i) => !gone.has(norm(i.url)));
   } else if (body.url) {
     let url;
     try {

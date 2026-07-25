@@ -72,6 +72,7 @@ signal for a future brain-learning feature.
 Notes/reflections capture · up/downvote feedback loop · automated daily
 trigger (launchd / GitHub Action) · custom domain.
 
-`IDEAS.md` holds the reviewed backlog: known defects worth fixing next,
-MVP gaps, and future ideas with effort tags and scope-creep warnings.
-Start there before proposing new work.
+Work tracking: **defects and enhancements live in GitHub issues**
+(`gh issue list` in kaushikb9/antifeed); `IDEAS.md` holds only future
+feature ideas with effort tags and scope-creep warnings. Check both
+before proposing new work.

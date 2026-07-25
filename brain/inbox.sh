@@ -35,7 +35,21 @@ node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))" \
 git add site/data/articles.json
 git commit -m "inbox: $(date +%F)" || echo "nothing new committed"
 
-curl -sf -X POST -H "x-af-token: $AF_TOKEN" -H "content-type: application/json" \
-  -d '{"clear":true}' "$BASE_URL/api/inbox" >/dev/null && echo "inbox cleared"
+# remove ONLY snapshot inbox items that made it into articles.json —
+# skipped links and anything added mid-run stay in the inbox
+REMOVE=$(INBOX_JSON="$INBOX" node -e '
+  const inbox = JSON.parse(process.env.INBOX_JSON).inbox;
+  const arts = JSON.parse(require("fs").readFileSync("site/data/articles.json")).articles;
+  const norm = (s) => s.replace(/\/+$/, "");
+  const have = new Set(arts.map((a) => norm(a.url)));
+  const done = inbox.filter((i) => have.has(norm(i.url))).map((i) => i.url);
+  const left = inbox.filter((i) => !have.has(norm(i.url))).map((i) => i.url);
+  if (left.length) console.error("still in inbox (not ingested): " + left.join(", "));
+  console.log(JSON.stringify({ remove: done }));
+')
+if [ "$REMOVE" != '{"remove":[]}' ]; then
+  curl -sf -X POST -H "x-af-token: $AF_TOKEN" -H "content-type: application/json" \
+    -d "$REMOVE" "$BASE_URL/api/inbox" >/dev/null && echo "ingested inbox items removed"
+fi
 
 ./deploy.sh || echo "deploy failed — run ./deploy.sh manually"
