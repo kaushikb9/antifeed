@@ -164,16 +164,17 @@ function renderArchive(list) {
         <span class="mini">${flagBtns(a)}</span>
       </div>
       <div class="expand" ${open ? "" : "hidden"}>
-        <p class="whyline">why this made the cut</p>
-        <p class="hook">${esc(a.hook)}</p>
-        <div class="chips">
-          <span class="chip">by ${esc(a.author)}</span>
-          <span class="chip">published ${fmtDate(a.published || a.date)}</span>
-          <span class="chip">curated ${fmtDate(a.date)}</span>
-          <span class="chip">${a.read_minutes} min</span>
-          ${a.hn_points ? `<a class="chip hot" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN ${a.hn_points}▲ · ${a.hn_comments} comments</a>` : ""}
-        </div>
-        <a class="go small" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
+        <article class="card mini">
+          <div class="kicker">why this made the cut
+            <span class="meta">published ${fmtDate(a.published || a.date)} · curated ${fmtDate(a.date)} · ${a.read_minutes} min</span>
+          </div>
+          <p class="byline">${esc(a.author)}${a.hn_points ? ` · ${a.hn_points} pts / ${a.hn_comments} comments on HN` : ""}</p>
+          <p class="hook">${esc(a.hook)}</p>
+          <div class="actions">
+            <a class="go" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
+            ${a.hn_url ? `<a class="hn" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN thread ↗</a>` : ""}
+          </div>
+        </article>
       </div>
     </li>`;
   }).join("");
