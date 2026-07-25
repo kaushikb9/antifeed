@@ -1,6 +1,6 @@
 const LS_KEY = "antifeed:flags";
 const FLAG_DEFS = [
-  { key: "b", glyph: "🔖", label: "read later" },
+  { key: "b", glyph: "⚑", label: "read later" },
   { key: "f", glyph: "★", label: "favorite" },
   { key: "s", glyph: "↗", label: "save to share" },
 ];
