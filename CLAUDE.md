@@ -58,6 +58,15 @@ localStorage is the offline cache; KV is truth when sync is connected.
 Voting/feedback loop is deliberately parked — skip + star already carry the
 signal for a future brain-learning feature.
 
+## Machines
+
+Two laptops both run the launchd agent; they coordinate via git (auto.sh
+pulls --rebase before the already-curated check; curate.sh/inbox.sh push
+after committing). First lid open after 7am curates; the other stands down.
+Setting up a new machine: follow "Second-machine setup" in README.md —
+everything is agent-runnable except `wrangler login` and copying
+`.af-token.local`, which need KB.
+
 ## Gotchas (learned the hard way)
 
 - **Always deploy via `./deploy.sh`.** Running wrangler from a subdirectory

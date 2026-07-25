@@ -80,6 +80,38 @@ HN (primary, with the comment thread always linked), my Substack follows
 (`brain/sources.md` — keep it updated), frontier AI company blogs, and
 AI-first product companies' engineering blogs. Evergreen classics welcome.
 
+## Second-machine setup (KB's other laptop)
+
+Agent-followable. Goal: this machine can run the daily curation and deploy,
+coordinating with the other laptop via git (auto.sh pulls before deciding,
+brain scripts push after committing — no duplicate picks).
+
+1. Verify prereqs, install what's missing: `claude` CLI (logged in — check
+   `claude --version`), `node`/`npx`, `gh` (authenticated — `gh auth status`).
+2. Clone if not already here:
+   `gh repo clone kaushikb9/antifeed ~/Code/antifeed`
+3. In the repo: `git config user.email kaushikb9@users.noreply.github.com`
+   (MANDATORY — global config has a personal email that must not enter
+   this repo's history).
+4. Cloudflare auth: `npx wrangler login` (interactive — ask KB to run it),
+   then verify with `npx wrangler whoami`.
+5. Sync token: `.af-token.local` at repo root is gitignored and cannot be
+   recovered from Cloudflare. Ask KB to copy it from the other laptop
+   (AirDrop/scp). Verify:
+   `curl -sf -H "x-af-token: $(cat .af-token.local)" https://antifeed.pages.dev/api/flags`
+   → must return JSON, not "unauthorized".
+6. Install the auto-curation agent. If the repo path is NOT
+   `/Users/kb/Code/antifeed`, first fix the two paths inside
+   `brain/com.kb.antifeed.plist`. Then:
+   `cp brain/com.kb.antifeed.plist ~/Library/LaunchAgents/`
+   `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.kb.antifeed.plist`
+7. Verify: `bash brain/auto.sh` exits 0 silently when today's pick already
+   exists (check `site/data/articles.json` max date), and
+   `launchctl print gui/$(id -u)/com.kb.antifeed | grep "last exit"` shows 0.
+
+Steps 4 and 5 need KB personally (interactive login, secret file) — an agent
+should do everything else and ask for exactly those two.
+
 ## Make it yours (fork guide)
 
 antifeed is deliberately single-tenant — the curation is the product, and
