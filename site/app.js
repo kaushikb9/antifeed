@@ -2,17 +2,21 @@ const LS_KEY = "antifeed:flags";
 const TOKEN_KEY = "antifeed:token";
 const MERGED_KEY = "antifeed:merged";
 const QUEUE_KEY = "antifeed:queue";
+const ICONS = {
+  f: `<svg class="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.4 6.6L12 17.1 6 20.4l1.4-6.6-4.9-4.5 6.6-.7L12 2.5z"/></svg>`,
+  r: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>`,
+  x: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
+};
 const FLAG_DEFS = [
-  { key: "r", glyph: "✓", label: "mark as read" },
-  { key: "f", glyph: "★", label: "star — favorite / for later" },
-  { key: "x", glyph: "✕", label: "skip — hide from feed" },
+  { key: "f", glyph: ICONS.f, label: "star — favorite / for later" },
+  { key: "r", glyph: ICONS.r, label: "mark as read" },
+  { key: "x", glyph: ICONS.x, label: "skip — hide from feed" },
 ];
 
 let articles = [];
 let flags = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]");
-let tab = "must";
-let filter = "all";
+let tab = "must"; // must | more | mine | f (starred) | r (read) | x (skipped)
 let token = localStorage.getItem(TOKEN_KEY);
 let synced = false;
 let inbox = [];
@@ -120,8 +124,9 @@ function isSkipped(a) {
 }
 
 function visibleList() {
-  if (filter === "x") return articles.filter(isSkipped);
-  if (filter !== "all") return articles.filter((a) => flags[a.id]?.[filter] && !isSkipped(a));
+  if (tab === "x") return articles.filter(isSkipped);
+  if (tab === "f" || tab === "r")
+    return articles.filter((a) => flags[a.id]?.[tab] && !isSkipped(a));
   if (tab === "mine") return articles.filter((a) => a.mine && !isSkipped(a));
   // "more" excludes mine items (they live in their own tab); "must" keeps
   // promoted mine picks — dope is dope.
@@ -156,7 +161,7 @@ function renderToday(a) {
 }
 
 function inboxRows() {
-  if (tab !== "mine" || filter !== "all" || !inbox.length) return "";
+  if (tab !== "mine" || !inbox.length) return "";
   return inbox.map((i) => {
     let label = i.url;
     try {
@@ -212,13 +217,13 @@ function renderArchive(list) {
   empty.hidden = list.length > 0 || pre !== "";
   if (!empty.hidden) {
     empty.textContent = {
-      all: { must: "nothing here yet — the archive grows one read at a time.",
-             more: "no extra reads yet.",
-             mine: "nothing saved — paste a link above." }[tab],
-      r: "nothing marked read yet.",
+      must: "nothing here yet — the archive grows one read at a time.",
+      more: "no extra reads yet.",
+      mine: "nothing saved — paste a link above.",
       f: "nothing starred yet.",
+      r: "nothing marked read yet.",
       x: "nothing skipped. ruthless is good.",
-    }[filter];
+    }[tab];
   }
 }
 
@@ -227,18 +232,22 @@ function render() {
     $("#today").innerHTML = `<p class="empty">no picks yet — run the brain.</p>`;
     return;
   }
-  $("#add-form").hidden = tab !== "mine" || filter !== "all";
+  $("#add-form").hidden = tab !== "mine";
   const list = visibleList();
-  if (tab === "must" && filter === "all") {
+  if (tab === "must") {
     renderToday(list[0]);
     renderArchive(list.slice(1));
     $("#archive-title").textContent = "previously";
   } else {
     $("#today").innerHTML = "";
     renderArchive(list);
-    $("#archive-title").textContent =
-      filter === "all" ? (tab === "mine" ? "saved by me" : "when you feel like wandering") :
-      { r: "read", f: "starred", x: "skipped" }[filter];
+    $("#archive-title").textContent = {
+      more: "when you feel like wandering",
+      mine: "saved by me",
+      f: "starred",
+      r: "read",
+      x: "skipped",
+    }[tab];
   }
 }
 
@@ -270,19 +279,7 @@ $("#tabs").addEventListener("click", (e) => {
   const btn = e.target.closest("button");
   if (!btn || !btn.dataset.tab) return;
   tab = btn.dataset.tab;
-  filter = "all";
   document.querySelectorAll("#tabs button").forEach((b) =>
-    b.classList.toggle("active", b === btn));
-  document.querySelectorAll("#filters button").forEach((b) =>
-    b.classList.toggle("active", b.dataset.filter === "all"));
-  render();
-});
-
-$("#filters").addEventListener("click", (e) => {
-  const btn = e.target.closest("button");
-  if (!btn) return;
-  filter = btn.dataset.filter;
-  document.querySelectorAll("#filters button").forEach((b) =>
     b.classList.toggle("active", b === btn));
   render();
 });

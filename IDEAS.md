@@ -17,6 +17,12 @@ Prime directive when picking anything up: **read, don't tweak systems.**
   KV loss a non-event.
 - **[S] Archive search / tag filter** — defer until ~100 entries; before
   that it's tweaking, not reading.
+- **[M] Reader profiles (shared curation, personal flags)** — invite-only:
+  KB hands a friend a unique hash; they read the SAME kb-curated list but
+  their read/star/skip flags sync to their own KV bucket (`flags:<hash>`).
+  Not multi-tenant curation — one brain, many readers. API change: token →
+  profile lookup (owner hash keeps inbox + mine; guest hashes get flags
+  only). The public articles.json already supports this shape.
 - **[M] Feedback loop v1** — brain reads the flags KV before curating
   (skips/stars per source/tag as a taste snapshot in the prompt). Parked;
   the data accrues for free meanwhile. Scope-creep risk: medium (invites

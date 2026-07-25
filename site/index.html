@@ -19,6 +19,10 @@
   <button data-tab="must" class="active">must reads</button>
   <button data-tab="more">more</button>
   <button data-tab="mine">mine</button>
+  <span class="tab-spacer"></span>
+  <button data-tab="f" class="icon-tab" title="starred" aria-label="starred"><svg class="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.4 6.6L12 17.1 6 20.4l1.4-6.6-4.9-4.5 6.6-.7L12 2.5z"/></svg></button>
+  <button data-tab="r" class="icon-tab" title="read" aria-label="read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+  <button data-tab="x" class="icon-tab" title="skipped" aria-label="skipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
 </nav>
 
 <main>
@@ -36,12 +40,6 @@
   <section id="archive-section" aria-label="Archive">
     <div class="archive-head">
       <h2 id="archive-title">previously</h2>
-      <nav class="filters" id="filters">
-        <button data-filter="all" class="active">all</button>
-        <button data-filter="r" title="read">✓</button>
-        <button data-filter="f" title="starred">★</button>
-        <button data-filter="x" title="skipped">✕</button>
-      </nav>
     </div>
     <ol id="archive" class="archive"></ol>
     <p id="empty" class="empty" hidden></p>
