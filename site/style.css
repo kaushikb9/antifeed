@@ -115,10 +115,34 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .archive li { border-bottom: 1px solid var(--line); padding: 0.85rem 0; cursor: pointer; }
 .archive li.read .when,
 .archive li.read .t { opacity: 0.45; }
-.expand { padding: 0.4rem 0 0.2rem; }
-.expand .hook { font-size: 0.92rem; margin-bottom: 0.4rem; }
-.expand .metaline { color: var(--muted); font-size: 0.78rem; }
-.expand .metaline a { color: var(--gold); }
+.expand {
+  margin: 0.6rem 0 0.3rem;
+  padding: 0.9rem 1.1rem 1rem;
+  border-left: 3px solid var(--gold);
+  background: var(--card);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  animation: reveal 0.18s ease-out;
+  cursor: default;
+}
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: none; }
+}
+.expand .whyline {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.4rem;
+}
+.expand .hook { font-size: 0.95rem; margin-bottom: 0.75rem; }
+.expand .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; }
+.chip {
+  font-size: 0.72rem; color: var(--muted); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 99px; padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+.chip.hot { color: var(--gold); border-color: var(--gold); font-weight: 600; }
+.go.small { font-size: 0.82rem; padding: 0.4rem 0.85rem; }
+.archive li.read .expand { opacity: 1; }
 .row { display: flex; gap: 0.75rem; align-items: baseline; }
 .row .when { color: var(--muted); font-size: 0.78rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .row .t { flex: 1; min-width: 0; }

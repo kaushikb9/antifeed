@@ -3,9 +3,8 @@ const TOKEN_KEY = "antifeed:token";
 const MERGED_KEY = "antifeed:merged";
 const FLAG_DEFS = [
   { key: "r", glyph: "✓", label: "mark as read" },
-  { key: "f", glyph: "★", label: "star — for later" },
-  { key: "s", glyph: "↗", label: "save to share" },
-  { key: "x", glyph: "✕", label: "hide — not for me" },
+  { key: "f", glyph: "★", label: "star — favorite / for later" },
+  { key: "x", glyph: "✕", label: "skip — hide from feed" },
 ];
 
 let articles = [];
@@ -141,8 +140,16 @@ function renderArchive(list) {
         <span class="mini">${flagBtns(a)}</span>
       </div>
       <div class="expand" ${open ? "" : "hidden"}>
+        <p class="whyline">why this made the cut</p>
         <p class="hook">${esc(a.hook)}</p>
-        <p class="metaline">by ${esc(a.author)} · published ${fmtDate(a.published || a.date)} · curated ${fmtDate(a.date)}${hnMeta}</p>
+        <div class="chips">
+          <span class="chip">by ${esc(a.author)}</span>
+          <span class="chip">published ${fmtDate(a.published || a.date)}</span>
+          <span class="chip">curated ${fmtDate(a.date)}</span>
+          <span class="chip">${a.read_minutes} min</span>
+          ${a.hn_points ? `<a class="chip hot" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN ${a.hn_points}▲ · ${a.hn_comments} comments</a>` : ""}
+        </div>
+        <a class="go small" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
       </div>
     </li>`;
   }).join("");
@@ -156,11 +163,9 @@ function renderArchive(list) {
         : "no extra reads yet.",
       r: "nothing marked read yet.",
       f: "nothing starred yet.",
-      s: "nothing on the share list.",
-      x: "nothing hidden. ruthless is good.",
+      x: "nothing skipped. ruthless is good.",
     }[filter];
   }
-  $("#copy-share").hidden = filter !== "s" || list.length === 0;
 }
 
 function render() {
@@ -178,15 +183,8 @@ function render() {
     renderArchive(list);
     $("#archive-title").textContent =
       filter === "all" ? "when you feel like wandering" :
-      { r: "read", f: "starred", s: "to share", x: "hidden" }[filter];
+      { r: "read", f: "starred", x: "skipped" }[filter];
   }
-}
-
-function shareMarkdown() {
-  return articles.filter((a) => flags[a.id]?.s && !isSkipped(a)).map((a) => {
-    const hn = a.hn_url ? ` ([HN discussion](${a.hn_url}))` : "";
-    return `- [${a.title}](${a.url}) — ${a.source}${hn}\n  ${a.hook}`;
-  }).join("\n");
 }
 
 /* ---- sync control ---- */
@@ -240,12 +238,6 @@ $("#archive").addEventListener("click", (e) => {
   if (!li) return;
   expanded.has(li.dataset.id) ? expanded.delete(li.dataset.id) : expanded.add(li.dataset.id);
   render();
-});
-
-$("#copy-share").addEventListener("click", async (e) => {
-  await navigator.clipboard.writeText(shareMarkdown());
-  e.target.textContent = "copied ✓";
-  setTimeout(() => (e.target.textContent = "copy share list as markdown"), 1500);
 });
 
 fetch("data/articles.json")
