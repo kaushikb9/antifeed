@@ -156,8 +156,6 @@ function renderArchive(list) {
       ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN</a>` : "";
     const ever = a.evergreen ? " · evergreen" : "";
     const open = expanded.has(a.id);
-    const hnMeta = a.hn_points
-      ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN ${a.hn_points} pts / ${a.hn_comments} comments</a>` : "";
     return `<li data-id="${a.id}" class="${flags[a.id]?.r ? "read" : ""}${open ? " open" : ""}">
       <div class="row">
         <span class="when" title="curated ${fmtDate(a.date)}">${fmtDate(a.date)}</span>

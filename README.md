@@ -2,23 +2,27 @@
 
 One good read a day. No scroll, no bait.
 
-A two-part system:
+A two-part system — a static reader and a curation brain:
 
-- **`site/`** — static web app (no framework, no build step). Two tabs:
+- **`site/`** — static web app (no framework, no build step). Three tabs:
   **must reads** (today's pick as a card with a hook written for me, plus the
-  archive) and **more** (good-not-sacred reads for wandering). Rows expand on
-  click into a "why this made the cut" panel: hook, meta chips (author,
-  publish date, curation date, HN points/comments), read button — list dates
-  are curation dates. Flags per article: ✓ read (dims the row, keeps it),
-  ★ star (favorite / for later), ✕ skip (neutral hide-from-feed, not a
-  downvote; the ✕ filter view un-skips). The whole "database" is
-  `site/data/articles.json`.
-- **`functions/api/flags.js`** — Cloudflare Pages Function backing flag sync
-  across devices via KV, guarded by a shared token. Client falls back to
-  localStorage when offline/unconfigured.
-- **`brain/`** — curation brain. `curate.sh` runs headless Claude Code with
-  `brain/prompt.md` + `brain/sources.md`, appends one pick to the JSON,
-  commits, and deploys to Cloudflare Pages.
+  archive), **more** (good-not-sacred reads for wandering), and **mine**
+  (links I add myself via the inline form — my read-it-later shelf). Rows
+  expand (one at a time) into a "why this made the cut" mini-card matching
+  the daily card's design: hook, author, publish + curation dates, HN
+  points/comments, read button. List dates are curation dates. Flags per
+  article: ✓ read (dims the row, keeps it), ★ star (favorite / for later),
+  ✕ skip (neutral hide-from-feed, not a downvote; the ✕ filter view
+  un-skips). The whole "database" is `site/data/articles.json`.
+- **`functions/api/`** — Cloudflare Pages Functions: `flags.js` (cross-device
+  flag sync) and `inbox.js` (manually added links), both in KV behind a
+  shared token. The client falls back to localStorage when offline.
+- **`brain/`** — curation brain, headless Claude Code driven by
+  `brain/prompt.md` + `brain/sources.md`. Appends picks to the JSON,
+  commits, clears the inbox, deploys.
+
+See `CLAUDE.md` for the full architecture notes, content-model rules, and
+hard-won gotchas; `IDEAS.md` for the backlog.
 
 ## Daily use
 

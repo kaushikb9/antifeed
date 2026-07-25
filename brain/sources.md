@@ -7,13 +7,13 @@
 - Look for: deep technical posts, production war stories, strong essays.
 - The comment thread is part of the pick — always capture `hn_url`.
 
-## 2. Substack follows (occasional gems)
+## 2. Substack/blog follows (occasional gems)
 
-<!-- KB: paste your follow list here, one per line, e.g.
-- https://www.latent.space/
-- https://newsletter.pragmaticengineer.com/
--->
-- (add your follows)
+- https://www.henrikkarlsson.xyz/
+- https://kau.sh/
+- https://threads.championswimmer.in/
+- https://www.writingruxandrabio.com/
+- https://contraptions.venkateshrao.com/
 
 ## 3. Frontier AI company blogs
 

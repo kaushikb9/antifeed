@@ -2,9 +2,8 @@ name = "antifeed"
 pages_build_output_dir = "site"
 compatibility_date = "2026-07-01"
 
-# one-time setup:
-#   npx wrangler kv namespace create ANTIFEED_KV   → paste the id below
-#   npx wrangler pages secret put AF_TOKEN --project-name antifeed
+# AF_TOKEN secret is set via: npx wrangler pages secret put AF_TOKEN --project-name antifeed
+# (secrets attach at deploy time — redeploy after changing)
 [[kv_namespaces]]
 binding = "ANTIFEED_KV"
 id = "2402170d7a244f69b55a303c54e4a21e"

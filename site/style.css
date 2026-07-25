@@ -119,12 +119,6 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 }
 .filters button.active { background: var(--gold-soft); color: var(--gold); }
 
-#copy-share {
-  margin-bottom: 0.9rem; background: none; border: 1px dashed var(--gold);
-  color: var(--gold); border-radius: 8px; padding: 0.4rem 0.8rem;
-  font-size: 0.82rem; font-weight: 600; cursor: pointer;
-}
-
 .archive { list-style: none; padding: 0; }
 .archive li { border-bottom: 1px solid var(--line); padding: 0.85rem 0; cursor: pointer; }
 .archive li.read .when,
