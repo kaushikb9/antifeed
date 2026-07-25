@@ -26,6 +26,10 @@ tweak systems** — resist scope creep, keep everything boring and durable.
 - `brain/` — curation, all headless Claude Code (`claude -p`):
   - `curate.sh` — daily run: sweep sources + process manual inbox, append to
     articles.json, commit, clear inbox, deploy. `backfill N` mode for bulk.
+  - `auto.sh` + `com.kb.antifeed.plist` — launchd agent (installed in
+    ~/Library/LaunchAgents) fires auto.sh hourly; it no-ops unless today's
+    pick is missing (checks articles.json max date), skips before 7am and
+    when offline. This is how curation actually runs day-to-day.
   - `inbox.sh` — cheap fast path: process ONLY the manual inbox (no source
     sweep). Use when KB just added links and wants them in the list now.
   - `prompt.md` — the curator persona, KB's profile, source priorities,
@@ -80,8 +84,8 @@ signal for a future brain-learning feature.
 
 ## Deferred on purpose (don't build unless KB asks)
 
-Notes/reflections capture · up/downvote feedback loop · automated daily
-trigger (launchd / GitHub Action) · custom domain.
+Notes/reflections capture · up/downvote feedback loop · custom domain
+(deliberately deferred — independent-product plan above).
 
 Work tracking: **defects and enhancements live in GitHub issues**
 (`gh issue list` in kaushikb9/antifeed); `IDEAS.md` holds only future
