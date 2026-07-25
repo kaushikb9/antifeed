@@ -69,6 +69,28 @@ HN (primary, with the comment thread always linked), my Substack follows
 (`brain/sources.md` — keep it updated), frontier AI company blogs, and
 AI-first product companies' engineering blogs. Evergreen classics welcome.
 
+## Make it yours (fork guide)
+
+antifeed is deliberately single-tenant — the curation is the product, and
+it's aimed at one person. To run it for yourself:
+
+1. Fork this repo.
+2. Rewrite the "Who you're curating for" section of `brain/prompt.md` for
+   YOUR role and interests, and put your sources in `brain/sources.md`.
+3. `npx wrangler login`, then:
+   `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
+   `wrangler.toml`.
+4. Deploy once (`./deploy.sh` creates the Pages project), then set your
+   sync token: `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
+   (any long random string; also save it to `.af-token.local` — gitignored —
+   so the brain scripts can reach your inbox). Update `BASE_URL` in
+   `brain/*.sh` to your pages.dev URL.
+5. Seed your backlog: `./brain/curate.sh backfill 15`. Then daily:
+   `./brain/curate.sh`. Requires [Claude Code](https://claude.com/claude-code).
+6. On each device, tap "sync off — connect" in the footer, paste your token.
+
+Total setup: ~30 minutes. Your picks, your hooks, your flags.
+
 ## Deliberately not built (yet)
 
 - Notes/reflections capture (revisit if the habit sticks)
