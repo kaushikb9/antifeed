@@ -7,4 +7,4 @@ compatibility_date = "2026-07-01"
 #   npx wrangler pages secret put AF_TOKEN --project-name antifeed
 [[kv_namespaces]]
 binding = "ANTIFEED_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "2402170d7a244f69b55a303c54e4a21e"

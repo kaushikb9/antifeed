@@ -2,10 +2,10 @@ const LS_KEY = "antifeed:flags";
 const TOKEN_KEY = "antifeed:token";
 const MERGED_KEY = "antifeed:merged";
 const FLAG_DEFS = [
-  { key: "b", glyph: "⚑", label: "read later" },
-  { key: "f", glyph: "★", label: "favorite" },
+  { key: "r", glyph: "✓", label: "mark as read" },
+  { key: "f", glyph: "★", label: "star — for later" },
   { key: "s", glyph: "↗", label: "save to share" },
-  { key: "x", glyph: "✕", label: "skip — not for me" },
+  { key: "x", glyph: "✕", label: "hide — not for me" },
 ];
 
 let articles = [];
@@ -14,6 +14,7 @@ let tab = "must";
 let filter = "all";
 let token = localStorage.getItem(TOKEN_KEY);
 let synced = false;
+const expanded = new Set();
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -110,7 +111,8 @@ function renderToday(a) {
       <span class="meta">${fmtDate(a.date)} · ${esc(a.source)} · ${a.read_minutes} min</span>
     </div>
     <h3><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>${ever}</h3>
-    <p class="byline">${esc(a.author)}</p>
+    <p class="byline">${esc(a.author)} · published ${fmtDate(a.published || a.date)}${
+      a.hn_points ? ` · ${a.hn_points} pts / ${a.hn_comments} comments on HN` : ""}</p>
     <p class="hook">${esc(a.hook)}</p>
     <div class="actions">
       <a class="go" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
@@ -126,14 +128,21 @@ function renderArchive(list) {
     const hn = a.hn_url
       ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN</a>` : "";
     const ever = a.evergreen ? " · evergreen" : "";
-    return `<li>
+    const open = expanded.has(a.id);
+    const hnMeta = a.hn_points
+      ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN ${a.hn_points} pts / ${a.hn_comments} comments</a>` : "";
+    return `<li data-id="${a.id}" class="${flags[a.id]?.r ? "read" : ""}${open ? " open" : ""}">
       <div class="row">
-        <span class="when">${fmtDate(a.date)}</span>
+        <span class="when" title="curated ${fmtDate(a.date)}">${fmtDate(a.date)}</span>
         <span class="t">
           <a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>
           <div class="sub">${esc(a.source)} · ${a.read_minutes} min${hn}${ever}</div>
         </span>
         <span class="mini">${flagBtns(a)}</span>
+      </div>
+      <div class="expand" ${open ? "" : "hidden"}>
+        <p class="hook">${esc(a.hook)}</p>
+        <p class="metaline">by ${esc(a.author)} · published ${fmtDate(a.published || a.date)} · curated ${fmtDate(a.date)}${hnMeta}</p>
       </div>
     </li>`;
   }).join("");
@@ -145,10 +154,10 @@ function renderArchive(list) {
       all: tab === "must"
         ? "nothing here yet — the archive grows one read at a time."
         : "no extra reads yet.",
-      b: "nothing saved for later.",
-      f: "no favorites yet.",
+      r: "nothing marked read yet.",
+      f: "nothing starred yet.",
       s: "nothing on the share list.",
-      x: "nothing skipped. ruthless is good.",
+      x: "nothing hidden. ruthless is good.",
     }[filter];
   }
   $("#copy-share").hidden = filter !== "s" || list.length === 0;
@@ -169,7 +178,7 @@ function render() {
     renderArchive(list);
     $("#archive-title").textContent =
       filter === "all" ? "when you feel like wandering" :
-      { b: "read later", f: "favorites", s: "to share", x: "skipped" }[filter];
+      { r: "read", f: "starred", s: "to share", x: "hidden" }[filter];
   }
 }
 
@@ -222,6 +231,14 @@ $("#filters").addEventListener("click", (e) => {
   filter = btn.dataset.filter;
   document.querySelectorAll("#filters button").forEach((b) =>
     b.classList.toggle("active", b === btn));
+  render();
+});
+
+$("#archive").addEventListener("click", (e) => {
+  if (e.target.closest("a, button")) return;
+  const li = e.target.closest("li[data-id]");
+  if (!li) return;
+  expanded.has(li.dataset.id) ? expanded.delete(li.dataset.id) : expanded.add(li.dataset.id);
   render();
 });
 

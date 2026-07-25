@@ -6,10 +6,11 @@ A two-part system:
 
 - **`site/`** — static web app (no framework, no build step). Two tabs:
   **must reads** (today's pick as a card with a hook written for me, plus the
-  archive) and **more** (good-not-sacred reads for wandering). Flags per
-  article: ⚑ read later, ★ favorite, ↗ share, ✕ skip (hides it everywhere;
-  the ✕ filter view un-skips). The whole "database" is
-  `site/data/articles.json`.
+  archive) and **more** (good-not-sacred reads for wandering). Rows expand on
+  click to show the hook + meta (author, publish date, HN points/comments —
+  list dates are curation dates). Flags per article: ✓ read (dims the row),
+  ★ star for later, ↗ share, ✕ hide (removes it everywhere; the ✕ filter
+  view un-hides). The whole "database" is `site/data/articles.json`.
 - **`functions/api/flags.js`** — Cloudflare Pages Function backing flag sync
   across devices via KV, guarded by a shared token. Client falls back to
   localStorage when offline/unconfigured.

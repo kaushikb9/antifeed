@@ -15,7 +15,10 @@
         "ai-adoption",
         "engineering-culture"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-24",
+      "hn_points": 691,
+      "hn_comments": 517
     },
     {
       "id": "2026-07-24-harder-to-focus",
@@ -32,7 +35,10 @@
         "attention",
         "personal-growth"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-24",
+      "hn_points": 714,
+      "hn_comments": 392
     },
     {
       "id": "2026-07-24-claude-opus-5",
@@ -49,7 +55,10 @@
         "models",
         "anthropic"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-24",
+      "hn_points": 1446,
+      "hn_comments": 794
     },
     {
       "id": "2026-07-23-writing-by-hand",
@@ -66,7 +75,10 @@
         "thinking",
         "personal-growth"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-23",
+      "hn_points": 1437,
+      "hn_comments": 650
     },
     {
       "id": "2026-07-22-openai-hf-incident",
@@ -83,7 +95,10 @@
         "agents",
         "security"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-22",
+      "hn_points": 571,
+      "hn_comments": 438
     },
     {
       "id": "2026-07-22-pelicanmaxxing",
@@ -100,7 +115,10 @@
         "evals",
         "llm-systems"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-22",
+      "hn_points": 678,
+      "hn_comments": 242
     },
     {
       "id": "2026-07-22-postgres-survival-guide",
@@ -117,7 +135,10 @@
         "databases",
         "engineering"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-22",
+      "hn_points": 515,
+      "hn_comments": 232
     },
     {
       "id": "2026-07-20-whos-afraid-chinese-models",
@@ -134,7 +155,10 @@
         "strategy",
         "open-weights"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-20",
+      "hn_points": 991,
+      "hn_comments": 899
     },
     {
       "id": "2026-07-19-ai-mania-decision-making",
@@ -151,7 +175,10 @@
         "ai-adoption",
         "engineering-culture"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-19",
+      "hn_points": 453,
+      "hn_comments": 291
     },
     {
       "id": "2026-07-18-kimi-k3-moment",
@@ -168,7 +195,10 @@
         "open-weights",
         "models"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-18",
+      "hn_points": 636,
+      "hn_comments": 611
     },
     {
       "id": "2026-07-15-memory-heist",
@@ -185,7 +215,10 @@
         "agents",
         "security"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2026-07-15",
+      "hn_points": 673,
+      "hn_comments": 293
     },
     {
       "id": "2026-07-14-offloading-thinking",
@@ -202,7 +235,10 @@
         "thinking",
         "ai-adoption"
       ],
-      "tier": "more"
+      "tier": "more",
+      "published": "2026-07-14",
+      "hn_points": 525,
+      "hn_comments": 480
     },
     {
       "id": "2026-07-13-building-effective-agents",
@@ -219,7 +255,10 @@
         "agents",
         "architecture"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2024-12-19",
+      "hn_points": 763,
+      "hn_comments": 121
     },
     {
       "id": "2026-07-12-bitter-lesson",
@@ -236,7 +275,10 @@
         "ai-fundamentals",
         "strategy"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2019-03-13",
+      "hn_points": 152,
+      "hn_comments": 53
     },
     {
       "id": "2026-07-11-how-to-build-an-agent",
@@ -253,7 +295,10 @@
         "agents",
         "hands-on"
       ],
-      "tier": "must"
+      "tier": "must",
+      "published": "2025-04-15",
+      "hn_points": 38,
+      "hn_comments": 1
     }
   ]
 }

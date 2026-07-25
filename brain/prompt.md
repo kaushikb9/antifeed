@@ -65,6 +65,9 @@ the file (check first). Schema per entry:
   "source": "Anthropic | HN | <Substack name> | <Company> Engineering ...",
   "url": "https://original-article-url",
   "hn_url": "https://news.ycombinator.com/item?id=... or null",
+  "published": "YYYY-MM-DD — the article's actual publication date",
+  "hn_points": 123,
+  "hn_comments": 456,
   "read_minutes": 12,
   "hook": "2-3 sentences addressed to Kaushik ...",
   "evergreen": false,
@@ -82,5 +85,8 @@ Rules:
   AI adoption and building personal agents. Concrete beats generic. If the HN
   thread is half the value, say so in the hook.
 - `read_minutes`: honest estimate from word count (~230 wpm).
+- `published` is the article's real publication date (best effort from the page
+  or the HN submission date). `hn_points`/`hn_comments` are a snapshot at
+  curation time (from Algolia); null when there's no HN thread.
 - Verify every URL actually loads (WebFetch) before including it.
 - After editing, run `node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))"` via Bash to confirm valid JSON.
