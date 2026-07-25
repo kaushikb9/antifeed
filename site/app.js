@@ -318,6 +318,10 @@ $("#add-form").addEventListener("submit", async (e) => {
   }
 });
 
+// "mine" is personal — without sync (no token) the tab has no point
+$('#tabs [data-tab="mine"]').hidden = !token;
+if (!token && tab === "mine") tab = "must";
+
 fetch("data/articles.json", { cache: "no-cache" })
   .then((r) => r.json())
   .then((d) => {
