@@ -184,12 +184,11 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .about p { margin-bottom: 1.05rem; font-size: 1rem; }
 .about a { color: var(--gold); text-decoration: none; font-weight: 600; }
 .about a:hover { text-decoration: underline; }
-.about .colophon { color: var(--muted); font-size: 0.85rem; margin-top: 2rem; }
+.about .back-link { margin-top: 2rem; font-size: 0.9rem; }
 
 footer { margin-top: 4rem; color: var(--muted); font-size: 0.78rem; }
 footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
 footer a:hover { text-decoration: underline; }
-.brain { width: 1em; height: 1em; vertical-align: -0.15em; color: var(--gold); }
 .linkish {
   background: none; border: none; padding: 0; cursor: pointer;
   color: var(--gold); font: inherit; text-decoration: underline dotted;
