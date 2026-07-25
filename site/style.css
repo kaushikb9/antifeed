@@ -147,6 +147,9 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .empty { color: var(--muted); font-size: 0.9rem; padding: 1.5rem 0; }
 
 footer { margin-top: 4rem; color: var(--muted); font-size: 0.78rem; }
+footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
+footer a:hover { text-decoration: underline; }
+.brain { width: 1em; height: 1em; vertical-align: -0.15em; color: var(--gold); }
 .linkish {
   background: none; border: none; padding: 0; cursor: pointer;
   color: var(--gold); font: inherit; text-decoration: underline dotted;
