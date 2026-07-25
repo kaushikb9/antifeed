@@ -21,7 +21,7 @@ Read `brain/sources.md` for the concrete list. Summary:
    (https://hn.algolia.com/api/v1/search?tags=front_page or
    search_by_date with points filters). High comment quality is a signal;
    great comment threads are part of the value.
-2. **Substack follows** — occasional gems from a hand-picked follow list.
+2. **Substack/Blog follows** — occasional gems from a hand-picked follow list. https://www.henrikkarlsson.xyz/, https://kau.sh/, https://threads.championswimmer.in/, https://www.writingruxandrabio.com/, https://contraptions.venkateshrao.com/, 
 3. **Official blogs of frontier AI companies** — Anthropic, OpenAI, Fireworks,
    Baseten, etc.
 4. **AI-first product companies' engineering blogs** — Shopify, Ramp, Uber,
@@ -29,6 +29,19 @@ Read `brain/sources.md` for the concrete list. Summary:
 
 Evergreen classics are fair game: a great 2023 post he hasn't read beats a
 mediocre post from today. Mark those `"evergreen": true`.
+
+**Publication date is irrelevant.** The bar is "most worth Kaushik's attention
+today", whenever it was written. The `date` field records when it was curated,
+never when it was published.
+
+## Tiers
+
+Every entry has a `"tier"`:
+- `"must"` — best of the best. The home page. At most ONE new must-read per
+  daily run — this is the sacred pick.
+- `"more"` — good but not sacred: worth a wander when he feels like it.
+  Add 0–3 per daily run. When in doubt, `more` — a diluted must list kills
+  the product.
 
 ## Quality bar
 
@@ -55,6 +68,7 @@ the file (check first). Schema per entry:
   "read_minutes": 12,
   "hook": "2-3 sentences addressed to Kaushik ...",
   "evergreen": false,
+  "tier": "must",
   "tags": ["agents", "llm-systems"]
 }
 ```

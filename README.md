@@ -4,10 +4,15 @@ One good read a day. No scroll, no bait.
 
 A two-part system:
 
-- **`site/`** — static web app (no framework, no build step). Today's pick as a
-  card with a hook written for me, archive below, bookmark / favorite / share
-  flags in `localStorage`, copy-share-list-as-markdown. The whole "database" is
+- **`site/`** — static web app (no framework, no build step). Two tabs:
+  **must reads** (today's pick as a card with a hook written for me, plus the
+  archive) and **more** (good-not-sacred reads for wandering). Flags per
+  article: ⚑ read later, ★ favorite, ↗ share, ✕ skip (hides it everywhere;
+  the ✕ filter view un-skips). The whole "database" is
   `site/data/articles.json`.
+- **`functions/api/flags.js`** — Cloudflare Pages Function backing flag sync
+  across devices via KV, guarded by a shared token. Client falls back to
+  localStorage when offline/unconfigured.
 - **`brain/`** — curation brain. `curate.sh` runs headless Claude Code with
   `brain/prompt.md` + `brain/sources.md`, appends one pick to the JSON,
   commits, and deploys to Cloudflare Pages.
@@ -25,9 +30,22 @@ A two-part system:
 npx wrangler pages deploy site --project-name=antifeed
 ```
 
-First time: `npx wrangler login`, then create the project when prompted.
+First time:
+
+1. `npx wrangler login`
+2. `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
+   `wrangler.toml`
+3. Deploy once (creates the project), then set the sync token:
+   `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
+   (pick any long random string)
+4. On each device, tap "sync off — connect" in the footer and enter that token.
+   First connect merges the device's local flags into KV.
+
 Custom domain (e.g. `antifeed.kaushikbhat.com`) is added in the Cloudflare
 dashboard under the Pages project → Custom domains.
+
+Local dev with the sync API: `npx wrangler pages dev` (token `dev-token`
+via `.dev.vars`, KV simulated locally).
 
 ## Sources
 
@@ -37,6 +55,7 @@ AI-first product companies' engineering blogs. Evergreen classics welcome.
 
 ## Deliberately not built (yet)
 
-- Notes/reflections capture (needs a backend; revisit if the habit sticks)
-- Cross-device sync of flags (localStorage is per-browser)
+- Notes/reflections capture (revisit if the habit sticks)
+- Upvote/downvote feedback loop into the brain (parked; ✕ skip + ★ favorites
+  already carry most of the signal)
 - Automated daily trigger (run it with morning coffee; launchd/GitHub Action later)

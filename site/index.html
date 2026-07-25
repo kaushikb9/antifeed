@@ -14,17 +14,23 @@
   <p class="tagline">one good read a day. no scroll, no bait.</p>
 </header>
 
+<nav class="tabs" id="tabs">
+  <button data-tab="must" class="active">must reads</button>
+  <button data-tab="more">more</button>
+</nav>
+
 <main>
   <section id="today" aria-label="Today's read"></section>
 
   <section id="archive-section" aria-label="Archive">
     <div class="archive-head">
-      <h2>previously</h2>
+      <h2 id="archive-title">previously</h2>
       <nav class="filters" id="filters">
         <button data-filter="all" class="active">all</button>
-        <button data-filter="b" title="bookmarked">read later</button>
-        <button data-filter="f" title="favorites">favorites</button>
-        <button data-filter="s" title="to share">share</button>
+        <button data-filter="b" title="read later">⚑</button>
+        <button data-filter="f" title="favorites">★</button>
+        <button data-filter="s" title="to share">↗</button>
+        <button data-filter="x" title="skipped">✕</button>
       </nav>
     </div>
     <button id="copy-share" hidden>copy share list as markdown</button>
@@ -34,7 +40,7 @@
 </main>
 
 <footer>
-  <p>curated daily by a robot with taste · flags live in this browser only</p>
+  <p>curated daily by a robot with taste · <button id="sync-btn" class="linkish"></button></p>
 </footer>
 
 <script src="app.js"></script>

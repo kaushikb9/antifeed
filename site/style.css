@@ -32,7 +32,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-header { margin-bottom: 2.5rem; }
+header { margin-bottom: 1.75rem; }
+.tabs { display: flex; gap: 0.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.tabs button {
+  background: none; border: none; cursor: pointer; color: var(--muted);
+  font: inherit; font-size: 0.9rem; font-weight: 600;
+  padding: 0.4rem 0.75rem; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs button.active { color: var(--ink); border-bottom-color: var(--gold); }
 .wordmark { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
 .wordmark span { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 2px; font-weight: 600; }
 .tagline { color: var(--muted); font-size: 0.9rem; margin-top: 0.15rem; }
@@ -120,6 +127,10 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .empty { color: var(--muted); font-size: 0.9rem; padding: 1.5rem 0; }
 
 footer { margin-top: 4rem; color: var(--muted); font-size: 0.78rem; }
+.linkish {
+  background: none; border: none; padding: 0; cursor: pointer;
+  color: var(--gold); font: inherit; text-decoration: underline dotted;
+}
 
 @media (max-width: 480px) {
   body { padding: 1.5rem 1rem 3rem; }

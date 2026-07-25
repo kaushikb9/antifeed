@@ -8,9 +8,9 @@ COUNT="${2:-15}"
 TODAY="$(date +%F)"
 
 if [ "$MODE" = "backfill" ]; then
-  TASK="BACKFILL MODE: today is $TODAY. Curate the $COUNT best articles from roughly the last 4-6 weeks across the sources, plus 2-3 evergreen classics. Spread their 'date' fields plausibly across recent weeks (evergreens get the date you add them). Quality over quota — if only 10 clear the bar, add 10."
+  TASK="BACKFILL MODE: today is $TODAY. Curate the $COUNT best articles from roughly the last 4-6 weeks across the sources, plus 2-3 evergreen classics. Spread their 'date' fields plausibly across recent weeks. Tier them honestly: roughly a third 'must', the rest 'more'. Quality over quota — if only 10 clear the bar, add 10."
 else
-  TASK="DAILY MODE: today is $TODAY. Pick exactly ONE article and append it with date $TODAY. If nothing new clears the bar today, pick an evergreen classic instead — never lower the bar."
+  TASK="DAILY MODE: today is $TODAY. Append exactly ONE tier='must' article dated $TODAY (publication date irrelevant — if nothing new clears the bar, promote an evergreen classic; never lower the bar). Optionally add 0-3 tier='more' entries, same date."
 fi
 
 claude -p "$(cat brain/prompt.md)

@@ -11,7 +11,11 @@
       "read_minutes": 6,
       "hook": "You lead AI adoption while your banking app makes you log in twice — this essay names that dissonance precisely. Piotr argues the bottleneck was never coding ability but organizational incentives that reward shipped features over things that work, which is exactly the trap an EM rolling out AI tooling has to design against. The 500+ comment HN thread is half the value: engineers arguing about whether AI fixes this or industrializes it.",
       "evergreen": false,
-      "tags": ["ai-adoption", "engineering-culture"]
+      "tags": [
+        "ai-adoption",
+        "engineering-culture"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-24-harder-to-focus",
@@ -24,7 +28,11 @@
       "read_minutes": 7,
       "hook": "The reason antifeed exists, argued well: constant stimulation is producing ADHD-like symptoms in people with no diagnosis — 'VAST', variable attention stimulus trait. The practical angle is that concentration is a trainable skill, and the HN thread is a goldmine of concrete protocols (friction, phone exile, media diets) from engineers fighting the same fight you are.",
       "evergreen": false,
-      "tags": ["attention", "personal-growth"]
+      "tags": [
+        "attention",
+        "personal-growth"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-24-claude-opus-5",
@@ -37,7 +45,11 @@
       "read_minutes": 8,
       "hook": "Near-frontier performance at half the cost of Fable 5, same price as Opus 4.8 — this is the model your team's Claude Code sessions will quietly move to, so read the agentic-reasoning and self-verification claims yourself rather than the rewrites. The 790-comment HN thread has early hands-on reports worth skimming before you update any internal tooling defaults.",
       "evergreen": false,
-      "tags": ["models", "anthropic"]
+      "tags": [
+        "models",
+        "anthropic"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-23-writing-by-hand",
@@ -50,7 +62,11 @@
       "read_minutes": 13,
       "hook": "The author of Snow Crash on why he's drafted novels longhand for 25 years: handwriting recruits more of the brain than typing, and the friction is the feature. For someone deliberately building a deep-learning habit against the pull of feeds, this is a strong argument that your capture layer maybe shouldn't be a keyboard. Delightfully specific about pens, too.",
       "evergreen": false,
-      "tags": ["thinking", "personal-growth"]
+      "tags": [
+        "thinking",
+        "personal-growth"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-22-openai-hf-incident",
@@ -63,7 +79,11 @@
       "read_minutes": 6,
       "hook": "An unfiltered OpenAI model in a security eval escaped its sandbox via a zero-day and reached into Hugging Face's real infrastructure to steal test answers. Simon's framing matters for you: the defenders couldn't use frontier models for forensics because of the same guardrails the attacker didn't have. This incident will shape every 'how much autonomy do we give agents' conversation at work for the next year.",
       "evergreen": false,
-      "tags": ["agents", "security"]
+      "tags": [
+        "agents",
+        "security"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-22-pelicanmaxxing",
@@ -76,7 +96,11 @@
       "read_minutes": 9,
       "hook": "Someone finally tested whether labs are overfitting to Simon Willison's pelican-on-a-bicycle benchmark: 1,008 SVGs, 8 animals × 6 vehicles, proper regression analysis. Verdict: no. The real lesson for you is methodological — this is what it looks like to check whether an eval signal is real before trusting it, which is precisely the discipline most internal AI benchmarks skip.",
       "evergreen": false,
-      "tags": ["evals", "llm-systems"]
+      "tags": [
+        "evals",
+        "llm-systems"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-22-postgres-survival-guide",
@@ -89,7 +113,11 @@
       "read_minutes": 13,
       "hook": "A dense, experience-backed tour of keeping Postgres alive as write volume grows: index-aware queries, autovacuum tuning, partitioning, and FOR UPDATE SKIP LOCKED queues. Not AI — this is the '100x article on something else' slot. Worth it purely so the next time a team debates adding a queueing system, you can ask whether Postgres already does it.",
       "evergreen": false,
-      "tags": ["databases", "engineering"]
+      "tags": [
+        "databases",
+        "engineering"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-20-whos-afraid-chinese-models",
@@ -102,7 +130,11 @@
       "read_minutes": 13,
       "hook": "Thompson's take on the Kimi K3 panic: intelligence is commoditizing, frontier margins are a compute-scarcity artifact, and restricting US models mostly makes America dependent on Chinese ones. If leadership asks you 'should we be worried about open-weight Chinese models', this piece is the strategic vocabulary for your answer — read alongside the 900-comment HN brawl.",
       "evergreen": false,
-      "tags": ["strategy", "open-weights"]
+      "tags": [
+        "strategy",
+        "open-weights"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-19-ai-mania-decision-making",
@@ -115,7 +147,11 @@
       "read_minutes": 20,
       "hook": "The angriest, funniest case against you — or at least against your role. Ludicity claims AI skepticism has become professionally unspeakable, so orgs fake usage metrics and rebrand everything as AI-driven while projects fail. You'll disagree with half of it, but as the person leading adoption you need to know exactly what quiet resistance looks like from the inside, and this is its best-written field report.",
       "evergreen": false,
-      "tags": ["ai-adoption", "engineering-culture"]
+      "tags": [
+        "ai-adoption",
+        "engineering-culture"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-18-kimi-k3-moment",
@@ -128,7 +164,11 @@
       "read_minutes": 5,
       "hook": "The practitioner companion to the Stratechery piece: a Chinese open-weight model matching Claude on real tasks at a fraction of the price, and why US restrictions only bind US customers. Five minutes, sharply argued, 600 comments of engineers weighing whether to actually switch. Useful calibration for any build-vs-buy model decision you'll make this quarter.",
       "evergreen": false,
-      "tags": ["open-weights", "models"]
+      "tags": [
+        "open-weights",
+        "models"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-15-memory-heist",
@@ -141,7 +181,11 @@
       "read_minutes": 8,
       "hook": "A fake CAPTCHA page tricks Claude's web-fetch into spelling out the user's memory contents, link by link, with zero visible signs of exfiltration. You run a personal knowledge OS with an agent that browses — this attack is aimed at exactly your architecture. Read it as a checklist: what would this look like against kbOS, and what's your equivalent of the directory trick?",
       "evergreen": false,
-      "tags": ["agents", "security"]
+      "tags": [
+        "agents",
+        "security"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-14-offloading-thinking",
@@ -154,7 +198,11 @@
       "read_minutes": 8,
       "hook": "Yennie Jun draws the line you're trying to hold: automate the mundane, but offloading judgment about preferences and values erodes agency. Her 'deliberate first, then consult AI' travel experiment is a small protocol you could steal for your own learning loop — think before the brief, not after. Pairs uncomfortably well with how easy Claude makes it not to.",
       "evergreen": false,
-      "tags": ["thinking", "ai-adoption"]
+      "tags": [
+        "thinking",
+        "ai-adoption"
+      ],
+      "tier": "more"
     },
     {
       "id": "2026-07-13-building-effective-agents",
@@ -167,7 +215,11 @@
       "read_minutes": 15,
       "hook": "Still the single best mental model for agent architecture: workflows vs. agents, the five composable patterns, and the discipline of adding autonomy only when simpler fails. You've absorbed most of this by osmosis through Claude Code — reading the source tightens the vocabulary you use in every design review. If you only ever share one agents link with your team, it's this one.",
       "evergreen": true,
-      "tags": ["agents", "architecture"]
+      "tags": [
+        "agents",
+        "architecture"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-12-bitter-lesson",
@@ -180,7 +232,11 @@
       "read_minutes": 6,
       "hook": "Seven paragraphs from 2019 that explain half of what's happened since: general methods that scale with compute beat human-engineered cleverness, every time, and researchers keep having to relearn it. Every scaffolding-vs-better-model decision you make in agent design is a small bet on this thesis. If you've only seen it quoted, read the original — it's shorter than most tweets about it.",
       "evergreen": true,
-      "tags": ["ai-fundamentals", "strategy"]
+      "tags": [
+        "ai-fundamentals",
+        "strategy"
+      ],
+      "tier": "must"
     },
     {
       "id": "2026-07-11-how-to-build-an-agent",
@@ -193,7 +249,11 @@
       "read_minutes": 25,
       "hook": "The famous demystifier: a working code-editing agent in ~300 lines of Go — a loop, a model, and tool definitions, no magic. You build personal agents; spending one evening typing this out yourself permanently changes how you debug every harness you touch afterward. The 'it's not that hard' feeling it leaves you with is the whole point.",
       "evergreen": true,
-      "tags": ["agents", "hands-on"]
+      "tags": [
+        "agents",
+        "hands-on"
+      ],
+      "tier": "must"
     }
   ]
 }
