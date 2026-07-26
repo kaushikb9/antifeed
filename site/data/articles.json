@@ -423,6 +423,69 @@
       "hn_points": null,
       "hn_comments": null,
       "mine": true
+    },
+    {
+      "id": "2026-07-26-context-engineering-claude-5",
+      "date": "2026-07-26",
+      "title": "The New Rules of Context Engineering for Claude 5 Generation Models",
+      "author": "Thariq Shihipar",
+      "source": "Anthropic",
+      "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+      "hn_url": "https://news.ycombinator.com/item?id=49051361",
+      "read_minutes": 8,
+      "hook": "An Anthropic engineer reveals they ripped over 80% out of Claude Code's system prompt for the Claude 5 generation and performance held — the practitioner's case for the exact instinct behind gotchas-only CLAUDE.md files like this repo's own: judgment beats absolutist rules, references beat descriptions, and progressive disclosure (skills, deferred tools) beats stuffing everything into context upfront. If you're going to keep tuning your own agent harness, this is the mental model straight from the model maker.",
+      "evergreen": false,
+      "tags": [
+        "agents",
+        "llm-systems",
+        "prompt-engineering"
+      ],
+      "tier": "must",
+      "published": "2026-07-24",
+      "hn_points": 198,
+      "hn_comments": 135
+    },
+    {
+      "id": "2026-07-26-em-after-cost-of-code-collapse",
+      "date": "2026-07-26",
+      "title": "Engineering Management After the Cost of Code Collapsed",
+      "author": "Karim Jedda",
+      "source": "Karim Jedda (blog)",
+      "url": "https://karimjedda.com/engineering-management-after-cost-of-code-collapse/",
+      "hn_url": "https://news.ycombinator.com/item?id=49048212",
+      "read_minutes": 12,
+      "hook": "Jedda's claim is narrow and load-bearing: the cost of producing plausible code has collapsed, permanently — but the correctness problem just split in two, and the machine-checkable half is the only one AI can grade itself on. As an EM steering AI adoption, his quietest line is the sharpest: the junior pipeline that built judgment via bug-fixing breaks silently, so you won't see the senior shortage for 3-5 years. The 177-comment HN thread argues this one out in real time.",
+      "evergreen": false,
+      "tags": [
+        "engineering-management",
+        "ai-adoption",
+        "llm-systems"
+      ],
+      "tier": "more",
+      "published": "2026-07-20",
+      "hn_points": 123,
+      "hn_comments": 177
+    },
+    {
+      "id": "2026-07-26-open-weight-ai-kubernetes-moment",
+      "date": "2026-07-26",
+      "title": "Open-Weight AI Is Having Its Kubernetes Moment. Let's Not Ruin It.",
+      "author": "Tobi Knaup",
+      "source": "Tobi Knaup (blog)",
+      "url": "https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment/",
+      "hn_url": "https://news.ycombinator.com/item?id=49048034",
+      "read_minutes": 7,
+      "hook": "Knaup co-founded Mesosphere and watched Kubernetes eat his company's category from the outside — not because it was open source, but because it became a neutral substrate everyone could safely build on. He's making the same structural argument about open-weight models now, worth reading as you think about which AI ecosystem to build your own agent stack on top of.",
+      "evergreen": false,
+      "tags": [
+        "ai-strategy",
+        "open-weight-models",
+        "industry"
+      ],
+      "tier": "more",
+      "published": "2026-07-25",
+      "hn_points": 335,
+      "hn_comments": 269
     }
   ]
 }
