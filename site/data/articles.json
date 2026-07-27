@@ -486,6 +486,88 @@
       "published": "2026-07-25",
       "hn_points": 335,
       "hn_comments": 269
+    },
+    {
+      "id": "2026-07-27-how-anthropic-contains-claude",
+      "date": "2026-07-27",
+      "title": "How we contain Claude across products",
+      "author": "Anthropic",
+      "source": "Anthropic Engineering",
+      "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+      "hn_url": "https://news.ycombinator.com/item?id=48392082",
+      "read_minutes": 24,
+      "hook": "This is the blast-radius problem you live with every day — the permission prompts in Claude Code, the sandbox around your launchd agents — explained from the inside by the team that built it. Three products, three containment architectures (gVisor containers, OS-level sandboxing, full local VMs), and unusually candid 'risks we missed' sections covering real vulnerabilities like pre-trust code execution and exfiltration through allowlisted domains. Required reading for anyone deciding how much rope to give their own agents; the HN thread pokes at the gaps.",
+      "evergreen": false,
+      "tags": [
+        "agents",
+        "security",
+        "anthropic"
+      ],
+      "tier": "must",
+      "published": "2026-05-25",
+      "hn_points": 230,
+      "hn_comments": 106
+    },
+    {
+      "id": "2026-07-27-proof-automation-now",
+      "date": "2026-07-27",
+      "title": "We have proof automation now",
+      "author": "Adam Langley",
+      "source": "ImperialViolet",
+      "url": "https://www.imperialviolet.org/2026/07/26/zstd-lean.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49062291",
+      "read_minutes": 20,
+      "hook": "Adam Langley (the cryptographer behind much of Google's TLS stack) wrote a Zstandard decompressor in Lean and found that LLMs now generate formal correctness proofs in ~20 minutes that used to take days of expert effort. It's the clearest frontier signal yet that 'verify the machine's work' is becoming automatable too — a different answer to the trust problem than sandboxing. Dense but worth it; skim the FSE mechanics if entropy coding isn't your thing.",
+      "evergreen": false,
+      "tags": [
+        "llm-systems",
+        "engineering"
+      ],
+      "tier": "more",
+      "published": "2026-07-26",
+      "hn_points": 158,
+      "hn_comments": 42
+    },
+    {
+      "id": "2026-07-27-design-is-compromise",
+      "date": "2026-07-27",
+      "title": "Design is compromise",
+      "author": "Steph Ango",
+      "source": "stephango.com",
+      "url": "https://stephango.com/design-is-compromise",
+      "hn_url": "https://news.ycombinator.com/item?id=49059367",
+      "read_minutes": 2,
+      "hook": "280 words from Obsidian's CEO that read like antifeed's own design brief: great products pick their compromise deliberately and say no to universal appeal. A two-minute sharpening stone for every 'should I add this feature' decision you make — in your agent systems and at work. The HN thread argues about whether 'no compromises' marketing is ever honest, which is half the fun.",
+      "evergreen": true,
+      "tags": [
+        "thinking",
+        "strategy"
+      ],
+      "tier": "more",
+      "published": "2018-12-31",
+      "hn_points": 250,
+      "hn_comments": 82
+    },
+    {
+      "id": "2026-07-27-ai-superpowers-focus-followthrough",
+      "date": "2026-07-27",
+      "title": "The New AI Superpowers: Focus and Followthrough",
+      "author": "Rick Manelius",
+      "source": "HN",
+      "url": "https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and",
+      "hn_url": "https://news.ycombinator.com/item?id=49057877",
+      "read_minutes": 5,
+      "hook": "A first-hand account of the trap you're most exposed to: AI made him so productive he ran 40 concurrent projects straight into burnout. His argument — that AI shifts the scarce skill from execution to ruthless prioritization and finishing — is the same thesis antifeed is built on, applied to building instead of reading. Honest about the wreckage, no hype.",
+      "evergreen": false,
+      "tags": [
+        "personal-growth",
+        "attention",
+        "ai-adoption"
+      ],
+      "tier": "more",
+      "published": "2026-07-26",
+      "hn_points": 196,
+      "hn_comments": 62
     }
   ]
 }
