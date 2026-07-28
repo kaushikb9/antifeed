@@ -851,6 +851,226 @@
         "engineering"
       ],
       "mine": true
+    },
+    {
+      "id": "2026-07-28-harness-engineering-self-improvement",
+      "date": "2026-07-28",
+      "title": "Harness Engineering for Self-Improvement",
+      "author": "Lilian Weng",
+      "source": "Lil'Log",
+      "url": "https://lilianweng.github.io/posts/2026-07-04-harness/",
+      "hn_url": null,
+      "published": "2026-07-04",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 31,
+      "hook": "Of everything sitting in your bookmark backlog, this is the one aimed most precisely at what you actually build. Weng takes recursive self-improvement out of the realm of speculation and treats the harness — tools, memory, feedback loops, the scaffolding around the model — as the engineering surface where improvement actually compounds, tracing it from I.J. Good's 1965 ultraintelligent machine to what you can wire up this weekend. She remains the most rigorous explainer in the field: no hype, real citations, and diagrams that survive scrutiny. Thirty-one minutes, and the best possible companion to the Software Factories piece, which argues the harness is not enough — read them as a pair and you have both halves of the argument.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "llm-systems",
+        "harness-engineering"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-harness-for-every-task",
+      "date": "2026-07-28",
+      "title": "A harness for every task: dynamic workflows in Claude Code",
+      "author": "Thariq Shihipar",
+      "source": "X · Thariq (Anthropic)",
+      "url": "https://x.com/trq212/article/2061907337154367865",
+      "hn_url": null,
+      "published": "2026-06-02",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 10,
+      "hook": "You already have Thariq's context-engineering piece in the feed; this is the mechanism underneath it. Claude Code can now write its own harness on the fly, custom-built per task — the thing Anthropic previously hand-built for research, security analysis, agent teams and code review is now something the model composes, shares and reuses. Directly load-bearing for how you structure your own agent work: if the harness is dynamic, the interesting design question stops being 'what tools do I install' and becomes 'what does the model need to be able to build for itself'.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "claude-code",
+        "harness-engineering"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-seeing-like-an-agent",
+      "date": "2026-07-28",
+      "title": "Lessons from Building Claude Code: Seeing like an Agent",
+      "author": "Thariq Shihipar",
+      "source": "X · Thariq (Anthropic)",
+      "url": "https://x.com/trq212/article/2027463795355095314",
+      "hn_url": null,
+      "published": "2026-02-27",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 7,
+      "hook": "The action-space problem, from someone who solved it in the tool you use daily: do you give an agent one bash tool, or fifty specialised ones? Thariq's method is to imagine being handed a hard problem yourself and asking what you'd actually want within reach — which reframes tool design as ergonomics rather than API surface. Seven minutes, and it will change how you write the next tool definition in your own harness. Pairs with his dynamic-workflows piece for the full arc from fixed tools to self-authored ones.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "claude-code",
+        "architecture"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-building-a-good-vertical-agent",
+      "date": "2026-07-28",
+      "title": "Building a Good Vertical Agent",
+      "author": "Peter Wang",
+      "source": "X · Peter Wang (Shortcut)",
+      "url": "https://x.com/BrainsAndTennis/article/2065207848217583754",
+      "hn_url": null,
+      "published": "2026-06-11",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 15,
+      "hook": "Saved with 'an absolute must-read if you're building an agent', and it earns that. Wang's opening concession is the useful part — an agent is a while-loop around a model calling tools, you can write one in an afternoon, and everybody has. What separates a good one is not cleverness but domain understanding plus the patience to do tedious, careful work in the few places that matter. A year of building one vertical agent, written up honestly, and a direct antidote to the assumption that a better harness is what stands between you and a good product.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "product",
+        "engineering"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-world-class-agentic-engineer",
+      "date": "2026-07-28",
+      "title": "How To Be A World-Class Agentic Engineer",
+      "author": "sysls",
+      "source": "X · sysls",
+      "url": "https://x.com/systematicls/article/2028841178381090941",
+      "hn_url": null,
+      "published": "2026-03-03",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 16,
+      "hook": "The premise is one you've felt: you're watching people build virtual rockets with Claude and Codex while you stack two rocks, and you're convinced the gap is your harness, your plugins, your 26,000-line CLAUDE.md. The piece argues the gap is somewhere else entirely, and does it with enough specifics to be actionable rather than motivational. The register is irreverent and it will not be to everyone's taste, but the underlying advice about where effort actually pays off is sound — and it's a useful mirror for the tuning instinct you keep having to resist.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "developer-productivity",
+        "claude-code"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-inspect-at-scale",
+      "date": "2026-07-28",
+      "title": "Inspect at Scale",
+      "author": "Dylan Garcia",
+      "source": "X · Ramp",
+      "url": "https://x.com/_dylanga/article/2068007838442479988",
+      "hn_url": null,
+      "published": "2026-06-19",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 10,
+      "hook": "Rahul Sharma's framing when he shared it: Inspect is now a digital coworker, and 75%+ of code at Ramp comes from it. This is the write-up behind that number — how a tool for writing code became a path from bug report to merged PR, reviewed by multiple frontier models and instrumented with production monitors. You are the person who will be asked 'what does good adoption actually look like at scale', and this is one of the few accounts with real internals rather than a keynote slide. Read it sceptically alongside the Software Factories piece, which explains why numbers like that can hide a quality problem.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-adoption",
+        "agents",
+        "engineering-culture"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-learning-on-the-shop-floor",
+      "date": "2026-07-28",
+      "title": "Learning on the Shop floor",
+      "author": "Tobi Lütke",
+      "source": "X · Tobi Lütke (Shopify)",
+      "url": "https://x.com/tobi/article/2053860139275628927",
+      "hn_url": null,
+      "published": "2026-05-09",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 5,
+      "hook": "Shopify's CEO on dropping out at 16 to apprentice at a Siemens subsidiary, learning to program by making coffee for the interesting people in the basement until their judgment seeped into his — then arguing that River, Shopify's Slack-native agent, runs on the same principle. It's the most humane answer yet to the worry Karim Jedda raised in your feed: if AI eats the bug-fixing work that used to build junior judgment, apprenticeship has to be rebuilt somewhere. Five minutes, and the best-written thing in this batch.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "engineering-culture",
+        "ai-adoption",
+        "engineering-management"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-frontier-without-ecosystem",
+      "date": "2026-07-28",
+      "title": "A frontier without an ecosystem is not stable",
+      "author": "Satya Nadella",
+      "source": "X · Satya Nadella",
+      "url": "https://x.com/satyanadella/article/2066182223213293753",
+      "hn_url": null,
+      "published": "2026-06-14",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 3,
+      "hook": "The prequel to his Reverse Information Paradox piece, also in today's batch. His claim: this is the first platform shift that creates a genuine cognitive loop between people and digital systems, so the question stops being which tool you adopt and becomes how your organisation keeps learning and building IP when models can continuously absorb and commoditise that expertise. Three minutes, and it sharpens the strategic vocabulary you need when adoption conversations drift from tooling to moat.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-strategy",
+        "enterprise",
+        "industry"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-career-advice-age-of-ai",
+      "date": "2026-07-28",
+      "title": "Career advice in the age of AI",
+      "author": "Phil Chen",
+      "source": "X · Phil Chen",
+      "url": "https://x.com/philhchen/article/2072793359836680192",
+      "hn_url": null,
+      "published": "2026-07-02",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 7,
+      "hook": "Lenny Rachitsky called this 'really good' and the thesis is a clean one: models get better at anything you can write a loss function for, school is mostly loss functions, so the valuable work of the next decade is everything that cannot be graded within the span of model training. Chen writes from an agent-native company deciding who to hire, having watched Helm, Scale, OpenAI and Google at very different sizes. Useful to you twice over — for your own trajectory, and for the hiring bar you set for engineers whose old signals the Yegge piece in your feed says are already broken.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "career",
+        "hiring",
+        "ai-adoption"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-nice-place-to-work",
+      "date": "2026-07-28",
+      "title": "Why \"a nice place to work\" doesn't just happen",
+      "author": "Nithin Kamath",
+      "source": "X · Nithin Kamath (Zerodha)",
+      "url": "https://x.com/Nithin0dha/article/2074098865511563473",
+      "hn_url": null,
+      "published": "2026-07-06",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 6,
+      "hook": "Kamath starts from an onboarding failure — a new hire whose understanding of what makes Zerodha different was entirely superficial — and works backwards to the uncomfortable conclusion that culture which isn't deliberately transmitted simply doesn't survive contact with hiring. Worth six minutes as an EM precisely because Zerodha's version is built on refusing the obvious growth lever, and he's specific about what that costs. A rare Indian-tech culture piece written by someone with no incentive to flatter himself.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "engineering-culture",
+        "engineering-management",
+        "leadership"
+      ],
+      "mine": true
     }
   ]
 }
