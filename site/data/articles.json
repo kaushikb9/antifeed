@@ -568,6 +568,69 @@
       "published": "2026-07-26",
       "hn_points": 196,
       "hn_comments": 62
+    },
+    {
+      "id": "2026-07-28-bun-rust-rewrite-reality-check",
+      "date": "2026-07-28",
+      "title": "How is the Bun rewrite in Rust going?",
+      "author": "Tom Lockwood",
+      "source": "HN",
+      "url": "https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49067854",
+      "read_minutes": 6,
+      "hook": "You will be asked about the '$165k Claude rewrite of Bun in 11 days' claim — this is the receipts check. Lockwood pulls the public GitHub data: six weeks post-merge with no release tag, robobun's open-PR backlog nearly doubled to 2,475, and sustained Anthropic-employee commits that put the real cost closer to $800k. Exactly the calibration you need before anyone cites this project in an AI-adoption pitch, and the 350-comment thread litigates both sides hard.",
+      "evergreen": false,
+      "tags": [
+        "ai-adoption",
+        "agents",
+        "engineering"
+      ],
+      "tier": "must",
+      "published": "2026-07-27",
+      "hn_points": 456,
+      "hn_comments": 354
+    },
+    {
+      "id": "2026-07-28-anthropic-position-open-weights",
+      "date": "2026-07-28",
+      "title": "Our position on open-weights models",
+      "author": "Dario Amodei",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/news/position-open-weights-models",
+      "hn_url": "https://news.ycombinator.com/item?id=49076057",
+      "read_minutes": 9,
+      "hook": "Dario on the record: Anthropic does not want open weights banned — he'd rather target chip smuggling, industrial-scale distillation, and mandatory safety testing for every sufficiently capable model, open or closed. Coming a week after the Kimi K3 drop, this is the clearest map yet of where the frontier-lab vs open-weights line will actually be drawn. The 700-comment thread is a census of who believes him.",
+      "evergreen": false,
+      "tags": [
+        "anthropic",
+        "open-weights",
+        "ai-strategy"
+      ],
+      "tier": "more",
+      "published": "2026-07-27",
+      "hn_points": 527,
+      "hn_comments": 736
+    },
+    {
+      "id": "2026-07-28-opus-5-slopcodebench",
+      "date": "2026-07-28",
+      "title": "Benchmarking Opus 5 on SlopCodeBench",
+      "author": "Dex Horthy (HumanLayer)",
+      "source": "HumanLayer",
+      "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md",
+      "hn_url": "https://news.ycombinator.com/item?id=49076391",
+      "read_minutes": 20,
+      "hook": "Real empirical work on the question your agent harness lives on: can a model build software one issue at a time without accumulating slop? Opus 5 scores 24% strict-pass where Opus 4.8 and Sonnet 5 both managed 6% — but it writes 3x the code and 5x the functions to get there, and every model accumulates defects across checkpoints. The methodology (deterministic complexity and duplication metrics per checkpoint) is worth stealing for evaluating your own agents' output.",
+      "evergreen": false,
+      "tags": [
+        "evals",
+        "agents",
+        "llm-systems"
+      ],
+      "tier": "more",
+      "published": "2026-07-27",
+      "hn_points": 159,
+      "hn_comments": 34
     }
   ]
 }
