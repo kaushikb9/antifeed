@@ -160,6 +160,14 @@ cmd_unbookmark() {
     $B goto "$u" >/dev/null 2>&1 || true
     $B wait --ms 3000 >/dev/null 2>&1 || true
     r=$($B eval "$LIB/unbookmark.js" 2>/dev/null || echo '{}')
+    # WRONG-TWEET means the SPA had not swapped the DOM yet. Retrying is
+    # mandatory, not optional: clicking anyway clears somebody else's bookmark.
+    case "$r" in
+      *WRONG-TWEET*|*no-article*)
+        $B wait --ms 4000 >/dev/null 2>&1 || true
+        r=$($B eval "$LIB/unbookmark.js" 2>/dev/null || echo '{}')
+        ;;
+    esac
     case "$r" in
       *removed*|*already-not-bookmarked*) ok=$((ok + 1)) ;;
       *) fail=$((fail + 1)); echo "  FAILED: $u -> $r" ;;

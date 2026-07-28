@@ -82,6 +82,18 @@ KB reads to decide what to clear manually.
 
 ## Unbookmarking
 
+**Never take the first `article[data-testid="tweet"]` on a status page.** If the
+target tweet is a *reply*, X renders the whole conversation and the PARENT tweet
+comes first in the DOM — clicking its bookmark button clears the wrong bookmark.
+This happened for real: culling a Dr. Gurner reply removed the Tim Ferriss post
+it replied to, and left the Gurner one in place. `unbookmark.js` now selects the
+article whose own permalink matches the URL and returns `WRONG-TWEET` if it
+hasn't rendered yet; treat that as wait-and-retry, never as a skip.
+
+The same trap applies to *reading* bookmark state — a read-only checker that
+grabs the first article will confidently report the wrong answer. When in doubt,
+enumerate the bookmarks list itself: it is the only ground truth.
+
 Only unbookmark a tweet whose content actually landed in `articles.json`. Build
 the removal list by matching candidate URLs against the file **after** curation,
 never from intent beforehand. `x-sweep.sh unbookmark <file>` takes one URL per
