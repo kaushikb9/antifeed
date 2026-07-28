@@ -631,6 +631,226 @@
       "published": "2026-07-27",
       "hn_points": 159,
       "hn_comments": 34
+    },
+    {
+      "id": "2026-07-28-why-software-factories-fail",
+      "date": "2026-07-28",
+      "title": "Why Software Factories Fail (or: harness engineering is not enough)",
+      "author": "Dex Horthy",
+      "source": "HumanLayer",
+      "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md",
+      "hn_url": "https://news.ycombinator.com/item?id=49023019",
+      "published": "2026-07-24",
+      "hn_points": 390,
+      "hn_comments": 270,
+      "read_minutes": 27,
+      "hook": "From your bookmarks — José Valim's 'just stop whatever you are doing and read this', and you'd already saved part two separately. Horthy's claim cuts straight at the thing you spend nights building: no amount of harness engineering or token-maxxing fixes codebase quality, because that's a model-training and benchmarks problem, and model-as-judge doesn't rescue it either. Then he turns the lights back on with a concrete four-phase alternative (product review, system architecture, program design, vertical slices) that puts human review back where it earns its keep. Same repo as the SlopCodeBench piece already in your feed; this is the essay that one is evidence for, and the 270-comment HN thread argues it out properly.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "ai-adoption",
+        "engineering"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-what-will-be-left-to-work-on",
+      "date": "2026-07-28",
+      "title": "What will be left for us to work on? (ICML 2026 keynote)",
+      "author": "Arvind Narayanan",
+      "source": "Princeton",
+      "url": "https://www.cs.princeton.edu/~arvindn/talks/icml-2026-annotated-slides/",
+      "hn_url": null,
+      "published": "2026-07-09",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 20,
+      "hook": "Sids flagged this as 'a lot of food for thought' and he's right. The 'AI as Normal Technology' co-author addresses AI anxiety head-on in three moves: why the normal-technology frame holds unless there's a discontinuity, why he isn't losing sleep over recursive self-improvement, and how human roles actually shift. The part that should stop you cold is his agent-reliability teardown — 70% accuracy means nothing unless you know whether it's 70% of tasks reliably or any task failing 30% of the time, and no agent benchmark he examined distinguishes them. His four dimensions (consistency, robustness, calibration, operational safety) are a ready-made rubric for judging your own harnesses. Slides plus edited transcript, click-by-click as delivered in Seoul.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-strategy",
+        "evals",
+        "agents"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-framework-for-frontier-ai",
+      "date": "2026-07-28",
+      "title": "A Framework for Frontier AI and the Dawning of a New Age",
+      "author": "Demis Hassabis",
+      "source": "X · Demis Hassabis",
+      "url": "https://x.com/demishassabis/article/2076957440109625718",
+      "hn_url": null,
+      "published": "2026-07-14",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 6,
+      "hook": "The strongest signal in your entire bookmark backlog — you saved this three separate times, via Shreyas, Patrick Collison, and Sam Altman. DeepMind's CEO argues AGI is a few short years out, calls it closer to the discovery of fire than to the internet, and then spends the back half on why the current commercial and geopolitical race is outpacing our understanding of what we're building. Read it directly against Dario's open-weights position already in your feed: two frontier-lab CEOs, same fortnight, drawing the safety line in noticeably different places. Six minutes, and it's the vocabulary leadership will be using.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-strategy",
+        "agi",
+        "governance"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-why-hasnt-ai-increased-unemployment",
+      "date": "2026-07-28",
+      "title": "Why hasn't AI increased unemployment?",
+      "author": "Peter McCrory",
+      "source": "X · Peter McCrory (Anthropic)",
+      "url": "https://x.com/PeterMcCrory/article/2079979321607745905",
+      "hn_url": null,
+      "published": "2026-07-22",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 10,
+      "hook": "Aaron Levie put you onto this one, and it's Anthropic's Head of Economics synthesising eighteen months of their labour-market research. His answer: AI so far behaves like a skill-biased, labour-augmenting technology — it broadens what people can accomplish, which raises the returns to working with it, which is why US unemployment sits at 4.2% despite high adoption. That framing is directly useful to you, because it's the honest version of the reassurance every engineer nervously asks their EM for. He's careful about what could change, which is what makes the rest credible.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-adoption",
+        "economics",
+        "engineering-management"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-reverse-information-paradox",
+      "date": "2026-07-28",
+      "title": "The Reverse Information Paradox",
+      "author": "Satya Nadella",
+      "source": "X · Satya Nadella",
+      "url": "https://x.com/satyanadella/article/2076323181154230284",
+      "hn_url": null,
+      "published": "2026-07-12",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 4,
+      "hook": "Arrow's information paradox says the seller risks giving away knowledge to sell it. Nadella's inversion: with AI, the buyer gives away knowledge just to use what they bought — you pay once in money and again in the proprietary context you must reveal to make the model useful. The line that should land for you is about exhaust: prompts, tool traces, and above all the corrections people make when the model is wrong, each one quietly distilled into someone else's institutional know-how. That's an argument for owning your own learning loop, which is precisely the bet kbOS represents. Four minutes, and unusually pointed for a sitting CEO.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-strategy",
+        "llm-systems",
+        "data"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-quality-software",
+      "date": "2026-07-28",
+      "title": "Quality Software",
+      "author": "almonk",
+      "source": "X · almonk",
+      "url": "https://x.com/almonk/article/2079461952577802549",
+      "hn_url": null,
+      "published": "2026-07-21",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 2,
+      "hook": "Mitchell Hashimoto sent you here calling almonk 'a fine writer', and two minutes later you'll agree. He refuses the easy anti-AI move — humans wrote broken software first, AI just does it faster — and instead writes down what quality actually is so we can aim at it deliberately: software that doesn't break, doesn't demand attention, knows its limits, and fixes fast. It reads like a design brief for antifeed itself, and pairs neatly with Steph Ango's 'Design is compromise' already sitting in your list.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "craft",
+        "engineering",
+        "thinking"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-maybe-intelligence-aint-all-that",
+      "date": "2026-07-28",
+      "title": "Maybe Intelligence Ain't All That",
+      "author": "Clifford Sosin",
+      "source": "X · Clifford Sosin",
+      "url": "https://x.com/CliffordSosin/article/2078594661359194500",
+      "hn_url": null,
+      "published": "2026-07-18",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 3,
+      "hook": "Saved via Levie: superintelligence arrived and turned out to be incremental — no takeoff, no explosion, just a tool that writes excellent code and will clearly reshape the economy. Sosin's explanation is the interesting bit: intelligence is what fills the space between the facts we hold, and LLMs are godlike wherever that space behaves well (real-estate law, coding, admin) and much less so where it doesn't. Three minutes, and a useful corrective to hold alongside the Hassabis piece — the two disagree about what we're standing in front of.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-fundamentals",
+        "thinking",
+        "strategy"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-help-engineers-write",
+      "date": "2026-07-28",
+      "title": "One method to help engineers (but anyone really) write things",
+      "author": "Sidin Vadukut",
+      "source": "X · Sidin Vadukut",
+      "url": "https://x.com/sidin/article/2077391561973809308",
+      "hn_url": null,
+      "published": "2026-07-15",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 5,
+      "hook": "You already have Neal Stephenson on writing by hand; this is the operational companion, and it's aimed at exactly your problem — engineers who freeze when asked to write a post. Vadukut's method: don't write anything yet, think in stories instead, one conflict and one resolution. 'Our database broke. We found the problem. We fixed it. The end.' His insistence that an 800-word piece is a complete artefact is the bit that unblocks people, and it's a five-minute read you could forward to a nervous engineer tomorrow.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "writing",
+        "engineering-management",
+        "communication"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-ai-winners-lowest-margins",
+      "date": "2026-07-28",
+      "title": "AI's Biggest Winners Have the Lowest Margins",
+      "author": "Daniel Kornum",
+      "source": "X · Daniel Kornum",
+      "url": "https://x.com/dkfromdk/article/2075696599242821979",
+      "hn_url": null,
+      "published": "2026-07-10",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 7,
+      "hook": "Levie's pick, and a genuinely different lens from everything else in your feed: the biggest AI winners may be manufacturers, trucking carriers and staffing agencies rather than anyone you'd call an AI company. The arithmetic is the argument — at 30% margins efficiency is nice, at 3% margins a sub-1% cost reduction is a 25% profit increase. Worth reading precisely because your instincts are calibrated on software economics, and most of the value here accrues to businesses that never had a platform team.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-strategy",
+        "industry",
+        "economics"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-28-rewriting-bun-in-rust",
+      "date": "2026-07-28",
+      "title": "Rewriting Bun in Rust",
+      "author": "Jarred Sumner",
+      "source": "Bun",
+      "url": "https://bun.com/blog/bun-in-rust",
+      "hn_url": "https://news.ycombinator.com/item?id=48837877",
+      "published": "2026-07-08",
+      "hn_points": 795,
+      "hn_comments": 534,
+      "read_minutes": 22,
+      "hook": "You already have Tom Lockwood's receipts-check on this project; this is the primary source it audits, straight from Jarred Sumner, and reading them in that order is the point. Here's the claim in its original form — the Zig-to-Rust rewrite, what the agents actually did, and why they took it on — and having both means that when someone cites '$165k, 11 days' at you in an adoption pitch, you'll know exactly which parts are load-bearing and which the follow-up dismantled. The 534-comment thread is where the industry first argued about it.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-adoption",
+        "agents",
+        "engineering"
+      ],
+      "mine": true
     }
   ]
 }
