@@ -80,6 +80,23 @@ HN (primary, with the comment thread always linked), my Substack follows
 (`brain/sources.md` — keep it updated), frontier AI company blogs, and
 AI-first product companies' engineering blogs. Evergreen classics welcome.
 
+### X/Twitter bookmarks (monthly-ish)
+
+```bash
+./brain/x-bookmarks.sh            # harvest -> curate -> commit -> deploy -> unbookmark
+./brain/x-bookmarks.sh harvest    # stop after harvesting, to eyeball candidates first
+./brain/x-sweep.sh login          # when it says NOT LOGGED IN (only I can do this)
+```
+
+Scrapes my bookmarks in a logged-in browser and expands each one via X's public
+syndication endpoint — no developer-tier API, and no, a Grok subscription would
+not help. Entries land with `mine: true`; only bookmarks whose content actually
+made it into `articles.json` get cleared, and every skip is written to
+`brain/last-run.txt` with a reason so I can clear the rest by hand.
+
+Rules and the gotchas that cost an afternoon (auth, lazy pagination, links
+hiding in quoted tweets) are in `brain/x-prompt.md`. Read it first.
+
 ## Second-machine setup (KB's other laptop)
 
 Agent-followable. Goal: this machine can run the daily curation and deploy,

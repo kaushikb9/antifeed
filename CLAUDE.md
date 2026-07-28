@@ -35,6 +35,11 @@ tweak systems** — resist scope creep, keep everything boring and durable.
   - `prompt.md` — the curator persona, KB's profile, source priorities,
     quality bar, schema. `sources.md` — concrete source list (KB maintains
     the Substack section by hand).
+  - `x-bookmarks.sh` — monthly-ish sweep of KB's X/Twitter bookmarks into
+    articles.json, then clears the bookmarks it ingested. Wraps `x-sweep.sh`
+    (browser harvest + syndication-API resolve, helpers in `x-lib/`).
+    `x-prompt.md` holds the source-specific rules and the auth/pagination
+    gotchas — read it before touching any of this.
 
 ## Content model (articles.json entry)
 
@@ -90,6 +95,13 @@ everything is agent-runnable except `wrangler login` and copying
   later. Don't suggest the subdomain.
 - HN data comes from the Algolia API (`hn.algolia.com/api/v1/...`) — URL-encode
   `>` in numericFilters or you get an HTML error page.
+- **X bookmarks: never trust a short dry streak.** The list is virtualised and
+  paginates lazily; the first sweep stopped at 60 when the real count was 98.
+  Require ~15 dry rounds, and re-sweep after unbookmarking — removals let X
+  page further back. Full gotchas (incl. why cookie-import fails and `browse
+  connect` is the only auth that survives) live in `brain/x-prompt.md`.
+- In `brain/*.sh`, never write a bare `[ cond ] && cmd` statement — under
+  `set -euo pipefail` the script exits when cond is false. Use `if`.
 
 ## Deferred on purpose (don't build unless KB asks)
 
