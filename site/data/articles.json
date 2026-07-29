@@ -1071,6 +1071,69 @@
         "leadership"
       ],
       "mine": true
+    },
+    {
+      "id": "2026-07-29-anthropic-ai-native-sdlc",
+      "date": "2026-07-29",
+      "title": "How Anthropic Secures Its AI-Native Software Development Lifecycle",
+      "author": "Jason Clinton",
+      "source": "Anthropic",
+      "url": "https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle",
+      "hn_url": "https://news.ycombinator.com/item?id=49055849",
+      "published": "2026-07-21",
+      "hn_points": 10,
+      "hn_comments": 0,
+      "read_minutes": 15,
+      "hook": "Praveen sent you this to check for obvious gaps — and it's worth more than a glance, because it's Anthropic's Deputy CISO describing how they secure a codebase that's now ~80% Claude-authored. The concrete stuff is the checklist: agents run /security-review before opening PRs, new review agents ship in shadow mode until teams have red-teamed them with malicious changes, codebases are risk-tiered to decide where humans must approve, and every agent gets a single-purpose identity with agent-to-agent traffic treated as an insider-threat vector. Read it as a gap analysis against your own rollout, not as a case study.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "security",
+        "agents",
+        "engineering-leadership"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-07-29-intelligence-ownership",
+      "date": "2026-07-29",
+      "title": "The Rise of Intelligence Ownership: a task-trained open source model vs the frontier",
+      "author": "Justinas Zaliaduonis et al.",
+      "source": "Fermisense",
+      "url": "https://fermisense.com/when-machines-take-the-wheel/",
+      "hn_url": "https://news.ycombinator.com/item?id=49078454",
+      "published": "2026-07-27",
+      "hn_points": 309,
+      "hn_comments": 120,
+      "read_minutes": 17,
+      "hook": "A $500 GRPO fine-tune of a 9B open model beat every frontier configuration they tested on a real catalog-review workflow — same tools, same images, same scorer — at 40–340x cheaper per thousand listings. This is the sharpest ammunition yet for the build-vs-rent question you keep fielding: not ideology, just a worked example with costs attached of when a task-trained small model wins. The HN thread stress-tests how far the result generalizes, which is exactly the right question to bring to it.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "llm-systems",
+        "fine-tuning",
+        "ai-adoption"
+      ]
+    },
+    {
+      "id": "2026-07-29-kimi-k3-architecture",
+      "date": "2026-07-29",
+      "title": "Kimi K3 Architecture Notes",
+      "author": "Sebastian Raschka",
+      "source": "Sebastian Raschka",
+      "url": "https://sebastianraschka.com/blog/2026/kimi-k3-architecture-notes.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49085698",
+      "published": "2026-07-28",
+      "hn_points": 333,
+      "hn_comments": 51,
+      "read_minutes": 3,
+      "hook": "Kimi K3 is the release everyone's benchmarking against this week, and Raschka compresses what's actually new into three minutes: 2.8T parameters (the largest open-weight model ever), attention residuals that connect layers through attention scores, and the first frontier model to drop positional embeddings entirely for NoPE. Dense notes, zero hype — the fastest way to stay conversant on where open-model architecture is heading without reading the tech report.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "llm-systems",
+        "model-architecture"
+      ]
     }
   ]
 }
