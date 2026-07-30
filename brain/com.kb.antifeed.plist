@@ -7,15 +7,15 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/kb/Code/antifeed/brain/auto.sh</string>
+    <string>/Users/YOURNAME/Code/antifeed/brain/auto.sh</string>
   </array>
   <key>StartInterval</key>
   <integer>3600</integer>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>
-  <string>/Users/kb/Code/antifeed/brain/auto.log</string>
+  <string>/Users/YOURNAME/Code/antifeed/brain/auto.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/kb/Code/antifeed/brain/auto.log</string>
+  <string>/Users/YOURNAME/Code/antifeed/brain/auto.log</string>
 </dict>
 </plist>

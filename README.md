@@ -28,7 +28,9 @@ hard-won gotchas; `IDEAS.md` for the backlog.
 
 Curation runs itself: a launchd agent fires `brain/auto.sh` hourly while the
 laptop is awake and no-ops unless today's pick is missing (so a shut laptop
-just means it runs on next open, after 7am). Install once:
+just means it runs on next open, after 7am). Install once — first replace
+`/Users/YOURNAME` in the plist with your repo's absolute path (launchd
+doesn't expand `~`), then:
 
 ```sh
 cp brain/com.kb.antifeed.plist ~/Library/LaunchAgents/
@@ -60,7 +62,9 @@ and breaks `/api/*` — the script guards against that.)
 First time:
 
 1. `npx wrangler login`
-2. `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
+2. `cp wrangler.toml.example wrangler.toml` (`wrangler.toml` is gitignored —
+   it stays on your machine), then
+   `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
    `wrangler.toml`
 3. Deploy once (creates the project), then set the sync token:
    `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
@@ -111,15 +115,16 @@ brain scripts push after committing — no duplicate picks).
    (MANDATORY — global config has a personal email that must not enter
    this repo's history).
 4. Cloudflare auth: `npx wrangler login` (interactive — ask KB to run it),
-   then verify with `npx wrangler whoami`.
+   then verify with `npx wrangler whoami`. Create the local config:
+   `cp wrangler.toml.example wrangler.toml`, then paste the existing KV id
+   from `npx wrangler kv namespace list` (wrangler.toml is gitignored).
 5. Sync token: `.af-token.local` at repo root is gitignored and cannot be
    recovered from Cloudflare. Ask KB to copy it from the other laptop
    (AirDrop/scp). Verify:
    `curl -sf -H "x-af-token: $(cat .af-token.local)" https://antifeed.pages.dev/api/flags`
    → must return JSON, not "unauthorized".
-6. Install the auto-curation agent. If the repo path is NOT
-   `/Users/kb/Code/antifeed`, first fix the two paths inside
-   `brain/com.kb.antifeed.plist`. Then:
+6. Install the auto-curation agent. First replace `/Users/YOURNAME` inside
+   `brain/com.kb.antifeed.plist` with this repo's absolute path. Then:
    `cp brain/com.kb.antifeed.plist ~/Library/LaunchAgents/`
    `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.kb.antifeed.plist`
 7. Verify: `bash brain/auto.sh` exits 0 silently when today's pick already
@@ -137,9 +142,9 @@ it's aimed at one person. To run it for yourself:
 1. Fork this repo.
 2. Rewrite the "Who you're curating for" section of `brain/prompt.md` for
    YOUR role and interests, and put your sources in `brain/sources.md`.
-3. `npx wrangler login`, then:
+3. `npx wrangler login`, then `cp wrangler.toml.example wrangler.toml` and
    `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
-   `wrangler.toml`.
+   `wrangler.toml` (gitignored — your infra ids stay local).
 4. Deploy once (`./deploy.sh` creates the Pages project), then set your
    sync token: `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
    (any long random string; also save it to `.af-token.local` — gitignored —
@@ -157,3 +162,7 @@ Total setup: ~30 minutes. Your picks, your hooks, your flags.
 - Upvote/downvote feedback loop into the brain (parked; ✕ skip + ★ favorites
   already carry most of the signal)
 - Automated daily trigger (run it with morning coffee; launchd/GitHub Action later)
+
+## License
+
+MIT — see [LICENSE](LICENSE).

@@ -4,6 +4,9 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+[ -f wrangler.toml ] \
+  || { echo "ERROR: wrangler.toml missing (it's local-only) — cp wrangler.toml.example wrangler.toml and fill in your KV id"; exit 1; }
+
 OUT=$(CI=1 npx wrangler pages deploy --branch main 2>&1) || { echo "$OUT"; exit 1; }
 echo "$OUT" | grep -q "Uploading Functions bundle" \
   || { echo "$OUT"; echo "ERROR: Functions bundle missing from deploy — aborting trust in this deploy"; exit 1; }
