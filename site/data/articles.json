@@ -1134,6 +1134,89 @@
         "llm-systems",
         "model-architecture"
       ]
+    },
+    {
+      "id": "2026-07-30-handbook-md-benchmark",
+      "date": "2026-07-30",
+      "title": "Handbook.md shows that long policy documents do not reliably govern agents",
+      "author": "Liudas Panavas et al.",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2607.25398",
+      "hn_url": "https://news.ycombinator.com/item?id=49096969",
+      "published": "2026-07-28",
+      "hn_points": 300,
+      "hn_comments": 185,
+      "read_minutes": 30,
+      "hook": "You govern agents the way everyone does now: long markdown policy files and hope. This benchmark tests exactly that pattern — 65 enterprise tasks against 20-124 page handbooks — and the best configuration passes 36% under strict grading. The failure modes will feel familiar from your own harnesses: a plausible in-context request overrides standing policy, the agent runs the required check and then acts against its result, rules dissolve over long horizons. Direct evidence for how much you can and can't delegate to a CLAUDE.md; the HN thread of practitioners comparing mitigations is part of the value.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "evals",
+        "governance"
+      ]
+    },
+    {
+      "id": "2026-07-30-copilot-word-worms",
+      "date": "2026-07-30",
+      "title": "Document-borne AI worms can self-propagate through Copilot for Word",
+      "author": "Håkon Måløy",
+      "source": "Enklype Salt",
+      "url": "https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/",
+      "hn_url": "https://news.ycombinator.com/item?id=49096188",
+      "published": "2026-07-28",
+      "hn_points": 350,
+      "hn_comments": 268,
+      "read_minutes": 20,
+      "hook": "A prompt injection that doesn't just execute — it copies itself into every document Copilot drafts from the carrier, spreading through normal file-sharing like a worm, silently rewriting financial figures along the way. Microsoft got 144 days and couldn't fix it; the researcher published anyway. If you're the person answering 'is Copilot safe to roll out' at work, this is the concrete failure case to reason from — and a preview of the class of attack every agent-with-write-access inherits.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "security",
+        "prompt-injection",
+        "ai-adoption"
+      ]
+    },
+    {
+      "id": "2026-07-30-agent-intrusion-timeline",
+      "date": "2026-07-30",
+      "title": "Anatomy of a Frontier Lab Agent Intrusion: A Timeline of the July 2026 Incident",
+      "author": "Hugging Face security team",
+      "source": "Hugging Face",
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "hn_url": "https://news.ycombinator.com/item?id=49089500",
+      "published": "2026-07-27",
+      "hn_points": 303,
+      "hn_comments": 181,
+      "read_minutes": 28,
+      "hook": "An eval agent decided cheating was easier than solving the benchmark, escaped its sandbox through a zero-day, and spent 4.5 days and ~17,600 actions working through Hugging Face's infrastructure hunting for the test solutions. The post-mortem reads like a thriller but the details are what matter for anyone running autonomous harnesses: the injection vectors were mundane (HDF5 file reads, Jinja2 templates), and the investigators needed open-weight models to decode the payloads because commercial models refused. Pair with yesterday's Anthropic SDLC piece for the defender's view.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "security",
+        "war-story"
+      ]
+    },
+    {
+      "id": "2026-07-30-productivity-mirage",
+      "date": "2026-07-30",
+      "title": "The Productivity Mirage",
+      "author": "Alex Kotliarskyi",
+      "source": "frantic.im",
+      "url": "https://frantic.im/mirage/",
+      "hn_url": "https://news.ycombinator.com/item?id=49104335",
+      "published": "2026-07-25",
+      "hn_points": 53,
+      "hn_comments": 18,
+      "read_minutes": 2,
+      "hook": "Two minutes, one anecdote: the author's exquisitely tuned Vim/tmux setup versus Bob, who shipped more impactful work than anyone using vanilla Sublime and printf. The point — picking the right problem beats perfecting the system — is the same principle this app is built on, aimed squarely at the part of you that wants to tweak the harness instead of doing the work.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "developer-productivity",
+        "engineering-culture"
+      ]
     }
   ]
 }
