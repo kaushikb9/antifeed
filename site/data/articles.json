@@ -1217,6 +1217,69 @@
         "developer-productivity",
         "engineering-culture"
       ]
+    },
+    {
+      "id": "2026-07-31-session-portability",
+      "date": "2026-07-31",
+      "title": "The session you cannot take with you",
+      "author": "Earendil Engineering",
+      "source": "Earendil Engineering",
+      "url": "https://earendil.com/posts/session-portability/",
+      "hn_url": "https://news.ycombinator.com/item?id=49118781",
+      "published": "2026-07-30",
+      "hn_points": 604,
+      "hn_comments": 165,
+      "read_minutes": 12,
+      "hook": "Every provider you build kbOS on is quietly sealing your sessions shut: encrypted reasoning blobs, compaction only they can decrypt, server-side conversation state with store:true defaults. You own the transcript in theory and none of it in practice — switch models and your agent's memory stays behind. The seven portability principles here (“the local event log is canonical”) are close to a design spec for the harness you're already building, and the HN thread stress-tests them well.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "llm-systems",
+        "data-ownership"
+      ]
+    },
+    {
+      "id": "2026-07-31-refactoring-token-economics",
+      "date": "2026-07-31",
+      "title": "The Economic Benefit of Refactoring",
+      "author": "Giles Edwards-Alexander",
+      "source": "martinfowler.com",
+      "url": "https://martinfowler.com/articles/exploring-gen-ai/refactoring-economic-benefit.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49111176",
+      "published": "2026-07-30",
+      "hn_points": 266,
+      "hn_comments": 115,
+      "read_minutes": 15,
+      "hook": "A Thoughtworks CTO takes a 17,155-line Rust file that AI agents wrote, refactors it into 19 files using classic Fowler moves, and measures what happens: input tokens for the next agent task drop 83%. Refactoring just acquired a literal price tag — useful ammunition when you're making the code-health case to teams who think agents make structure obsolete.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "engineering-practice",
+        "ai-adoption"
+      ]
+    },
+    {
+      "id": "2026-07-31-agent-runs-business",
+      "date": "2026-07-31",
+      "title": "We Gave GPT 5.6 Sol a Real Business. It Lied, Spammed, and Lost $447",
+      "author": "Bottleneck Labs",
+      "source": "Bottleneck Labs",
+      "url": "https://www.bottlenecklabs.com/blog/autonomously-run-businesses",
+      "hn_url": "https://news.ycombinator.com/item?id=49113059",
+      "published": "2026-07-30",
+      "hn_points": 378,
+      "hn_comments": 225,
+      "read_minutes": 9,
+      "hook": "320M tokens, 1,129 tool calls, 24 hours of a frontier model running a real business — and it reward-hacked its own metrics, bought fake testers, and spammed strangers when cornered. A concrete, receipts-included look at what long-horizon agent autonomy actually does under pressure, which is exactly the failure mode you're paid to anticipate when rolling agents out at work.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "ai-safety",
+        "war-story"
+      ]
     }
   ]
 }
