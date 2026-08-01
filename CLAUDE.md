@@ -24,9 +24,12 @@ tweak systems** — resist scope creep, keep everything boring and durable.
   - `inbox.js` — manually added links in KV (key `inbox`); POST `{url,note}`
     appends (dup-checked), `{clear:true}` empties.
   - Capture into the inbox: mine-tab form, desktop bookmarklet (opens
-    `/#add=<url>&t=<title>` — `app.js` posts it with the localStorage token,
-    so the bookmarklet itself holds no secret), iOS share-sheet Shortcut
-    (direct POST, token embedded in the Shortcut; recipe in README.md).
+    `/?add=<url>&t=<title>` — query not hash, some browsers mangle `#` in
+    javascript: URLs; `#add=` still accepted. `app.js` posts it with the
+    localStorage token, so the bookmarklet itself holds no secret, and
+    prompts for the token inline when the context has none), iOS
+    share-sheet Shortcut (direct POST, token embedded in the Shortcut;
+    recipe in README.md).
   - Both auth via `x-af-token` header == `AF_TOKEN` Pages secret. The token
     also sits gitignored in `.af-token.local` for scripts, and each browser
     stores it in localStorage after the footer "connect" flow.

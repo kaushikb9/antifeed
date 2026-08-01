@@ -262,13 +262,25 @@ function toast(msg) {
 }
 
 async function handleClip() {
-  if (!location.hash.startsWith("#add=")) return;
-  const p = new URLSearchParams(location.hash.slice(1));
+  // ?add= is what the bookmarklet sends (a # inside a javascript: URL gets
+  // mangled by some browsers); #add= kept for bookmarklets dragged before
+  // the switch
+  const p = new URLSearchParams(
+    location.hash.startsWith("#add=") ? location.hash.slice(1) : location.search);
   const url = (p.get("add") || "").trim();
   const title = (p.get("t") || "").trim();
-  history.replaceState(null, "", location.pathname + location.search);
   if (!url) return;
-  if (!token) { alert("connect sync first (footer), then clip again."); return; }
+  history.replaceState(null, "", location.pathname);
+  if (!token) {
+    // bookmarks sync across browsers/profiles; the token doesn't — connect
+    // right here so the clip isn't lost
+    const t = prompt("connect sync to save this clip — sync token (same one on every device):");
+    if (!t) return;
+    token = t.trim();
+    localStorage.setItem(TOKEN_KEY, token);
+    $('#tabs [data-tab="mine"]').hidden = false;
+    await syncLoad();
+  }
   setTab("mine");
   const norm = (s) => s.replace(/\/+$/, "");
   if (articles.some((a) => norm(a.url) === norm(url))) { toast("already in the list"); return; }

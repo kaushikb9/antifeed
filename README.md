@@ -56,10 +56,13 @@ Two capture paths besides the mine-tab form, both feeding the same inbox:
 
 - **Desktop bookmarklet** — drag the "+antifeed" link (mine tab, under the
   form) to the bookmarks bar. Clicking it on any page opens
-  `antifeed.pages.dev/#add=<url>&t=<title>` in a new tab; the app posts it
-  to the inbox using the sync token already in that browser's localStorage
-  (so no token ever lives in the bookmarklet) and lands on the mine tab
-  with the pending row visible. Needs sync connected in that browser.
+  `antifeed.pages.dev/?add=<url>&t=<title>` in a new tab (`#add=` also
+  still works, for bookmarklets dragged before the query switch); the app
+  posts it to the inbox using the sync token already in that browser's
+  localStorage (so no token ever lives in the bookmarklet) and lands on
+  the mine tab with the pending row visible. If that browser context has
+  no token yet (bookmarks sync across profiles and machines; localStorage
+  doesn't), it prompts for the sync token inline and completes the clip.
 - **iOS share sheet** — build once in Shortcuts (~3 min, needs the token):
   1. New shortcut → name it "Save to antifeed" → shortcut settings →
      enable **Show in Share Sheet**, accept **URLs** and **Safari web pages**.
