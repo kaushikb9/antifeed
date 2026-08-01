@@ -251,6 +251,37 @@ function render() {
   }
 }
 
+/* ---- clipper: bookmarklet / share sheet opens #add=<url>&t=<title> ---- */
+
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+async function handleClip() {
+  if (!location.hash.startsWith("#add=")) return;
+  const p = new URLSearchParams(location.hash.slice(1));
+  const url = (p.get("add") || "").trim();
+  const title = (p.get("t") || "").trim();
+  history.replaceState(null, "", location.pathname + location.search);
+  if (!url) return;
+  if (!token) { alert("connect sync first (footer), then clip again."); return; }
+  setTab("mine");
+  const norm = (s) => s.replace(/\/+$/, "");
+  if (articles.some((a) => norm(a.url) === norm(url))) { toast("already in the list"); return; }
+  try {
+    const res = await api("inbox", "POST", { url, note: title.slice(0, 300) });
+    inbox = res.inbox;
+    render();
+    toast(res.dup ? "already saved" : "saved — awaiting the brain");
+  } catch {
+    toast("couldn’t save — check sync");
+  }
+}
+
 /* ---- sync control ---- */
 
 function paintSync() {
@@ -275,13 +306,17 @@ $("#sync-btn").addEventListener("click", () => {
 
 /* ---- wiring ---- */
 
+function setTab(next) {
+  tab = next;
+  document.querySelectorAll("#tabs button").forEach((b) =>
+    b.classList.toggle("active", b.dataset.tab === next));
+  render();
+}
+
 $("#tabs").addEventListener("click", (e) => {
   const btn = e.target.closest("button");
   if (!btn || !btn.dataset.tab) return;
-  tab = btn.dataset.tab;
-  document.querySelectorAll("#tabs button").forEach((b) =>
-    b.classList.toggle("active", b === btn));
-  render();
+  setTab(btn.dataset.tab);
 });
 
 $("#archive").addEventListener("click", (e) => {
@@ -352,6 +387,7 @@ fetch("data/articles.json", { cache: "no-cache" })
     render();
     paintSync();
     syncLoad();
+    handleClip();
   })
   .catch(() => {
     $("#today").innerHTML = `<p class="empty">couldn’t load articles.json</p>`;

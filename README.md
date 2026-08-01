@@ -50,6 +50,25 @@ immediately as "awaiting the brain", and become full entries (`mine: true`,
 staying in the mine tab — or promoted to the home page if truly dope) on the
 next brain run.
 
+## Clipping from anywhere
+
+Two capture paths besides the mine-tab form, both feeding the same inbox:
+
+- **Desktop bookmarklet** — drag the "+antifeed" link (mine tab, under the
+  form) to the bookmarks bar. Clicking it on any page opens
+  `antifeed.pages.dev/#add=<url>&t=<title>` in a new tab; the app posts it
+  to the inbox using the sync token already in that browser's localStorage
+  (so no token ever lives in the bookmarklet) and lands on the mine tab
+  with the pending row visible. Needs sync connected in that browser.
+- **iOS share sheet** — build once in Shortcuts (~3 min, needs the token):
+  1. New shortcut → name it "Save to antifeed" → shortcut settings →
+     enable **Show in Share Sheet**, accept **URLs** and **Safari web pages**.
+  2. Add **Get Contents of URL**: URL `https://antifeed.pages.dev/api/inbox`,
+     Method **POST**, Header `x-af-token` = the sync token,
+     Request Body **JSON** with one field: `url` = **Shortcut Input**.
+  3. (Optional) Add **Show Notification** ("saved to antifeed").
+  Then any app's share sheet → Save to antifeed.
+
 ## Deploy
 
 ```sh

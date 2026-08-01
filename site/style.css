@@ -181,6 +181,25 @@ h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 .empty { color: var(--muted); font-size: 0.9rem; padding: 1.5rem 0; }
 
+.clip-hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.1rem; }
+.clip-hint a {
+  color: var(--gold); text-decoration: none; font-weight: 600;
+  border: 1px dashed var(--gold); border-radius: 8px;
+  padding: 0.1rem 0.5rem; cursor: grab; white-space: nowrap;
+}
+
+#toast {
+  position: fixed; left: 50%; bottom: 2rem;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--card); border: 1px solid var(--gold); color: var(--ink);
+  border-radius: 10px; padding: 0.5rem 1rem;
+  font-size: 0.88rem; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 .about p { margin-bottom: 1.05rem; font-size: 1rem; }
 .about a { color: var(--gold); text-decoration: none; font-weight: 600; }
 .about a:hover { text-decoration: underline; }

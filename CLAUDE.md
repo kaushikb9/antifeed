@@ -15,11 +15,18 @@ tweak systems** — resist scope creep, keep everything boring and durable.
 - `site/` — static app: `index.html` + `app.js` + `style.css`. No framework,
   no build step. The entire content database is `site/data/articles.json`.
 - `functions/api/` — Cloudflare Pages Functions:
-  - `flags.js` — per-article flags in KV (key `flags`), read-modify-write per
-    toggle so devices never clobber each other. `{merge:{...}}` unions a
-    device's local flags on first connect.
+  - `flags.js` — per-article flags in KV, one key per article (`flag:<id>`)
+    so concurrent devices can't clobber each other across articles; the flag
+    object is duplicated into KV metadata so GET reads everything with a
+    single `list()`. The pre-migration `flags` blob stays as a read-only
+    base layer (per-article keys shadow it — no migration needed).
+    `{merge:{...}}` unions a device's local flags on first connect.
   - `inbox.js` — manually added links in KV (key `inbox`); POST `{url,note}`
     appends (dup-checked), `{clear:true}` empties.
+  - Capture into the inbox: mine-tab form, desktop bookmarklet (opens
+    `/#add=<url>&t=<title>` — `app.js` posts it with the localStorage token,
+    so the bookmarklet itself holds no secret), iOS share-sheet Shortcut
+    (direct POST, token embedded in the Shortcut; recipe in README.md).
   - Both auth via `x-af-token` header == `AF_TOKEN` Pages secret. The token
     also sits gitignored in `.af-token.local` for scripts, and each browser
     stores it in localStorage after the footer "connect" flow.
