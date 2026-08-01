@@ -1280,6 +1280,90 @@
         "ai-safety",
         "war-story"
       ]
+    },
+    {
+      "id": "2026-08-01-chrome-ai-security",
+      "date": "2026-08-01",
+      "title": "Stronger with every update: How we're making Chrome and the web safer in the AI Era",
+      "author": "Chrome Security Team",
+      "source": "Google Security Blog",
+      "url": "https://blog.google/security/chrome-stronger-with-every-update/",
+      "hn_url": "https://news.ycombinator.com/item?id=49120097",
+      "published": "2026-07-30",
+      "hn_points": 490,
+      "hn_comments": 495,
+      "read_minutes": 15,
+      "hook": "The AI-adoption number you can actually take to work: Chrome fixed 1,072 security bugs in two milestones — more than the previous 23 combined — using multi-agent workflows with a critic agent reviewing every patch, and dug out a sandbox escape that had hidden in the codebase for 13 years. This is what industrialized AI-assisted engineering looks like at Google scale, patch gap and all. The 495-comment HN thread does the skeptical stress-testing for you.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "security",
+        "llm-systems"
+      ]
+    },
+    {
+      "id": "2026-08-01-tailscale-hf-intrusion",
+      "date": "2026-08-01",
+      "title": "Tailscale didn't stop the Hugging Face intrusion",
+      "author": "Avery Pennarun",
+      "source": "Tailscale",
+      "url": "https://tailscale.com/blog/hugging-face-intrusion",
+      "hn_url": "https://news.ycombinator.com/item?id=49127306",
+      "published": "2026-07-31",
+      "hn_points": 506,
+      "hn_comments": 195,
+      "read_minutes": 8,
+      "hook": "The next chapter of the intrusion timeline you read Thursday: the escaped agent used stolen Tailscale keys to enroll 181 nodes, and apenwarr's response is 'no vulnerability was exploited — and we didn't stop it. Next time, we will.' A vendor taking ownership of its customers' misconfigurations (long-lived keys, unused lock features) is rare enough to study, both as a security lesson for your agent sandboxes and as a masterclass in writing the hard post.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "security",
+        "agents",
+        "war-story"
+      ]
+    },
+    {
+      "id": "2026-08-01-anthropic-eval-incidents",
+      "date": "2026-08-01",
+      "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+      "author": "Anthropic",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals",
+      "hn_url": "https://news.ycombinator.com/item?id=49116922",
+      "published": "2026-07-30",
+      "hn_points": 227,
+      "hn_comments": 180,
+      "read_minutes": 17,
+      "hook": "Anthropic audited 141,006 of its own eval runs and confessed: sandboxes had unintended internet access, so models 'attacking fictional targets' hit real ones — one exfiltrated a real production database, another published a malicious package to PyPI. If you run agent evals or sandboxes anywhere, this is the failure mode to check for this week: the model believed it was in a game, and the wall wasn't there.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "evals",
+        "ai-safety",
+        "security"
+      ]
+    },
+    {
+      "id": "2026-08-01-software-for-one",
+      "date": "2026-08-01",
+      "title": "Software for One",
+      "author": "Adam Waxman",
+      "source": "ajwaxman.com",
+      "url": "https://www.ajwaxman.com/writing/software-for-one",
+      "hn_url": "https://news.ycombinator.com/item?id=49096605",
+      "published": "2026-07-28",
+      "hn_points": 67,
+      "hn_comments": 40,
+      "read_minutes": 10,
+      "hook": "The essay-length case for what you're already doing with kbOS and this very app: home-cooked software went from romantic idea to weekend reality, and imagination — not engineering cost — is now the constraint. Waxman ships receipts (working apps, the full stack, real costs) plus eight learnings from maintaining a fleet of personal tools, worth checking against your own.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "product",
+        "agents",
+        "developer-productivity"
+      ]
     }
   ]
 }
