@@ -1364,6 +1364,90 @@
         "agents",
         "developer-productivity"
       ]
+    },
+    {
+      "id": "2026-08-02-how-to-exist",
+      "date": "2026-08-02",
+      "title": "How to Exist",
+      "author": "David Cain",
+      "source": "Raptitude",
+      "url": "https://www.raptitude.com/2026/07/how-to-exist/",
+      "hn_url": "https://news.ycombinator.com/item?id=49129990",
+      "published": "2026-07-31",
+      "hn_points": 370,
+      "hn_comments": 230,
+      "read_minutes": 9,
+      "hook": "Your own find, and it goes straight to the top slot because it's the thesis of this app written by someone better at it: we're allergic to simply existing — people chose electric shocks over five minutes alone with their thoughts — and every feed you've deleted was monetizing that allergy. Cain's prescription is almost embarrassingly small: tolerate one relaxed half-breath of doing nothing, then another. It's meditation with the sales pitch stripped out, and the natural next move after the attention pieces you've already read here.",
+      "evergreen": true,
+      "tier": "must",
+      "tags": [
+        "attention",
+        "personal-growth"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-08-02-flint-chart",
+      "date": "2026-08-02",
+      "title": "Flint: A Visualization Language for the AI Era",
+      "author": "Microsoft",
+      "source": "Microsoft",
+      "url": "https://microsoft.github.io/flint-chart/",
+      "hn_url": "https://news.ycombinator.com/item?id=49130604",
+      "published": "2026-08-01",
+      "hn_points": 255,
+      "hn_comments": 67,
+      "read_minutes": 5,
+      "hook": "You flagged this one: Microsoft's JSON chart DSL built for agents to write, compiling to Vega-Lite, ECharts, Plotly, or Excel from a single spec. The HN thread is the real read — commenters keep landing on the question that matters for your own harnesses: if the model can write Vega-Lite directly, what does a new abstraction layer buy you besides a training-data deficit? Skim the spec, then read the skeptics; whichever side you land on sharpens how you design agent-facing output formats.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "visualization",
+        "llm-systems"
+      ],
+      "mine": true
+    },
+    {
+      "id": "2026-08-02-elevators",
+      "date": "2026-08-02",
+      "title": "Elevators",
+      "author": "John (john.fun)",
+      "source": "HN",
+      "url": "https://john.fun/elevators",
+      "hn_url": "https://news.ycombinator.com/item?id=49124218",
+      "published": "2026-07-31",
+      "hn_points": 1581,
+      "hn_comments": 387,
+      "read_minutes": 10,
+      "hook": "The 100x-article-on-something-else slot, earned: an interactive essay on elevator scheduling where you run the simulations yourself — LOOK vs. Otis's Relative System Response vs. destination dispatch — and watch the fancy modern system lose to plain buttons. It's a compact lesson in why optimization targets (wait time vs. travel time) quietly decide which algorithm wins, which is the same trap every agent eval you build can fall into. 1,500+ HN points and the thread's disk-scheduling tangents are a bonus.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "engineering",
+        "systems-thinking"
+      ]
+    },
+    {
+      "id": "2026-08-02-qm-multiplayer-harness",
+      "date": "2026-08-02",
+      "title": "qm – Multiplayer agent harness for work",
+      "author": "YC Software",
+      "source": "GitHub",
+      "url": "https://github.com/yc-software/qm",
+      "hn_url": "https://news.ycombinator.com/item?id=49126604",
+      "published": "2026-07-31",
+      "hn_points": 650,
+      "hn_comments": 152,
+      "read_minutes": 5,
+      "hook": "Someone open-sourced an answer to the question you own at work: what does an agent harness look like when it's built for an org instead of one person? Per-employee isolated sandboxes that persist between sessions, Slack and web front-ends over one identity, Postgres-backed state, a published threat model. Read the README and architecture docs as a design review — where it agrees with what you'd build, and where the 150-comment thread finds the seams.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "harness-engineering",
+        "ai-adoption"
+      ]
     }
   ]
 }
