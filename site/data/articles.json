@@ -1448,6 +1448,90 @@
         "harness-engineering",
         "ai-adoption"
       ]
+    },
+    {
+      "id": "2026-08-03-meat-proxy",
+      "date": "2026-08-03",
+      "title": "Don't be a meat proxy",
+      "author": "Niklas Gruhn",
+      "source": "HN",
+      "url": "https://gruhn.me/blog/2026-08-03/",
+      "hn_url": "https://news.ycombinator.com/item?id=49151933",
+      "published": "2026-08-03",
+      "hn_points": 1145,
+      "hn_comments": 487,
+      "read_minutes": 2,
+      "hook": "Two minutes that name the anti-pattern you're already policing: people pasting model output at each other verbatim — in code review, in Slack, in docs — and adding nothing but latency. As the person setting AI norms for an org, this is the crispest framing yet of the rule worth writing down: engage with the output or you're just the meat in the loop. The 487-comment thread arguing over where relaying ends and thinking begins is the other half of the read.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "engineering-culture",
+        "communication"
+      ]
+    },
+    {
+      "id": "2026-08-03-hallucinated-sqlite-cves",
+      "date": "2026-08-03",
+      "title": "SQLite Critical CVEs or LLM Slop?",
+      "author": "Afek Berger",
+      "source": "JFrog Security Research",
+      "url": "https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/",
+      "hn_url": "https://news.ycombinator.com/item?id=49154332",
+      "published": "2026-07-30",
+      "hn_points": 374,
+      "hn_comments": 119,
+      "read_minutes": 10,
+      "hook": "Six CRITICAL-rated SQLite CVEs, and every one is fabricated — functions that don't exist, line numbers past end-of-file, PoCs that don't crash anything. JFrog walks the receipts (ASan builds, source diffs) and lands on the systemic point: the CVE pipeline now ingests LLM slop with no human check, and your dependency scanners inherit it. Worth reading before the next \"critical vuln\" fire drill lands on your team.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "security",
+        "llm-systems",
+        "engineering"
+      ]
+    },
+    {
+      "id": "2026-08-03-retyping-llm-code",
+      "date": "2026-08-03",
+      "title": "Prevent cognitive debt by manually retyping LLM-generated code",
+      "author": "Ankur Sethi",
+      "source": "HN",
+      "url": "https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/",
+      "hn_url": "https://news.ycombinator.com/item?id=49153374",
+      "published": "2026-08-02",
+      "hn_points": 200,
+      "hn_comments": 150,
+      "read_minutes": 4,
+      "hook": "Sethi refuses to let agents touch his files: he retypes every line the model produces, trading 10x speed for 2x speed plus a mental map he actually owns. You won't adopt the practice — but as a counterweight to your own harness-maximalist instincts it's a sharp probe of what comprehension costs when the agent does the writing. The 150-comment thread splits exactly along the line your team will.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-adoption",
+        "developer-productivity",
+        "thinking"
+      ]
+    },
+    {
+      "id": "2026-08-03-cognitive-farmsteading",
+      "date": "2026-08-03",
+      "title": "Cognitive Farmsteading",
+      "author": "Venkatesh Rao",
+      "source": "Contraptions",
+      "url": "https://contraptions.venkateshrao.com/p/cognitive-farmsteading",
+      "hn_url": null,
+      "published": "2026-07-28",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 28,
+      "hook": "Rao's frame for what you're actually doing with kbOS and your agent stack: not scaling up intellectual production, but homesteading it — automated, bespoke, shared with a small circle instead of performed for a feed. Long and characteristically dense, but it hands you a vocabulary (precommodification, pensievification) for why building software-for-one feels different from building product. Save it for a slow evening.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "thinking",
+        "attention",
+        "personal-growth"
+      ]
     }
   ]
 }
