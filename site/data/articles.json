@@ -1532,6 +1532,48 @@
         "attention",
         "personal-growth"
       ]
+    },
+    {
+      "id": "2026-08-04-llms-reward-expertise",
+      "date": "2026-08-04",
+      "title": "LLMs reward expertise",
+      "author": "Sean Goedecke",
+      "source": "HN",
+      "url": "https://www.seangoedecke.com/llms-reward-expertise/",
+      "hn_url": "https://news.ycombinator.com/item?id=49161518",
+      "published": "2026-07-24",
+      "hn_points": 589,
+      "hn_comments": 251,
+      "read_minutes": 5,
+      "hook": "The comforting story is that LLMs level everyone up equally; Goedecke argues the opposite — they pay compounding returns to expertise, with Terence Tao's ChatGPT sessions as exhibit A: the expert knows what to ask, when the model is drifting, and what done looks like. That's your answer next time someone asks why senior judgment still matters in an AI-adopted org, and a mirror for your own harness-building — the operator's taste is the bottleneck, not the tooling. The 251-comment HN thread stress-tests whether this is engineer cope; it mostly survives.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "expertise",
+        "engineering-management"
+      ]
+    },
+    {
+      "id": "2026-08-04-devtools-must-be-open-source",
+      "date": "2026-08-04",
+      "title": "Devtools must be open source",
+      "author": "David Crawshaw",
+      "source": "HN",
+      "url": "https://blog.exe.dev/devtools-must-be-open-source",
+      "hn_url": "https://news.ycombinator.com/item?id=49156111",
+      "published": "2026-08-02",
+      "hn_points": 534,
+      "hn_comments": 189,
+      "read_minutes": 8,
+      "hook": "Crawshaw (Tailscale co-founder, now exe.dev) argues agents flipped the economics of bespoke software: when an agent maintains the code, molding tools to yourself beats adapting yourself to the tool — and that only works if the tool is open enough to mold, which he says makes closed devtools a dead end. You are living the first half of this thesis with antifeed and kbOS; the uncomfortable second half is that your daily driver, Claude Code, is exactly the kind of closed tool he is calling out. Pairs with Software for One from last week.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "devtools",
+        "open-source"
+      ]
     }
   ]
 }
