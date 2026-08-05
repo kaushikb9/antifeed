@@ -1574,6 +1574,90 @@
         "devtools",
         "open-source"
       ]
+    },
+    {
+      "id": "2026-08-05-ai-adoption-journey",
+      "date": "2026-08-05",
+      "title": "My AI Adoption Journey",
+      "author": "Mitchell Hashimoto",
+      "source": "HN",
+      "url": "https://mitchellh.com/writing/my-ai-adoption-journey",
+      "hn_url": "https://news.ycombinator.com/item?id=46903558",
+      "published": "2026-02-05",
+      "hn_points": 984,
+      "hn_comments": 401,
+      "read_minutes": 12,
+      "hook": "You lead AI adoption for a living, which is exactly why this beats another framework: it is one very good engineer's actual six-stage path, from abandoning chatbots to keeping agents running continuously, with stage five being harness engineering — the thing you build on weekends. The honest part is the cost he paid to get there: he rebuilt two of his own finished projects from scratch purely to learn how to prompt an agent well, which is the unglamorous investment every org-wide rollout deck quietly skips. Read it against Weng's harness piece and Why Software Factories Fail — Mitchell is the n=1 ground truth those two argue about in the abstract, and the 401-comment thread is where other builders compare their own stage counts.",
+      "evergreen": true,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "agents",
+        "harness-engineering"
+      ]
+    },
+    {
+      "id": "2026-08-05-kimi-glm-at-scale",
+      "date": "2026-08-05",
+      "title": "Smaller, faster, safer: running Kimi and GLM at scale",
+      "author": "Cloudflare Workers AI",
+      "source": "Cloudflare",
+      "url": "https://blog.cloudflare.com/smaller-faster-safer-models/",
+      "hn_url": "https://news.ycombinator.com/item?id=49158581",
+      "published": "2026-08-03",
+      "hn_points": 261,
+      "hn_comments": 66,
+      "read_minutes": 8,
+      "hook": "Real numbers from people serving frontier open-weight models at scale: quantizing the KV cache to FP8 doubles Kimi K2.6's usable context from ~686k to ~1.37M tokens and pushes throughput to 2,192 tok/s at 64 concurrent requests, where BF16 simply runs out of memory at 32. If you have ever wondered why the context window a provider advertises and the one you can actually afford to use are different numbers, this is the mechanism, written plainly and with the accuracy benchmarks attached. Useful ammunition the next time your org debates self-hosting an open-weight model instead of paying per token.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "llm-systems",
+        "inference",
+        "open-weight-models"
+      ]
+    },
+    {
+      "id": "2026-08-05-elise-cawley",
+      "date": "2026-08-05",
+      "title": "In Memory of My Wife, Elise Cawley (1961–2026), with Thanks for 36 Wonderful Years",
+      "author": "Stephen Wolfram",
+      "source": "HN",
+      "url": "https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/",
+      "hn_url": "https://news.ycombinator.com/item?id=49173165",
+      "published": "2026-08-04",
+      "hn_points": 937,
+      "hn_comments": 51,
+      "read_minutes": 30,
+      "hook": "Not a work read, and that is the point. Wolfram has spent forty years writing publicly about computation and almost nothing about his private life; his wife Elise died last week, and he wrote 6,800 words about the mathematician he talked to every day for thirty-six years — including how her insistence that truth and beauty are ultimately the same thing shaped A New Kind of Science. You optimise your attention hard, and this is precisely the kind of thing that never survives that optimisation; it is worth the thirty minutes anyway.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "personal-growth",
+        "thinking"
+      ]
+    },
+    {
+      "id": "2026-08-05-3b1b-neural-networks",
+      "date": "2026-08-05",
+      "title": "Neural networks (Deep Learning series, chapters 1–7)",
+      "author": "Grant Sanderson",
+      "source": "3Blue1Brown",
+      "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
+      "hn_url": null,
+      "published": "2017-10-05",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 140,
+      "hook": "VK's recommendation via your inner circle, and a good one: this is the playlist he meant. Chapters 1–4 build neural nets, gradient descent and backprop from scratch; 5–7 turn to transformers, attention step-by-step, and how an LLM might actually store a fact — still the clearest visual explanation of what is happening inside the models you deploy. You reason about inference at the harness layer every day; this is the layer underneath, and it is what makes context length costs and the expense of attention stop being magic. Fair warning: it is roughly two and a half hours of video in a reading app, so treat it as a weekend course rather than a daily read.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "ai-fundamentals",
+        "model-architecture",
+        "llm-systems"
+      ],
+      "mine": true
     }
   ]
 }
