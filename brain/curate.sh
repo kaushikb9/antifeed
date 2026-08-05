@@ -46,7 +46,10 @@ if [ -n "$AF_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
     const inbox = JSON.parse(process.env.INBOX_JSON).inbox;
     const arts = JSON.parse(require("fs").readFileSync("site/data/articles.json")).articles;
     const norm = (s) => s.replace(/\/+$/, "");
-    const have = new Set(arts.map((a) => norm(a.url)));
+    // inbox_url catches entries whose URL the brain rewrote (bare channel
+    // link resolved to the real page, shortener followed, canonical swap)
+    const have = new Set(arts.flatMap((a) =>
+      [a.url, a.inbox_url].filter(Boolean).map(norm)));
     const done = inbox.filter((i) => have.has(norm(i.url))).map((i) => i.url);
     const left = inbox.filter((i) => !have.has(norm(i.url))).map((i) => i.url);
     if (left.length) console.error("still in inbox (not ingested): " + left.join(", "));

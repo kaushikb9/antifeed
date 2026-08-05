@@ -64,6 +64,11 @@ read_minutes, hook, evergreen, tier, tags, mine`.
   his agents, his kbOS), never a neutral summary.
 - `mine: true` = KB added it himself (via the inbox) → shows in the "mine"
   tab. Brain may also promote a mine item to tier "must" if it's truly dope.
+- `inbox_url` (optional) = the link exactly as it sat in the inbox, set only
+  when the brain wrote a different `url` (resolved a bare channel link,
+  followed a shortener, swapped in a canonical). The wrapper scripts clear
+  inbox items by matching `url` **or** `inbox_url`; without it the link stays
+  pending in the mine tab forever even though the entry exists.
 
 ## Client state
 

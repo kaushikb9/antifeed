@@ -60,6 +60,18 @@ received from his inner circle. These are his finds, so the default is IN:
   source name; add "via inner circle" to the hook rather than the source.
 - Always set `"mine": true` on inbox-sourced entries — that's what routes
   them to the "mine" tab in the app.
+- If you write a different URL than the one in the inbox (resolving a bare
+  channel or profile link to the actual thing, following a shortener,
+  swapping in a canonical URL), also set `"inbox_url"` to the link exactly as
+  it appeared in the inbox. That's how the wrapper knows the item was
+  ingested and can clear it — without it the link sits in the mine tab
+  forever as "awaiting the brain".
+- Video (YouTube and friends) is allowed **only** through the manual inbox,
+  and only when KB's note shows he meant it — antifeed is a reading app, so
+  a bare video URL with no note is a skip, and video harvested from the X
+  sweep is always a skip. When it does go in, keep it `"more"`, never the
+  sacred pick, and say the runtime in the hook so he can plan for it.
+  (Precedent: `2026-08-05-3b1b-neural-networks`, kept on KB's call.)
 - A dead or paywalled-to-unreadable link: skip it, and append one line per
   skipped link with the reason to `brain/last-run.txt` (create if missing) —
   skipped links stay in the inbox, so KB needs to see why.
