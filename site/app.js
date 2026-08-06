@@ -362,31 +362,46 @@ $("#add-form").addEventListener("submit", async (e) => {
   }
 });
 
-/* ---- theme: auto → light → dark ---- */
+/* ---- themes: presets, not a settings panel (shared with kaizen) ---- */
 
 const THEME_KEY = "antifeed:theme";
-const THEME_ICONS = {
-  auto: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>`,
-  light: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`,
-  dark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`,
-};
+const THEMES = [
+  ["", "Auto"],
+  ["paper", "Paper"],
+  ["ink", "Ink"],
+  ["graphite", "Graphite"],
+  ["nordic", "Nordic"],
+  ["dieci", "Dieci"],
+];
+// the old button stored auto/light/dark; keep those choices meaning what they
+// meant rather than resetting anyone to a palette they didn't pick
+const LEGACY = { light: "paper", dark: "ink", auto: "" };
 
-function applyTheme() {
-  const t = localStorage.getItem(THEME_KEY) || "auto";
-  if (t === "auto") delete document.documentElement.dataset.theme;
-  else document.documentElement.dataset.theme = t;
-  const b = $("#theme-btn");
-  b.innerHTML = THEME_ICONS[t];
-  b.title = "theme: " + t;
+function applyTheme(id) {
+  if (id) document.documentElement.dataset.theme = id;
+  else delete document.documentElement.dataset.theme;
+  id ? localStorage.setItem(THEME_KEY, id) : localStorage.removeItem(THEME_KEY);
+  document.querySelectorAll("#themes button").forEach((b) =>
+    b.classList.toggle("sel", b.dataset.theme === id));
 }
 
-$("#theme-btn").addEventListener("click", () => {
-  const order = ["auto", "light", "dark"];
-  const next = order[(order.indexOf(localStorage.getItem(THEME_KEY) || "auto") + 1) % 3];
-  next === "auto" ? localStorage.removeItem(THEME_KEY) : localStorage.setItem(THEME_KEY, next);
-  applyTheme();
-});
-applyTheme();
+(function initThemes() {
+  const row = document.createElement("nav");
+  row.className = "themes";
+  row.id = "themes";
+  row.innerHTML = THEMES.map(
+    ([id, name]) => `<button data-theme="${id}">${name}</button>`
+  ).join("");
+  row.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (b) applyTheme(b.dataset.theme);
+  });
+  document.body.appendChild(row);
+
+  const saved = localStorage.getItem(THEME_KEY) || "";
+  const mapped = saved in LEGACY ? LEGACY[saved] : saved;
+  applyTheme(THEMES.some(([id]) => id === mapped) ? mapped : "");
+})();
 
 // "mine" is personal — without sync (no token) the tab has no point
 $('#tabs [data-tab="mine"]').hidden = !token;
