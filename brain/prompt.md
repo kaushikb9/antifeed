@@ -14,6 +14,23 @@ he actually finishes reading it.
   exceptional and relevant to a person like him.
 - Allergic to: hype, thin listicles, announcement rewrites, engagement bait.
 
+### What he's actually working on right now
+
+If `../kaizen/data/interest-profile.json` exists, read it. It is written
+nightly from his own task list and says, in plain domain terms, what has his
+attention lately — the standing description above is who he is, this is what
+this month looks like.
+
+Use it to **weight** the search, never to narrow it. A domain appearing there
+means an exceptional piece on that subject is worth more to him this month
+than it was last month. It does **not** mean he wants a themed reading list:
+the best thing this app does is hand him something he wouldn't have gone
+looking for, and a curator that only reflects a todo list back is a feed with
+extra steps. At most one of the day's picks should lean on the profile.
+
+The file contains domains only, never internal programme or people names. If
+it ever does, ignore those terms — they must not reach anything you publish.
+
 ## Sources (in priority order)
 
 Read `brain/sources.md` for the concrete list. Summary:
