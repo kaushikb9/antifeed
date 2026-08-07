@@ -108,14 +108,16 @@ function fmtDate(iso) {
 }
 
 function esc(s) {
-  return (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  return (s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// data attributes + delegation, not inline onclick: ids come from
+// brain-written JSON, and an id with a quote in it must stay data, not code
 function flagBtns(a) {
   return FLAG_DEFS.map(({ key, glyph, label }) => {
     const on = flags[a.id]?.[key] ? "on" : "";
     return `<button class="flag ${on}" title="${label}" aria-label="${label}"
-      onclick="toggleFlag('${a.id}','${key}')">${glyph}</button>`;
+      data-id="${esc(a.id)}" data-key="${key}">${glyph}</button>`;
   }).join("");
 }
 
@@ -143,7 +145,7 @@ function renderToday(a) {
     ? `<a class="hn" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN thread ↗</a>` : "";
   const ever = a.evergreen ? ` <span class="badge">evergreen</span>` : "";
   $("#today").innerHTML = `
-  <article class="card">
+  <article class="card" data-id="${esc(a.id)}">
     <div class="kicker">today’s read
       <span class="meta">${fmtDate(a.date)} · ${esc(a.source)} · ${a.read_minutes} min</span>
     </div>
@@ -308,7 +310,16 @@ $("#sync-btn").addEventListener("click", () => {
     localStorage.setItem(TOKEN_KEY, t.trim());
     location.reload();
   } else if (!synced) {
-    syncLoad();
+    // the error state must not be a dead end: a wrong or rotated token used
+    // to leave "retry" looping forever with no way to enter a new one
+    if (confirm("Sync is failing. Re-enter the token? (Cancel just retries.)")) {
+      const t = prompt("sync token (same one on every device):");
+      if (!t) return;
+      localStorage.setItem(TOKEN_KEY, t.trim());
+      location.reload();
+    } else {
+      syncLoad();
+    }
   } else if (confirm("Disconnect sync on this device?")) {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(MERGED_KEY);
@@ -331,7 +342,30 @@ $("#tabs").addEventListener("click", (e) => {
   setTab(btn.dataset.tab);
 });
 
+// clicking "Read it →" IS reading it — mark r without a second tap (#1).
+// Mark-only: a repeat click must never un-read it.
+function markRead(id) {
+  if (id && !flags[id]?.r) toggleFlag(id, "r");
+}
+
+// shared by the today card and archive rows: flag buttons, and the
+// read-marking on the outbound link. Returns true when the click was handled.
+function onCardClick(e) {
+  const btn = e.target.closest("button.flag");
+  if (btn) {
+    toggleFlag(btn.dataset.id, btn.dataset.key);
+    return true;
+  }
+  if (e.target.closest("a.go")) {
+    markRead(e.target.closest("[data-id]")?.dataset.id);
+  }
+  return false;
+}
+
+$("#today").addEventListener("click", onCardClick);
+
 $("#archive").addEventListener("click", (e) => {
+  if (onCardClick(e)) return;
   if (e.target.closest("a, button")) return;
   const li = e.target.closest("li[data-id]");
   if (!li) return;
