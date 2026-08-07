@@ -10,6 +10,10 @@ is his scarce resource; antifeed replaces doomscrolling with one hand-picked
 daily read plus a small pool of extras. The product principle: **read, don't
 tweak systems** — resist scope creep, keep everything boring and durable.
 
+Design language: **`../design-system/`** is canonical for tokens, type scale,
+theme presets and the cross-app invariants — read `INVARIANTS.md` before
+touching type, colour or interaction, and don't re-derive a palette here.
+
 ## Architecture (deliberately primitive)
 
 - `site/` — static app: `index.html` + `app.js` + `style.css`. No framework,
