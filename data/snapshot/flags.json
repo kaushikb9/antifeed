@@ -1,0 +1,51 @@
+{
+  "smoke-test": {
+    "b": false
+  },
+  "2026-07-25-camera-github-token": {
+    "x": true
+  },
+  "2026-07-22-postgres-survival-guide": {
+    "x": true
+  },
+  "2026-07-25-kimi-k3-cyber-assessment": {
+    "x": true
+  },
+  "2026-07-15-memory-heist": {
+    "x": true
+  },
+  "2026-07-22-openai-hf-incident": {
+    "r": false
+  },
+  "2026-07-25-software-getting-worse": {
+    "r": true,
+    "f": true
+  },
+  "2026-07-24-claude-opus-5": {
+    "r": true,
+    "x": true
+  },
+  "2026-07-24-harder-to-focus": {
+    "r": true,
+    "f": true
+  },
+  "2026-07-27-token-relay-market": {
+    "r": true
+  },
+  "2026-07-28-why-software-factories-fail": {
+    "f": true,
+    "r": true
+  },
+  "2026-07-11-how-to-build-an-agent": {
+    "x": true
+  },
+  "2026-07-13-building-effective-agents": {
+    "x": true
+  },
+  "2026-07-25-last-technical-interview": {
+    "r": true
+  },
+  "__probe": {
+    "r": false
+  }
+}

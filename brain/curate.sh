@@ -62,4 +62,16 @@ if [ -n "$AF_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
   fi
 fi
 
+# snapshot flags + inbox to git — the only copy of the read/star/skip record
+# off Cloudflare. Never allowed to fail the run.
+if node brain/snapshot.mjs; then
+  if [ -n "$(git status --porcelain -- data/snapshot)" ]; then
+    git add data/snapshot
+    git commit -q -m "snapshot: $TODAY" || true
+    git push -q || echo "push failed — run 'git push' manually"
+  fi
+else
+  echo "snapshot failed — run continues"
+fi
+
 ./deploy.sh || echo "deploy failed — run ./deploy.sh manually"
