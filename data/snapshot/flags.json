@@ -45,6 +45,12 @@
   "2026-07-25-last-technical-interview": {
     "r": true
   },
+  "2026-08-10-hypomnemata": {
+    "f": true
+  },
+  "2026-08-11-agent-language-evals": {
+    "f": true
+  },
   "__probe": {
     "r": false
   }
