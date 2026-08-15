@@ -2191,6 +2191,57 @@
       "evergreen": false,
       "tier": "more",
       "tags": ["thinking", "personal-growth", "ai-adoption"]
+    },
+    {
+      "id": "2026-08-15-claude-code-sessions",
+      "date": "2026-08-15",
+      "title": "Maximizing the value of your Claude Code sessions",
+      "author": "Lydia Hallie",
+      "source": "Anthropic",
+      "url": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions",
+      "hn_url": "https://news.ycombinator.com/item?id=49300800",
+      "published": "2026-08-14",
+      "hn_points": 164,
+      "hn_comments": 106,
+      "read_minutes": 12,
+      "hook": "You're the person who has to explain both the Claude Code bill and why it's worth paying — this is Anthropic walking through the token mechanics under every session: what actually invalidates the prompt cache (touching /model or /effort mid-conversation), why /compact before a break beats paying cold-cache prices after the one-hour expiry, and when a noisy command belongs in a subagent. Half of it you half-know; seeing the cache economics spelled out will change a few defaults for you and for every engineer you're rolling this out to.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": ["claude-code", "developer-productivity", "ai-adoption"]
+    },
+    {
+      "id": "2026-08-15-opus-5-feels-worse",
+      "date": "2026-08-15",
+      "title": "Why does Opus 5 feel worse to work with?",
+      "author": "Mun Logadan",
+      "source": "mun-logadan.github.io",
+      "url": "https://mun-logadan.github.io/why-does-opus-5-feel-worse/",
+      "hn_url": "https://news.ycombinator.com/item?id=49296740",
+      "published": "2026-08-14",
+      "hn_points": 819,
+      "hn_comments": 749,
+      "read_minutes": 2,
+      "hook": "The post is two minutes and one sharp claim: benchmark selection rewards models that barrel ahead on bold assumptions and penalizes ones that stop to ask clarifying questions — so the model that scores better can feel worse in real work. Thin on evidence, but the 750-comment thread is the actual read: practitioners trying to pin down whether model 'feel' is signal or vibes, about the model you drive all day.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": ["evals", "agents", "ai-adoption"]
+    },
+    {
+      "id": "2026-08-15-hello-me",
+      "date": "2026-08-15",
+      "title": "Hello, me. It's been a while",
+      "author": "themech",
+      "source": "themech.net",
+      "url": "https://themech.net/2026/08/hello-me-its-been-a-while/",
+      "hn_url": "https://news.ycombinator.com/item?id=49290166",
+      "published": "2026-08-13",
+      "hn_points": 363,
+      "hn_comments": 196,
+      "read_minutes": 3,
+      "hook": "An engineer notices that fourteen years of podcasts filling every gap of the day quietly replaced his inner voice, and writes 650 plain words about choosing silence during routine tasks to get it back. Genuinely affecting rather than preachy, and the HN thread of engineers admitting to the same habit is half the piece. Three minutes, best read in silence.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": ["personal-growth", "attention", "thinking"]
     }
   ]
 }
