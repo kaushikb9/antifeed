@@ -46,7 +46,9 @@
     "r": true
   },
   "2026-08-10-hypomnemata": {
-    "f": true
+    "f": true,
+    "r": true,
+    "x": true
   },
   "2026-08-11-agent-language-evals": {
     "f": true
