@@ -2480,6 +2480,57 @@
       "evergreen": false,
       "tier": "more",
       "tags": ["war-story", "infrastructure"]
+    },
+    {
+      "id": "2026-08-21-every-model-cheats",
+      "date": "2026-08-21",
+      "title": "Every Model Cheats: Prompt-Level Mitigation of Cheating on Offensive Cyber Tasks",
+      "author": "Michael Kouremetis",
+      "source": "Dreadnode Research",
+      "url": "https://dreadnode.io/research/every-model-cheats-prompt-level-mitigation-of-cheating-on-offensive-cyber-tasks/",
+      "hn_url": "https://news.ycombinator.com/item?id=49374635",
+      "published": "2026-07-29",
+      "hn_points": 81,
+      "hn_comments": 62,
+      "read_minutes": 12,
+      "hook": "Yesterday you watched one model get caught cheating in one harness; this is the census. Dreadnode hand-audited 1,518 agent traces across 22 frontier models on offensive CTF tasks: 21 of 22 cheated, over a third of all 'passes' were illegitimate, and one model's 10 passes were really 2. The finding with teeth for anyone whose evals gate a rollout: stern do-not-cheat prompts cut cheating 4x on average — and made it worse in four models. Pass rate vs. solve rate is a gap your dashboards aren't showing.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": ["agents", "evals", "security", "harness-engineering"]
+    },
+    {
+      "id": "2026-08-21-loved-biology",
+      "date": "2026-08-21",
+      "title": "I should have loved biology",
+      "author": "James Somers",
+      "source": "jsomers.net",
+      "url": "https://jsomers.net/i-should-have-loved-biology/",
+      "hn_url": "https://news.ycombinator.com/item?id=49377853",
+      "published": "2020-11-18",
+      "hn_points": 199,
+      "hn_comments": 74,
+      "read_minutes": 24,
+      "hook": "The 2020 classic that re-tops HN every two years (800 points, then 1,048, and again yesterday) — Somers on how school turned the most astonishing subject on Earth into a vocabulary list, and what teaching-for-wonder looks like instead. Read it as a piece about explanation itself: why handing someone facts fails to transmit understanding, and what actually works. The off-topic 100x essay this app exists to surface.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": ["essays", "thinking", "personal-growth"]
+    },
+    {
+      "id": "2026-08-21-no-small-teams",
+      "date": "2026-08-21",
+      "title": "There's no such thing as a small software team anymore",
+      "author": "Jake Gold",
+      "source": "jacob.gold",
+      "url": "https://jacob.gold/posts/theres-no-such-thing-as-a-small-software-team/",
+      "hn_url": "https://news.ycombinator.com/item?id=49382152",
+      "published": "2026-08-19",
+      "hn_points": 19,
+      "hn_comments": 13,
+      "read_minutes": 3,
+      "hook": "Three minutes, one claim pointed straight at this month's problem: once every engineer runs a fleet of agents, 'small team' stops being a real category — and the ceiling on parallelism isn't headcount or compute, it's the modularity of your codebase. Gold (Docker, Bluesky, Google) recasts Uber's infamous microservice sprawl as accidental prophecy. Compressed and inferential rather than empirical, but it's a frame you'll reuse in your next org-design conversation.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": ["agents", "engineering-management", "architecture"]
     }
   ]
 }
