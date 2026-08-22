@@ -2531,6 +2531,57 @@
       "evergreen": false,
       "tier": "more",
       "tags": ["agents", "engineering-management", "architecture"]
+    },
+    {
+      "id": "2026-08-22-no-reason-slow",
+      "date": "2026-08-22",
+      "title": "There's no reason for software to be slow anymore",
+      "author": "Dan Luu",
+      "source": "danluu.com",
+      "url": "https://danluu.com/perf-opt/",
+      "hn_url": "https://news.ycombinator.com/item?id=49395628",
+      "published": "2026-08-22",
+      "hn_points": 285,
+      "hn_comments": 206,
+      "read_minutes": 19,
+      "hook": "New Dan Luu: agents have collapsed the cost of performance work so far that bespoke, workload-specific optimization is suddenly economically rational — a regex engine tuned to his own ripgrep queries, the strongest Azul AI in the world at maybe 1% of the runner-up's dev time, a seasoned perf engineer admitting Claude out-optimized him on Anthropic's takehome. The claim underneath is the one you'll reuse: 'too expensive to bother' was a load-bearing assumption in how software gets built, and it just gave way. The 200-comment thread pushes back well on where the ceiling really is.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": ["agents", "ai-assisted-development", "performance", "economics-of-code"]
+    },
+    {
+      "id": "2026-08-22-github-aug17-outage",
+      "date": "2026-08-22",
+      "title": "The August 17 outage, and the work ahead",
+      "author": "Vladimir Fedorov (GitHub CTO)",
+      "source": "GitHub Blog",
+      "url": "https://github.blog/news-insights/company-news/the-august-17-outage-and-the-work-ahead/",
+      "hn_url": "https://news.ycombinator.com/item?id=49378957",
+      "published": "2026-08-20",
+      "hn_points": 630,
+      "hn_comments": 702,
+      "read_minutes": 5,
+      "hook": "GitHub's CTO on the 7h47m global outage — and buried in it, the datapoint of the month for anyone running agent fleets: monthly commits went from 1.4B to 2.9B since April. Agents doubled GitHub's write load in four months, a Central US capacity component buckled at the new peak, and Copilot clients' retry loops made recovery harder. The post itself is five careful minutes of CTO prose; the 700-comment HN thread does the real accounting, including what a post-Azure-migration GitHub owes the ecosystem. Read both as one document.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": ["incidents", "infrastructure", "ai-scale", "engineering-management"]
+    },
+    {
+      "id": "2026-08-22-dullien-maturation",
+      "date": "2026-08-22",
+      "title": "Three important steps in my maturation process",
+      "author": "Thomas Dullien",
+      "source": "thomasdullien.github.io",
+      "url": "https://thomasdullien.github.io/posts/2026-08-21-three-important-steps-in-my-maturation-process/",
+      "hn_url": "https://news.ycombinator.com/item?id=49394496",
+      "published": "2026-08-21",
+      "hn_points": 109,
+      "hn_comments": 37,
+      "read_minutes": 6,
+      "hook": "Thomas Dullien — Halvar Flake, one of the most respected security researchers alive — on three upgrades to his own thinking, written after his father's death. The keeper for you is the second: programmers are trained into monocausal determinism because computers are the only place it's actually true, and it quietly corrupts how we debug incidents, orgs, and ourselves. Personal growth with real substance, zero self-help cadence, six minutes.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": ["personal-growth", "thinking", "essays"]
     }
   ]
 }
