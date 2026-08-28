@@ -3243,6 +3243,90 @@
         "hn-thread",
         "measurement"
       ]
+    },
+    {
+      "id": "2026-08-28-vms-wont-contain-agents",
+      "date": "2026-08-28",
+      "title": "VMs won't contain cyber-capable agents",
+      "author": "Artem Dinaburg",
+      "source": "Trail of Bits",
+      "url": "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/",
+      "hn_url": "https://news.ycombinator.com/item?id=49450188",
+      "published": "2026-08-26",
+      "hn_points": 177,
+      "hn_comments": 136,
+      "read_minutes": 9,
+      "hook": "You read 'Fences, Not Sandboxes' three days ago and the self-hosted agent factory the day before that — this is the experiment that tells you what your fence is actually worth. Trail of Bits put GPT-5.6-Cyber in a VM and told it to get out; it got out three times, once by building a working exploit for a kernel CVE with no public exploit code, once by chaining three zero-days across QEMU, KVM and libslirp. The detail that should change your mental model is the persistence: it backtracked across 12-hour stretches and synthesised target-specific exploits rather than pattern-matching known ones. Concrete takeaways at the end (Firecracker over full-fat VMs, slow-updating distros are now a liability, cap agent wall-clock), which is exactly the shape of advice you'll need when someone at work asks what 'sandboxed' means in the rollout doc.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "security",
+        "sandboxing"
+      ]
+    },
+    {
+      "id": "2026-08-28-the-harness-is-the-thing",
+      "date": "2026-08-28",
+      "title": "The Harness Is the Thing",
+      "author": "Scott Fryxell",
+      "source": "HN",
+      "url": "https://scott-fryxell.github.io/blog/the-harness-is-the-thing/",
+      "hn_url": "https://news.ycombinator.com/item?id=49452346",
+      "published": "2026-08-25",
+      "hn_points": 199,
+      "hn_comments": 120,
+      "read_minutes": 8,
+      "hook": "Someone else's harness, documented at the level of detail you'd want if you were about to copy it: a five-role loop (exploration → planner → worker → critic → promoter), shared AGENTS.md across Cursor/Claude/Pi, and /skills, /prompts, /extensions treated as first-class repo structure rather than dotfile sludge. The load-bearing trick is 'prewalk' — frontier model plans, commodity model executes — which he claims takes 75% off the bill. Read it as a diff against your own setup; the parts you disagree with will be the useful ones.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "harness-design",
+        "model-routing"
+      ]
+    },
+    {
+      "id": "2026-08-28-1111-dns-cache-memory",
+      "date": "2026-08-28",
+      "title": "Saving 100 terabytes of memory by optimizing 1.1.1.1's DNS cache",
+      "author": "Cloudflare Engineering",
+      "source": "Cloudflare Blog",
+      "url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+      "hn_url": "https://news.ycombinator.com/item?id=49468083",
+      "published": "2026-08-27",
+      "hn_points": 506,
+      "hn_comments": 139,
+      "read_minutes": 12,
+      "hook": "No AI in it, which is the point — this is what a careful engineer does with a profiler and a week. Five Rust memory-layout changes to the 1.1.1.1 cache (Vec → Box<[T]>, boxing fat enum variants, storing records as raw wire bytes) take a cache entry from 953 to 420 bytes and ~100TB off the fleet, and the throughput goes *up* 43% rather than trading away. Worth reading right after Dan Luu's perf post: same argument, made in production at 250 billion entries.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "systems",
+        "performance",
+        "rust"
+      ]
+    },
+    {
+      "id": "2026-08-28-decompiling-n64-84-days",
+      "date": "2026-08-28",
+      "title": "Decompiling a Nintendo 64 game in 84 days",
+      "author": "Chris Lewis",
+      "source": "HN",
+      "url": "https://blog.chrislewis.au/decompiling-a-nintendo-64-game-in-84-days/",
+      "hn_url": "https://news.ycombinator.com/item?id=49466006",
+      "published": "2026-08-26",
+      "hn_points": 176,
+      "hn_comments": 119,
+      "read_minutes": 15,
+      "hook": "596 days for the first game, 84 for the second — 2,145 functions matched byte-for-byte against a proprietary 1990s SGI compiler. The reason it's here isn't nostalgia: it's the cleanest case study I've seen of an agent loop on a task with a perfect oracle. He kept a DECOMPILATION_LEARNINGS.md that the agents wrote back into as they discovered IDO compiler quirks, ran four git worktrees in parallel, and benchmarked GPT-5.5/5.6, Claude 4.5 and GLM 5.2 against each other on real work. The accumulating-learnings file is the idea to steal.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "reverse-engineering",
+        "craft"
+      ]
     }
   ]
 }
