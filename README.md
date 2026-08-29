@@ -100,6 +100,60 @@ dashboard under the Pages project → Custom domains.
 Local dev with the sync API: `npx wrangler pages dev` (token `dev-token`
 via `.dev.vars`, KV simulated locally).
 
+## Usage — was the read read?
+
+`/usage/` is a fourth page and it is **unlisted on purpose**: nothing links to
+it, it is `noindex`, and `/api/telemetry` answers **404** — not 401 — to anyone
+without the sync token, so the endpoint does not confirm it exists. Keep it out
+of the nav, the footer and any sitemap.
+
+It exists because antifeed publishes exactly one thing a day and had no way of
+knowing whether that thing was opened. A visit that never reaches the article
+is the site failing at its only job.
+
+**The one number is the share of READERS who reached the read**, not the number
+of opens. That distinction is load-bearing and was found by shipping the wrong
+one: a reader who opens the article and then its HN thread produces two opens
+against one visit, and the first version of the page proudly reported
+`200% reached the read`. A reader who got there once got there. Identity is
+whatever the server recorded — `kb` when the token proved it, otherwise the
+day's rotating stranger hash — so across a day boundary the same stranger
+counts twice, which the page says out loud.
+
+Three files, and deleting them removes the feature completely:
+
+| File | Job |
+|---|---|
+| `site/telemetry.js` | one delegated capture-phase listener on `document`. `app.js` does not know it exists |
+| `functions/api/telemetry.js` | POST writes one KV key per event; GET aggregates nothing and returns the raw window |
+| `site/usage/` | the page. All aggregation lives here, so changing the cut is a reload, not a deploy |
+
+Four events: `view` (a page load), `tab` (must reads / more / mine), `open`
+(the article) and `hn` (the thread). `open` and `hn` are counted separately —
+if the thread consistently beats the article, the curation is picking arguments
+to read about rather than essays to read, and the page says so in a sentence.
+
+**What the client is allowed to say is only what happened.** Everything that
+could be lied about, the server works out for itself: who from the token it
+verifies (never a flag in the body), where from Cloudflare's own headers, when
+from the server clock. **No IP is stored**, in a field or in a key. Traffic
+without the token gets six characters of HMAC over ip+UA salted with today's
+date — enough to say "three strangers this week", not enough to follow anybody.
+
+Two things that are noise control and **not** security controls, and should
+never be described as such: the UA check that drops automated visits (the
+bookmark sweep, `/browse` dogfooding — on touchline one verification run was
+76% of a launch day's traffic), and the KV rate limit, which is a ceiling on
+sustained writing rather than on a burst, because KV reads are edge-cached for
+at least sixty seconds.
+
+Events live in `ANTIFEED_KV` under `tel:` — the same namespace as `flag:` and
+`inbox`, which cannot collide — with a ninety-day TTL, so it forgets by itself.
+The whole event is in the key's **metadata** and the value is empty, so reading
+three months is one paginated `list()` rather than three thousand gets. The key
+counts down (`tel:<1e13 - ms>`) so KV's lexicographic listing returns newest
+first and "the last day" stops after one page.
+
 ## Sources
 
 HN (primary, with the comment thread always linked), my Substack follows

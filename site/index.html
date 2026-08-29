@@ -66,5 +66,9 @@
 
 <div id="toast" role="status"></div>
 <script src="app.js"></script>
+<!-- Telemetry is deliberately last and deliberately separate: app.js does not
+     know it exists, and deleting this line plus site/telemetry.js removes the
+     feature completely. -->
+<script src="telemetry.js"></script>
 </body>
 </html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>usage · antifeed</title>
+<!-- Unlisted on purpose: nothing on the site links here, and the page is
+     empty for anyone who is not KB. Keep it out of the nav, the footer and
+     the sitemap. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../style.css?v=2026-08-29a">
+<script>(function(){var t=localStorage.getItem("antifeed:theme");if(t)document.documentElement.dataset.theme=t;})();</script>
+<style>
+  /* Page-local: nothing here is wanted anywhere else on the site, so it does
+     not go in style.css. Tokens only — no new colours. */
+  .u-controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:0 0 1.25rem}
+  .u-controls button{
+    font:inherit;font-size:.8rem;padding:.25rem .6rem;border:1px solid var(--line);
+    border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+  .u-controls button[aria-pressed="true"]{
+    border-color:var(--gold);background:var(--gold-soft);color:var(--ink)}
+  /* A grid, not a wrapping flex row: with six stats and a narrow window the
+     flex version dropped the last one onto a row of its own, where a 1.65rem
+     number with nothing beside it read as a heading rather than a stat. */
+  .u-strip{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(7rem,1fr));
+    gap:1.1rem 1.5rem;margin:0 0 1.75rem}
+  .u-stat b{display:block;font-size:1.5rem;line-height:1.15;font-weight:600;letter-spacing:-.01em}
+  .u-stat span{display:block;font-size:.72rem;color:var(--muted);margin-top:.1rem}
+  .u-verdict{
+    border-left:3px solid var(--gold);padding:.65rem 0 .65rem .9rem;margin:0 0 1.75rem;
+    font-size:.95rem;line-height:1.5}
+  .u-verdict em{font-style:normal;color:var(--muted)}
+  .u-sec{margin:0 0 1.75rem}
+  .u-sec h2{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+    font-weight:600;margin:0 0 .6rem}
+  .u-scroll{overflow-x:auto}
+  table.u{border-collapse:collapse;width:100%;font-size:.82rem}
+  table.u th,table.u td{text-align:left;padding:.34rem .7rem .34rem 0;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.u th{font-weight:600;color:var(--muted);font-size:.72rem}
+  table.u td.n,table.u th.n{text-align:right;font-variant-numeric:tabular-nums}
+  table.u td.wide{white-space:normal;min-width:16rem}
+  .u-bar{display:inline-block;height:.45rem;border-radius:2px;background:var(--gold);
+    vertical-align:middle;min-width:2px}
+  .u-dim{color:var(--muted)}
+  .u-me{color:var(--gold);font-weight:600}
+  .u-empty{color:var(--muted);font-size:.85rem;padding:.4rem 0}
+  .u-feed{list-style:none;padding:0;margin:0;font-size:.8rem}
+  .u-feed li{padding:.3rem 0;border-bottom:1px solid var(--line);
+    display:flex;gap:.6rem;align-items:baseline}
+  .u-feed .w{color:var(--muted);flex:0 0 4.6rem;font-variant-numeric:tabular-nums}
+  .u-feed .b{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+  .u-note{font-size:.75rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.55}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <h1 class="wordmark"><a href="../" style="color:inherit;text-decoration:none">anti<span>feed</span></a></h1>
+  <nav>
+    <a href="../">today</a>
+    <a href="../about/">about</a>
+  </nav>
+  <!-- No theme control here on purpose. The inline script above applies
+       whatever theme was picked on the main page; a button that only this
+       page knew about would be a second place to set one thing. -->
+</header>
+<p class="tagline">who turned up, and whether the read got read.</p>
+
+<main id="main">
+  <p class="empty">Loading&hellip;</p>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
