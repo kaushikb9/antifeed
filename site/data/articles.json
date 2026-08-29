@@ -3327,6 +3327,90 @@
         "reverse-engineering",
         "craft"
       ]
+    },
+    {
+      "id": "2026-08-29-rumour-is-the-exploit",
+      "date": "2026-08-29",
+      "title": "Just a rumour of a bug is enough to find a security exploit these days",
+      "author": "Anil Madhavapeddy",
+      "source": "HN",
+      "url": "https://anil.recoil.org/notes/rumour-is-the-exploit",
+      "hn_url": "https://news.ycombinator.com/item?id=49480466",
+      "published": "2026-08-22",
+      "hn_points": 276,
+      "hn_comments": 96,
+      "read_minutes": 8,
+      "hook": "Madhavapeddy opened a public PR fixing a path traversal bug in cohttp and saw probing traffic within ten minutes — nobody needed the details, just the shape of the bug. He then reproduces it himself: hand a model the vulnerability class and it finds the working exploit in under a minute. The part that should land for you is the economics, not the scare: exploit generation scaled, defender triage-and-release throughput did not, and every embargo norm we built assumes the opposite. If you're setting policy for how your org consumes and patches open source in an agent world, this is the argument you'll be making to someone; the HN thread is where maintainers stress-test his three proposed fixes.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "security",
+        "agents",
+        "open-source"
+      ]
+    },
+    {
+      "id": "2026-08-29-small-models-have-arrived",
+      "date": "2026-08-29",
+      "title": "Small Models Have Arrived",
+      "author": "Calvin French-Owen",
+      "source": "HN",
+      "url": "https://calv.info/small-models-have-arrived",
+      "hn_url": "https://news.ycombinator.com/item?id=49466917",
+      "published": "2026-08-26",
+      "hn_points": 766,
+      "hn_comments": 334,
+      "read_minutes": 3,
+      "hook": "Three minutes, one number, one frame worth stealing. The Segment co-founder ran his personal-news-site eval on a small fast model and the per-run cost went from ~$1 to ~$0.10 — which is the whole reason consumer AI has been stuck. The frame is his co-founder's split between \"IQ 180\" work and \"token spewer\" work, and the claim that ~95% of an operator's day is the latter: that's a routing policy stated in org terms rather than benchmark terms, and it maps straight onto which of your workloads actually need the expensive model. The 334-comment thread is genuinely half the value here — it's where people argue about where good-enough breaks.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "llm-systems",
+        "inference-cost",
+        "model-routing"
+      ]
+    },
+    {
+      "id": "2026-08-29-ai-slop-cv-contributions",
+      "date": "2026-08-29",
+      "title": "Please stop flooding our projects with AI slop to furnish your CV",
+      "author": "Neil Alexander",
+      "source": "HN",
+      "url": "https://neilalexander.dev/2026/06/30/flooding-contributions",
+      "hn_url": "https://news.ycombinator.com/item?id=49474143",
+      "published": "2026-06-30",
+      "hn_points": 208,
+      "hn_comments": 139,
+      "read_minutes": 4,
+      "hook": "The maintainer's-eye companion to today's must-read. A contributor dormant since 2018 shows up with three PRs fixing typos in comments — correct, harmless, agent-authored, co-authorship trailer and all — and Alexander closes them all without comment, because the contributions were never about the project. Read it as an incentive-design problem you'll face internally: when the cost of producing a plausible contribution goes to zero, every signal built on \"someone bothered\" stops carrying information, including the ones on your own team's dashboards.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "open-source",
+        "agents",
+        "incentives"
+      ]
+    },
+    {
+      "id": "2026-08-29-divergence-theorem-volume",
+      "date": "2026-08-29",
+      "title": "Hilariously fast volume computation with the divergence theorem",
+      "author": "Alyssa Rosenzweig",
+      "source": "HN",
+      "url": "https://alyssarosenzweig.ca/blog/hilariously-fast-volume-computation-with-the-divergence-theorem.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49476143",
+      "published": "2018-02-16",
+      "hn_points": 250,
+      "hn_comments": 65,
+      "read_minutes": 7,
+      "hook": "Your deliberate wander away from agents. Rosenzweig wants the volume of a closed triangle mesh, picks the vector field ⟨x,0,0⟩ because its divergence is exactly 1, and watches a volume integral collapse into a sum over triangles — 8n−1 additions and 3n+1 multiplications, 30 million triangles a frame at 60fps on a $35 Raspberry Pi, no GPU. The lesson isn't the formula, it's the move: the speedup came from choosing the right representation before writing any code, which is the one thing no amount of throwing a model at the loop will do for you.",
+      "evergreen": true,
+      "tier": "more",
+      "tags": [
+        "mathematics",
+        "performance",
+        "graphics"
+      ]
     }
   ]
 }
