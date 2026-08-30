@@ -3411,6 +3411,90 @@
         "performance",
         "graphics"
       ]
+    },
+    {
+      "id": "2026-08-30-llm-memory-program-analysis",
+      "date": "2026-08-30",
+      "title": "I accidentally turned LLM memory into program analysis",
+      "author": "Jordy Zomer",
+      "source": "HN",
+      "url": "https://pwning.systems/posts/llm-memory-program-analysis/",
+      "hn_url": "https://news.ycombinator.com/item?id=49485416",
+      "published": "2026-08-28",
+      "hn_points": 284,
+      "hn_comments": 76,
+      "read_minutes": 20,
+      "hook": "Every agent memory system you have looked at is a retrieval problem: embed the past, pull back the relevant chunks. Zomer was doing vulnerability research, got tired of his agent confidently reasoning from an assumption that had since been disproven, and built the memory as a Datalog engine instead — facts with provenance, rules that derive conclusions, and automatic retraction of everything downstream when a fact changes. The benchmarks are the honest part: ~0.46 F1 on LongMemEval at 38x less context than stuffing the window, and a standout on adversarial questions where full context actually gets worse. His closing admission is the one to sit with — most of the gain came from better extraction, not the clever engine.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "llm-systems",
+        "memory",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "2026-08-30-bug-blindness",
+      "date": "2026-08-30",
+      "title": "Bug Blindness",
+      "author": "Dan Luu",
+      "source": "HN",
+      "url": "https://danluu.com/bug-blind/",
+      "hn_url": "https://news.ycombinator.com/item?id=49494520",
+      "published": "2026-08-29",
+      "hn_points": 165,
+      "hn_comments": 68,
+      "read_minutes": 30,
+      "hook": "Luu's claim is that most people — including the engineers who built the thing — literally stop perceiving the defects in software they use daily, and instead grow a callus of workarounds they never notice performing. The Blackboard example is the knife: users hated it, employees inside believed it was well received. Read it as a question about your AI rollout — the teams reporting that generated code is fine are the ones with the most exposure to it, which is exactly the population Luu says has gone blind. He also argues the blindness is trainable away, which is the actionable half.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "engineering-management",
+        "quality",
+        "developer-productivity"
+      ]
+    },
+    {
+      "id": "2026-08-30-domain-driven-agents",
+      "date": "2026-08-30",
+      "title": "Domain-Driven Agents",
+      "author": "Ernest Bednarczyk",
+      "source": "HN",
+      "url": "https://coldtake.dev/blog/domain-driven-agents",
+      "hn_url": "https://news.ycombinator.com/item?id=49492584",
+      "published": "2026-08-27",
+      "hn_points": 71,
+      "hn_comments": 14,
+      "read_minutes": 9,
+      "hook": "The framing worth stealing: when an agent flounders in a legacy codebase, the model is not what needs upgrading — the code is not ready, and readiness is something you can build incrementally. Bednarczyk commits bounded contexts, a glossary and a context map as machine-readable manifests per repo, then lets the agent do the tactical work against that shared vocabulary. Short, opinionated, and a concrete answer to the question of what a team actually ships to make a codebase legible to agents.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "codebase",
+        "developer-productivity"
+      ]
+    },
+    {
+      "id": "2026-08-30-keyboard-driven-guis",
+      "date": "2026-08-30",
+      "title": "GUIs should be fully keyboard-driven",
+      "author": "Charalampos Kardaris",
+      "source": "HN",
+      "url": "https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49479837",
+      "published": "2026-08-28",
+      "hn_points": 1016,
+      "hn_comments": 501,
+      "read_minutes": 3,
+      "hook": "A three-minute provocation: the reason you reach for TUIs is not that terminals are inherently keyboard-native, it is that GUI developers stopped bothering — GNOME's own HIG has said every action must be keyboard-reachable for decades. The post is deliberately slim; the 500-comment thread is the actual read, and it is unusually good on where keyboard-first genuinely breaks down versus where it is just neglect. Worth it if you are designing any surface a power user lives in all day.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "interaction-design",
+        "developer-tools"
+      ]
     }
   ]
 }
