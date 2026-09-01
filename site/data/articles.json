@@ -3580,6 +3580,91 @@
         "typography",
         "design"
       ]
+    },
+    {
+      "id": "2026-09-01-breaking-claude-code-auto-mode",
+      "date": "2026-09-01",
+      "title": "Breaking Claude Code Opus 5 Auto Mode",
+      "author": "Johann Rehberger (wunderwuzzi)",
+      "source": "HN",
+      "url": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/",
+      "hn_url": "https://news.ycombinator.com/item?id=49506819",
+      "published": "2026-08-26",
+      "hn_points": 362,
+      "hn_comments": 113,
+      "read_minutes": 12,
+      "hook": "You run bypass permissions, so read this as a report on your own threat model rather than someone else's. Rehberger takes the commissioned eval that put Auto Mode at a 0.00% attack success rate and gets 60-80% in his own lab: force a downgrade from WebFetch to curl with an HTTP 415, ship a malicious struct.py inside the archive so a stdlib import runs module-level code, stage a remote payload, then spawn nested agents with claude -p. The sentence worth carrying around is his — approval by Auto Mode is not evidence a command is safe, because a best-effort classifier is not an OS boundary. The HN thread is where practitioners argue about what sandboxing actually buys you.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "security",
+        "claude-code",
+        "harness-design"
+      ]
+    },
+    {
+      "id": "2026-09-01-agent-memory-file-format",
+      "date": "2026-09-01",
+      "title": "Agent memory as a file format",
+      "author": "Cal Paterson",
+      "source": "HN",
+      "url": "https://calpaterson.com/memoryfields.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49508317",
+      "published": "2026-08-30",
+      "hn_points": 170,
+      "hn_comments": 87,
+      "read_minutes": 15,
+      "hook": "The direct challenge to the knowledge-graph shape of a personal memory system: Paterson argues traversal is the wrong primitive because every hop is another sequential tool call, where semantic search over prose gets the same pages back in two operations. His memoryfield is markdown plus optional frontmatter plus a SQLite vector index, zipped — deliberately dumb, on the bet that simple mechanisms give a smarter model more room to work. Read it as the counter-argument to the design you'd otherwise default to, and notice where you think he's wrong.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "memory",
+        "file-formats"
+      ]
+    },
+    {
+      "id": "2026-09-01-p99-0ms-autocomplete",
+      "date": "2026-09-01",
+      "title": "P99 0 ms* autocomplete for 240M domain names",
+      "author": "Ruurtjan Pul",
+      "source": "HN",
+      "url": "https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names",
+      "hn_url": "https://news.ycombinator.com/item?id=49505219",
+      "published": "2026-06-22",
+      "hn_points": 220,
+      "hn_comments": 83,
+      "read_minutes": 6,
+      "hook": "The asterisk is the whole trick: he prefetches on keyDown for the current character plus the likely next ones and renders on keyUp, spending the dead time between your keystrokes so the answer is already sitting there. Underneath, an in-memory trie holding the top 8 per prefix, with a 2.5 GB memory-mapped block index on SSD for the long tail — 240 million domains, 2-15 ms server side. Short, honest latency engineering with real numbers, and a good reminder that perceived speed is a scheduling problem before it's a throughput one.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "performance",
+        "systems",
+        "frontend"
+      ]
+    },
+    {
+      "id": "2026-09-01-procrastination-study-fraud",
+      "date": "2026-09-01",
+      "title": "Evidence of Fraud in an Influential Study About Procrastination",
+      "author": "Uri Simonsohn, Joe Simmons and Leif Nelson",
+      "source": "HN",
+      "url": "https://datacolada.org/138",
+      "hn_url": "https://news.ycombinator.com/item?id=49516199",
+      "published": "2026-08-31",
+      "hn_points": 174,
+      "hn_comments": 119,
+      "read_minutes": 15,
+      "hook": "Ariely and Wertenbroch 2002 — the self-imposed-deadlines study a good chunk of the productivity canon rests on — gets taken apart with forensic care: a Cohen's d of 2.5 that no behavioural effect has any business showing, 18 of 20 participants carrying a twin with identical error corrections, and self-reported times rounded 11.7% of the time where humans round about 85%. The method is the value here. It's a working checklist for spotting numbers that were authored rather than observed, which is a skill with a fast-growing surface area now that plausible tables are cheap to generate.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "research",
+        "statistics",
+        "skepticism"
+      ]
     }
   ]
 }
