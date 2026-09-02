@@ -3665,6 +3665,94 @@
         "statistics",
         "skepticism"
       ]
+    },
+    {
+      "id": "2026-09-02-arc-agi-67-cents",
+      "date": "2026-09-02",
+      "title": "44% on ARC-AGI-1 in 67 cents",
+      "author": "Mithil Vakde",
+      "source": "HN",
+      "url": "https://mvakde.github.io/blog/44-on-arc-1/",
+      "hn_url": "https://news.ycombinator.com/item?id=49519939",
+      "published": "2026-09-01",
+      "hn_points": 619,
+      "hn_comments": 157,
+      "read_minutes": 16,
+      "hook": "One person, one 5090, 1.5 hours of training, 67 cents of compute — and a from-scratch transformer that matches TRM/HRM on ARC-AGI-1 and beats a lot of frontier LLMs at it. The interesting part isn't the score, it's the argument underneath: Vakde treats sample efficiency rather than scale as the open problem, uses test-time training as the lever, and shows his working with the code open. You spend your days on routing and inference economics where the working assumption is that capability is something you rent by the token; this is the sharpest recent counterexample, and cheap enough that you could rerun it yourself.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "llm-systems",
+        "model-architecture",
+        "research",
+        "hands-on"
+      ]
+    },
+    {
+      "id": "2026-09-02-zitron-predictions-scored",
+      "date": "2026-09-02",
+      "title": "How accurate have Ed Zitron's AI skeptic predictions been?",
+      "author": "Dan Luu",
+      "source": "HN",
+      "url": "https://danluu.com/zitron/",
+      "hn_url": "https://news.ycombinator.com/item?id=49526069",
+      "published": "2026-09-01",
+      "hn_points": 708,
+      "hn_comments": 765,
+      "read_minutes": 51,
+      "hook": "Luu takes the most-cited AI skeptic and scores the actual predictions against what happened, receipt by receipt, after first putting his own priors on the table — he has been on record calling futurists wrong in both directions. Fair warning: this is a ~50 minute read and you will want the 700-comment thread open alongside it, where the disagreement is unusually substantive. Worth the block of time because the transferable thing is the scoring method: run the same audit on the boosters and it would be just as unflattering, and you are the person in the room who has to price both sides' confidence.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-strategy",
+        "skepticism",
+        "hn-thread",
+        "measurement"
+      ]
+    },
+    {
+      "id": "2026-09-02-efficient-frontier-inference",
+      "date": "2026-09-02",
+      "title": "The efficient frontier of LLM inference",
+      "author": "Philip Kiely",
+      "source": "Baseten",
+      "url": "https://www.baseten.co/blog/the-efficient-frontier-of-llm-inference/",
+      "hn_url": "https://news.ycombinator.com/item?id=49529898",
+      "published": "2026-09-01",
+      "hn_points": 121,
+      "hn_comments": 30,
+      "read_minutes": 6,
+      "hook": "A clean split that is genuinely useful vocabulary: some inference techniques only move you along the latency–throughput frontier (batch sizing, parallelism strategy, quantization) and some push the whole frontier outward (kernel work, speculative decoding, disaggregation). Six minutes, and it hands you a way to interrogate a vendor or a platform team — are we buying more efficiency here, or just spending someone else's latency budget? Useful the next time a cost-per-token number arrives with the tradeoff quietly detached from it.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "inference",
+        "llm-systems",
+        "inference-cost",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "2026-09-02-original-sin-of-nat",
+      "date": "2026-09-02",
+      "title": "Internet centralization and the original sin of NAT",
+      "author": "Dreamstation Systems",
+      "source": "HN",
+      "url": "https://dreamstation.systems/personal/ntppost.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49504905",
+      "published": "2026-08-31",
+      "hn_points": 226,
+      "hn_comments": 175,
+      "read_minutes": 7,
+      "hook": "A 1994 stopgap for IPv4 exhaustion quietly decided that ordinary machines would be clients and only rented machines would be servers — and a lot of what followed, from STUN/TURN gymnastics to the cloud being the only reliable place to put a thing, falls out of that. It is a tidy case study in a temporary technical fix hardening into permanent architecture and then into permanent economics, which is the shape of most decisions anyone regrets later. The thread carries good pushback from people who think NAT takes the blame for what the ISPs actually did.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "infrastructure",
+        "architecture",
+        "systems-thinking",
+        "hn-thread"
+      ]
     }
   ]
 }
