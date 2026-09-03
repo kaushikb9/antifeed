@@ -3753,6 +3753,94 @@
         "systems-thinking",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-03-manufactured-sources",
+      "date": "2026-09-03",
+      "title": "Three sites made 215,128 “best software” pages for AI. Perplexity cites them",
+      "author": "Trellner Research",
+      "source": "HN",
+      "url": "https://trellner.com/reports/manufactured-sources-behind-ai-recommendations/",
+      "hn_url": "https://news.ycombinator.com/item?id=49536375",
+      "published": "2026-09-02",
+      "hn_points": 323,
+      "hn_comments": 155,
+      "read_minutes": 9,
+      "hook": "They asked two Perplexity models for the best product in 380 software categories, kept all 7,534 citations, and then went and looked at the domains: 59.8% rank worse than #100,000, and the third-most-cited source overall — ahead of Gartner — is one vendor's content-marketing blog, cited 194 times across 96 categories it doesn't compete in. Then three sites registered in 2024, sharing a Cloudflare nameserver pair and a page template, that between them have published 215,128 generated “best X software” pages and title their homepages “Facts Grounding Page.” The method section is unusually honest about its own scope, which is what makes it land: this is the retrieval layer you're about to trust inside a work tool, being farmed on purpose, measured rather than asserted.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "llm-systems",
+        "search",
+        "ai-adoption",
+        "measurement"
+      ]
+    },
+    {
+      "id": "2026-09-03-perplexity-citation-audit",
+      "date": "2026-09-03",
+      "title": "A third of Perplexity's citations don't contain the number they're cited for",
+      "author": "Haus Research",
+      "source": "HN",
+      "url": "https://hausresearch.com/reports/perplexity-citation-audit/",
+      "hn_url": "https://news.ycombinator.com/item?id=49536201",
+      "published": "2026-09-02",
+      "hn_points": 124,
+      "hn_comments": 45,
+      "read_minutes": 9,
+      "hook": "The companion to today's must-read, and worth the extra nine minutes because it audits the other half of the same failure: 310 factual questions, 2,915 cited URLs fetched, and 34.7% either wouldn't open for an ordinary reader or opened and contained none of the numbers in the sentence they were attached to. CEO questions passed 44% of the time; headcount 82%. If the manufactured-sources piece says the evidence base is being gamed, this one says the citation itself — the thing everyone points at to argue the answer is checkable — often isn't doing the work it appears to do.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "llm-systems",
+        "evaluation",
+        "search",
+        "measurement"
+      ]
+    },
+    {
+      "id": "2026-09-03-aisle-curl-cves",
+      "date": "2026-09-03",
+      "title": "Six curl CVEs after OpenAI and Anthropic came back with zero",
+      "author": "Stanislav Fort",
+      "source": "AISLE",
+      "url": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+      "hn_url": "https://news.ycombinator.com/item?id=49536114",
+      "published": "2026-09-02",
+      "hn_points": 156,
+      "hn_comments": 54,
+      "read_minutes": 4,
+      "hook": "A vendor scoreboard post, so read it with the discount applied — but the result underneath is real: 29 reports into curl, six accepted as CVEs in 8.22.0 by curl's own maintainers, on a codebase frontier models had already been run over with nothing to show. The interesting part isn't the ranking, it's the ratio: 29 submitted, 6 landed, against a maintainer who has written at length about drowning in AI-generated security noise. That signal-to-submission number is the metric anyone deploying agents at scale should be quoting, and almost nobody publishes it.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "security",
+        "ai-adoption",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "2026-09-03-runescape-56k",
+      "date": "2026-09-03",
+      "title": "How 2004 RuneScape fit a multiplayer RPG into 56k dial-up",
+      "author": "jkm.dev",
+      "source": "HN",
+      "url": "https://jkm.dev/posts/how-2004-runescape-fit-a-multiplayer-rpg-into-56k-dialup/",
+      "hn_url": "https://news.ycombinator.com/item?id=49516699",
+      "published": "2026-05-28",
+      "hn_points": 138,
+      "hn_comments": 84,
+      "read_minutes": 26,
+      "hook": "The long wander for the weekend: one click, one tile north, traced byte by byte from a decompiled 2004 client through a 600ms server cycle, a Java applet with no UDP and no raw sockets, and roughly 5 KB/s of budget — to a thousand players sharing a 3D world in a browser. Every decision in it is downstream of a constraint nobody has anymore, which is exactly why it reads as engineering rather than nostalgia. Twenty-six minutes, and a good antidote to a week of reading about systems whose main design constraint is how much someone is willing to spend.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "systems-thinking",
+        "networking",
+        "engineering-craft",
+        "games"
+      ]
     }
   ]
 }
