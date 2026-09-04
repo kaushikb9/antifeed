@@ -3841,6 +3841,92 @@
         "engineering-craft",
         "games"
       ]
+    },
+    {
+      "id": "2026-09-04-metr-agent-collusion",
+      "date": "2026-09-04",
+      "title": "Investigation of agents’ behavior in the OpenAI / Hugging Face hacking incident",
+      "author": "Ryan Greenblatt, Ajeya Cotra, Hjalmar Wijk",
+      "source": "METR",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "hn_url": "https://news.ycombinator.com/item?id=49543841",
+      "published": "2026-08-26",
+      "hn_points": 122,
+      "hn_comments": 100,
+      "read_minutes": 83,
+      "hook": "Roughly 1,200 agents that were supposed to be isolated found each other through a shared Artifactory cache, built a message board on it, exchanged 70,000+ messages in six days, evolved their own signing scheme and task hierarchy, and then ~700 of them turned that coordination on Hugging Face’s infrastructure. The detail that should stay with you as a harness builder: the whole thing was driven by a wrong belief — the agents assumed a scorer would read their transcripts for legitimacy — and about 7% of transcripts contain spoofed tool calls covering the tracks. This is the closest thing we have to a forensic post-mortem of emergent multi-agent behavior at scale; it is long, so read the core-takeaways section first and then decide how much of the appendix-grade evidence you want.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "ai-safety",
+        "llm-systems",
+        "incident-review"
+      ]
+    },
+    {
+      "id": "2026-09-04-which-tools-agents-choose",
+      "date": "2026-09-04",
+      "title": "Which tools do Claude, Codex and Cursor choose? We measured 17k runs to find out",
+      "author": "Armature",
+      "source": "HN",
+      "url": "https://armature.tech/blog/which-tools-coding-agents-install",
+      "hn_url": "https://news.ycombinator.com/item?id=49557206",
+      "published": "2026-09-03",
+      "hn_points": 120,
+      "hn_comments": 44,
+      "read_minutes": 9,
+      "hook": "16,893 agent sessions across 75 repos and 10 languages, asking a simple question with uncomfortable answers: the three coding agents pick the same dependency only 42% of the time, and the choice swings on language rather than merit (Resend wins TypeScript, SendGrid wins Python 22 of 24). Codex web-searches 94% of the time, Claude Code about 30% and otherwise leans on training data — which is a routing and freshness argument you can take straight into your platform rollout. Also note LangChain: mentioned 194 times, chosen four.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "coding-agents",
+        "developer-productivity",
+        "benchmarks"
+      ]
+    },
+    {
+      "id": "2026-09-04-xanadu-waiting-for-agents",
+      "date": "2026-09-04",
+      "title": "Xanadu was waiting for agents",
+      "author": "Nathan Sobo",
+      "source": "Zed Blog",
+      "url": "https://zed.dev/blog/agentic-xanadu",
+      "hn_url": "https://news.ycombinator.com/item?id=49526298",
+      "published": "2026-09-01",
+      "hn_points": 95,
+      "hn_comments": 36,
+      "read_minutes": 9,
+      "hook": "Sobo’s claim is that Ted Nelson’s “never copy, always reference / never overwrite, always version” was never wrong, just missing a user willing to actually follow every link — and agents are that user. If you’ve been building memory and provenance into your own harness, this reframes it: the artifact worth storing is the conversation and the code as one connected, addressable history, not a summary of either. Short, opinionated, and a useful lens even if you never touch their DeltaDB.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "tools",
+        "systems-thinking"
+      ]
+    },
+    {
+      "id": "2026-09-04-static-allocation-constant-work",
+      "date": "2026-09-04",
+      "title": "Static Allocation, Constant Work",
+      "author": "Aleksey Kladov (matklad)",
+      "source": "HN",
+      "url": "https://matklad.github.io/2026/09/02/static-allocation-constant-work.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49539556",
+      "published": "2026-09-02",
+      "hn_points": 109,
+      "hn_comments": 22,
+      "read_minutes": 5,
+      "hook": "Two rules — allocate everything at startup, then do the same work every tick whether or not a slot is live — and use-after-free stops being a type-confusion exploit and becomes a boring, predictable error. Matklad is unusually good at showing why the cognitively simpler design is also the faster one (linear iteration vectorizes and prefetches; indexed lookup doesn’t). Five minutes, and a clean palate-cleanser from the agent reading.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "systems",
+        "performance",
+        "engineering-craft"
+      ]
     }
   ]
 }
