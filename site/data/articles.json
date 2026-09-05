@@ -3927,6 +3927,94 @@
         "performance",
         "engineering-craft"
       ]
+    },
+    {
+      "id": "2026-09-05-formalizing-fermat",
+      "date": "2026-09-05",
+      "title": "Formalizing Fermat's Last Theorem",
+      "author": "Tianyi Peng and colleagues, Anthropic",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+      "hn_url": "https://news.ycombinator.com/item?id=49568506",
+      "published": "2026-09-04",
+      "hn_points": 550,
+      "hn_comments": 340,
+      "read_minutes": 16,
+      "hook": "Eleven days, 13 million lines of Lean, 29,500 intermediate theorems, ~6 billion output tokens — and at the end a machine-checked proof of Fermat's Last Theorem resting on Lean's three axioms. Read it as the cleanest existence proof yet for the thing you keep trying to engineer: an agent running for days without a human in the loop, because the domain hands it a verifier that never gets tired or agreeable. The detail that should stick is the 7% — failed attempts still contributed that share of the final proof's non-boilerplate lines, which is a very different economics of wasted work than you get in a codebase with no oracle. The HN thread argues hard about how much of this is Claude versus the blueprint and the mathlib scaffolding underneath, and that argument is exactly the one you'll be having about your own harness.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "llm-systems",
+        "formal-verification",
+        "long-horizon"
+      ]
+    },
+    {
+      "id": "2026-09-05-eebench-circuit-boards",
+      "date": "2026-09-05",
+      "title": "Can AI design circuit boards yet?",
+      "author": "atopile (EEBench)",
+      "source": "HN",
+      "url": "https://eebench.org/blog/can-ai-design-circuit-boards-yet/",
+      "hn_url": "https://news.ycombinator.com/item?id=49569366",
+      "published": "2026-09-04",
+      "hn_points": 204,
+      "hn_comments": 127,
+      "read_minutes": 8,
+      "hook": "The answer is 61.6% for the best model across 13 tasks, and the interesting part is the grading: real SPICE simulation, tolerance corners, ripple and transient response — not an LLM judge. One failure is worth the read on its own: a design that specified a 22 µF capacitor and delivered 11.4 µF at operating voltage, a domain fact no amount of plausible-sounding reasoning recovers. Useful to you as a template for how you'd score agents in a domain where physics, not taste, decides. Note the conflict — atopile built both the benchmark and the design language the agents write in.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "evaluation",
+        "benchmarks",
+        "hardware"
+      ]
+    },
+    {
+      "id": "2026-09-05-spotify-portal-token-shunt",
+      "date": "2026-09-05",
+      "title": "Portal by Spotify cut my Claude Code token usage by 90%",
+      "author": "Dimitri Mazmanov",
+      "source": "Spotify Engineering",
+      "url": "https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90",
+      "hn_url": "https://news.ycombinator.com/item?id=49571465",
+      "published": "2026-09-03",
+      "hn_points": 63,
+      "hn_comments": 26,
+      "read_minutes": 10,
+      "hook": "The mechanism is the point: a hook that blocks any read over ~350 lines and forces the delegation instead, so a cheap model eats the corpus and only its summary ever enters the expensive context. That's routing enforced at the harness layer rather than asked for in a prompt — the difference between a policy and a hope, and the thing most orgs rolling out coding agents get wrong. Half product post, half engineering post; read it for the shunt pattern and the boilerplate-generation split, not for Portal.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "coding-agents",
+        "harness-design",
+        "inference-cost",
+        "developer-productivity"
+      ]
+    },
+    {
+      "id": "2026-09-05-amiga-godot-68000",
+      "date": "2026-09-05",
+      "title": "Porting my 1993 Amiga game to Godot, with an LLM reading the 68000 assembly",
+      "author": "Rabah Shihab",
+      "source": "HN",
+      "url": "https://babyloniantwins.com/blog/porting-a-1993-amiga-game-to-godot/",
+      "hn_url": "https://news.ycombinator.com/item?id=49550375",
+      "published": "2026-09-01",
+      "hn_points": 367,
+      "hn_comments": 130,
+      "read_minutes": 24,
+      "hook": "72,758 lines of 68000 assembly, no documentation, and a model that recovered the compressed tile format in one pass and reconstructed byte-identical binaries after the author solved five assembler-dialect differences for it. The reason to read it is the failure list, which he writes down as honestly as the wins: a shove attack that hurt players through solid walls, a missed two-layer tile system that revealed secrets early, a stereo/mono miscalculation that truncated audio. Every one is the same class of bug — locally plausible code that violates an invariant living nowhere in the source. That's the legacy-migration story your org will run into, told by someone who owned the original code and could actually tell.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "coding-agents",
+        "legacy-code",
+        "engineering-craft",
+        "hands-on"
+      ]
     }
   ]
 }
