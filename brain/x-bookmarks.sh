@@ -21,7 +21,7 @@ CANDIDATES="$WORK/candidates.json"
 
 cp site/data/articles.json "$WORK/articles.before.json"
 
-claude -p "$(cat brain/prompt.md)
+caffeinate -i claude -p "$(cat brain/prompt.md)
 
 ---
 
@@ -42,6 +42,7 @@ Write every skipped candidate with its reason to brain/last-run.txt.
 CANDIDATES:
 $(cat "$CANDIDATES")" \
   --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*),Bash(python3:*)" \
+  --strict-mcp-config \
   --permission-mode acceptEdits
 
 node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))" \

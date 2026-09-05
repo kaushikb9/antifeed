@@ -15,7 +15,7 @@ if [ "$COUNT" -eq 0 ]; then
 fi
 echo "processing $COUNT inbox item(s)…"
 
-claude -p "$(cat brain/prompt.md)
+caffeinate -i claude -p "$(cat brain/prompt.md)
 
 ---
 
@@ -27,6 +27,7 @@ $(date +%F) with \"mine\": true. Tier honestly ('must' only if truly dope).
 MANUAL INBOX:
 $INBOX" \
   --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)" \
+  --strict-mcp-config \
   --permission-mode acceptEdits
 
 node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))" \

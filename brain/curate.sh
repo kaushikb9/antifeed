@@ -20,7 +20,7 @@ else
   TASK="DAILY MODE: today is $TODAY. Append exactly ONE tier='must' article dated $TODAY (publication date irrelevant — if nothing new clears the bar, promote an evergreen classic; never lower the bar). Optionally add 0-3 tier='more' entries, same date."
 fi
 
-claude -p "$(cat brain/prompt.md)
+caffeinate -i claude -p "$(cat brain/prompt.md)
 
 ---
 
@@ -29,6 +29,7 @@ $TASK
 MANUAL INBOX (process every item per the 'Manual inbox' section of the rules):
 $INBOX" \
   --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)" \
+  --strict-mcp-config \
   --permission-mode acceptEdits
 
 # validate before publishing
