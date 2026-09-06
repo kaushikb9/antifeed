@@ -136,6 +136,10 @@ function visibleList() {
     (a.tier || "must") === tab && !(tab === "more" && a.mine) && !isSkipped(a));
 }
 
+// a resurfaced entry moves to the day it was brought back; `date` stays the
+// day it was first curated
+const when = (a) => a.resurfaced || a.date;
+
 function renderToday(a) {
   if (!a) {
     $("#today").innerHTML = `<p class="empty">nothing unskipped left — run the brain.</p>`;
@@ -144,15 +148,18 @@ function renderToday(a) {
   const hn = a.hn_url
     ? `<a class="hn" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN thread ↗</a>` : "";
   const ever = a.evergreen ? ` <span class="badge">evergreen</span>` : "";
+  const back = a.resurfaced ? ` <span class="badge">${a.mine ? "from your shelf" : "resurfaced"}</span>` : "";
+  const note = a.resurfaced_note ? `<p class="note">${esc(a.resurfaced_note)}</p>` : "";
   $("#today").innerHTML = `
   <article class="card" data-id="${esc(a.id)}">
     <div class="kicker">today’s read
-      <span class="meta">${fmtDate(a.date)} · ${esc(a.source)} · ${a.read_minutes} min</span>
+      <span class="meta">${fmtDate(when(a))} · ${esc(a.source)} · ${a.read_minutes} min</span>
     </div>
-    <h3><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>${ever}</h3>
+    <h3><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>${ever}${back}</h3>
     <p class="byline">${esc(a.author)} · published ${fmtDate(a.published || a.date)}${
+      a.resurfaced ? ` · first curated ${fmtDate(a.date)}` : ""}${
       a.hn_points ? ` · ${a.hn_points} pts / ${a.hn_comments} comments on HN` : ""}</p>
-    <p class="hook">${esc(a.hook)}</p>
+    <p class="hook">${esc(a.hook)}</p>${note}
     <div class="actions">
       <a class="go" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
       ${hn}
@@ -189,13 +196,14 @@ function renderArchive(list) {
     const hn = a.hn_url
       ? ` · <a href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN</a>` : "";
     const ever = a.evergreen ? " · evergreen" : "";
+    const back = a.resurfaced ? (a.mine ? " · from your shelf" : " · resurfaced") : "";
     const open = expanded.has(a.id);
     return `<li data-id="${a.id}" class="${flags[a.id]?.r ? "read" : ""}${open ? " open" : ""}">
       <div class="row">
-        <span class="when" title="curated ${fmtDate(a.date)}">${fmtDate(a.date)}</span>
+        <span class="when" title="curated ${fmtDate(a.date)}">${fmtDate(when(a))}</span>
         <span class="t">
           <a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>
-          <div class="sub">${esc(a.source)} · ${a.read_minutes} min${hn}${ever}</div>
+          <div class="sub">${esc(a.source)} · ${a.read_minutes} min${hn}${ever}${back}</div>
         </span>
         <span class="mini">${flagBtns(a)}</span>
       </div>
@@ -205,7 +213,7 @@ function renderArchive(list) {
             <span class="meta">published ${fmtDate(a.published || a.date)} · curated ${fmtDate(a.date)} · ${a.read_minutes} min</span>
           </div>
           <p class="byline">${esc(a.author)}${a.hn_points ? ` · ${a.hn_points} pts / ${a.hn_comments} comments on HN` : ""}</p>
-          <p class="hook">${esc(a.hook)}</p>
+          <p class="hook">${esc(a.hook)}</p>${a.resurfaced_note ? `<p class="note">${esc(a.resurfaced_note)}</p>` : ""}
           <div class="actions">
             <a class="go" href="${esc(a.url)}" target="_blank" rel="noopener">Read it →</a>
             ${a.hn_url ? `<a class="hn" href="${esc(a.hn_url)}" target="_blank" rel="noopener">HN thread ↗</a>` : ""}
@@ -444,7 +452,7 @@ if (!token && tab === "mine") tab = "must";
 fetch("data/articles.json", { cache: "no-cache" })
   .then((r) => r.json())
   .then((d) => {
-    articles = d.articles.slice().sort((x, y) => y.date.localeCompare(x.date));
+    articles = d.articles.slice().sort((x, y) => when(y).localeCompare(when(x)));
     render();
     paintSync();
     syncLoad();

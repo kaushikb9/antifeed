@@ -21,7 +21,9 @@ timeout 90 git pull --rebase --autostash -q \
   || { echo "[auto] $(date '+%F %T') — pull failed/timed out, standing down this hour"; exit 0; }
 
 # already curated today? (source of truth: the data itself, not a stamp file)
-LATEST=$(node -e "const a=require('./site/data/articles.json').articles;console.log(a.map(x=>x.date).sort().pop())")
+# a resurfaced pick counts as today's curation too — otherwise a "nothing new,
+# resurface one" run would be repeated every hour
+LATEST=$(node -e "const a=require('./site/data/articles.json').articles;console.log(a.flatMap(x=>[x.date,x.resurfaced||'']).sort().pop())")
 [ "$LATEST" = "$(date +%F)" ] && exit 0
 
 # offline? try again next hour

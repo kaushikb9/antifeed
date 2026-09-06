@@ -18,8 +18,9 @@ A two-part system — a static reader and a curation brain:
   flag sync) and `inbox.js` (manually added links), both in KV behind a
   shared token. The client falls back to localStorage when offline.
 - **`brain/`** — curation brain, headless Claude Code driven by
-  `brain/prompt.md` + `brain/sources.md`. Appends picks to the JSON,
-  commits, clears the inbox, deploys.
+  `brain/prompt.md` + `brain/sources.md`. Appends at most one pick a day
+  to the JSON (or resurfaces an old one), retires what the pick
+  supersedes into `data/retired.json`, commits, clears the inbox, deploys.
 
 See `CLAUDE.md` for the full architecture notes, content-model rules, and
 hard-won gotchas; `IDEAS.md` for the backlog.
@@ -41,9 +42,38 @@ Logs land in `brain/auto.log` (gitignored). Manual runs still work anytime:
 
 ```sh
 ./brain/curate.sh              # daily: sweep sources + inbox, commit, deploy
+DRY=1 ./brain/curate.sh        # same brain run, but nothing committed or deployed
 ./brain/inbox.sh               # fast: process ONLY manually added links
 ./brain/curate.sh backfill 15  # one-time: seed ~15 picks from recent weeks
 ```
+
+### The budget, and why the list is pruned (2026-09-06)
+
+Six weeks in, the brain had added about four entries a day to a reader who
+reads two a week: 45 unread must picks, 13 hours of backlog, and the two
+most recent stars both filed as "more" while a third of the must picks were
+security write-ups KB skips every time. The rules changed:
+
+- **At most one must and at most one more per run, zero more by default.**
+  Nothing new is a valid outcome.
+- **Resurfacing instead of filling.** When nothing clears the bar, the brain
+  brings back one unread entry (starred first, then `mine`, then an old must
+  that fits the month) by setting `resurfaced` and `resurfaced_note` on it.
+  The app sorts by that date, badges the card "resurfaced" (or "from your
+  shelf" for a `mine` entry) and shows the note under the hook. `date` and
+  `id` never change.
+- **One entry per incident.** A new pick on the same event or paper as an
+  existing entry retires the weaker one: it moves from `articles.json` to
+  `data/retired.json` with a `retired_why`. Read, starred and `mine` entries
+  are never retired. The 2026-09-06 cut retired 101 of 193 entries the same
+  way; the file is the record.
+- **THIS MONTH block.** `curate.sh` builds it outside the sandbox from two
+  files the brain cannot reach itself: tag counts from kaizen's
+  `data/snapshot/todos.json` (tags only, never task text) and the starred /
+  read / skipped titles from `data/snapshot/flags.json`. It weights the
+  search; at most one pick a run leans on it. The old
+  `interest-profile.json` handoff is gone — kaizen stopped writing it on
+  2026-09-05 and the sandbox could never read it anyway.
 
 Links added via the **mine** tab's form land in the KV inbox, appear
 immediately as "awaiting the brain", and become full entries (`mine: true`,
@@ -156,9 +186,11 @@ first and "the last day" stops after one page.
 
 ## Sources
 
-HN (primary, with the comment thread always linked), my Substack follows
-(`brain/sources.md` — keep it updated), frontier AI company blogs, and
-AI-first product companies' engineering blogs. Evergreen classics welcome.
+HN (primary, with the comment thread always linked), then the short list of
+writers whose pieces KB has starred or added (`brain/sources.md` — a source
+earns its place there, it is not added on spec), then lab and company
+engineering blogs for write-ups only, never launches. Evergreen classics
+welcome.
 
 ### X/Twitter bookmarks (monthly-ish)
 
@@ -235,8 +267,8 @@ Total setup: ~30 minutes. Your picks, your hooks, your flags.
 ## Deliberately not built (yet)
 
 - Notes/reflections capture (revisit if the habit sticks)
-- Upvote/downvote feedback loop into the brain (parked; ✕ skip + ★ favorites
-  already carry most of the signal)
+- Upvote/downvote buttons (★ and ✕ already reach the brain through the
+  THIS MONTH block since 2026-09-06)
 - Automated daily trigger (run it with morning coffee; launchd/GitHub Action later)
 
 ## License
