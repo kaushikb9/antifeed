@@ -177,7 +177,7 @@ Schema per entry:
   "hn_points": 123,
   "hn_comments": 456,
   "read_minutes": 12,
-  "hook": "2-3 sentences addressed to Kaushik ...",
+  "hook": "Two or three short sentences, under 40 words, see Hook rules",
   "evergreen": false,
   "tier": "must",
   "tags": ["agents", "llm-systems"]
@@ -188,12 +188,23 @@ Rules:
 - `url` is ALWAYS the original article. If it came via HN (or has a notable
   HN thread — search Algolia by URL), also set `hn_url`. The comments are a
   gold mine; never drop that reference.
-- `hook` is the product. Not a summary — a pitch written **to Kaushik**:
-  what tension or insight the piece holds and why it matters for someone
-  running an agent rollout and building his own harness. Concrete beats
-  generic. If the HN thread is half the value, say so. Plain prose: no
-  "it's not X, it's Y" constructions, no rhetorical questions, no closing
-  flourish.
+- `hook` is the product, and it is read in a glance on a phone. Rules,
+  rewritten 2026-09-06 after the first six weeks of hooks ran 60 to 160
+  words and read as cryptic:
+  - **Under 40 words. Two or three short sentences.** One idea per sentence.
+  - Sentence one: what the piece claims or shows, with its single strongest
+    specific (a number, a mechanism, a named move). Sentence two: why it
+    matters to him, in plain words. An optional third: a caveat (vendor
+    post, long, discount the last third) or that the HN thread is worth it.
+  - Plain words a tired reader parses on the first pass. No "the exact thing
+    you build", no "half the value", no "load-bearing", no "the sharpest
+    statement yet". No em dashes, no rhetorical questions, no "it's not X,
+    it's Y", no closing flourish.
+  - Do not cross-reference other entries in the list ("pairs with
+    Wednesday's Pi post"). Each hook stands alone.
+  - For `mine` entries, the sharer earns at most four words ("José Valim's
+    must-read"), and only when that is the reason the link exists.
+  - Say the length only when it is over 25 minutes.
 - `read_minutes`: honest estimate from word count (~230 wpm).
 - `published` is the article's real publication date. `hn_points` and
   `hn_comments` are a snapshot at curation time; null when there's no thread.

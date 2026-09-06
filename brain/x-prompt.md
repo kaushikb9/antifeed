@@ -65,9 +65,9 @@ shopping for a subscription to fix this.
   flood the home page. `mine: true` + `tier: "must"` shows on the home page;
   `mine: true` + `tier: "more"` shows **only** in the mine tab. Default to
   `more`. Two or three `must` picks for a whole month's backlog is plenty.
-- Weave the sharer into the hook — "José Valim's 'stop whatever you are doing'",
-  "Mitchell Hashimoto called him a fine writer". That provenance is why the
-  bookmark exists and it makes the pitch concrete.
+- The sharer gets at most four words in the hook ("José Valim's must-read"),
+  and only when that provenance is why the bookmark exists. Hook rules in
+  `brain/prompt.md` apply here too: under 40 words, plain, standalone.
 
 ## What to skip (and leave bookmarked)
 
