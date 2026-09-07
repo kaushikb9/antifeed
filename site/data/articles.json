@@ -1935,6 +1935,29 @@
         "sre",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-07-openai-research-acceleration",
+      "date": "2026-09-07",
+      "title": "Research acceleration: The view inside OpenAI",
+      "author": "OpenAI",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai",
+      "hn_url": "https://news.ycombinator.com/item?id=49587217",
+      "published": "2026-09-06",
+      "hn_points": 117,
+      "hn_comments": 76,
+      "read_minutes": 12,
+      "hook": "OpenAI measured its own agent rollout: 3.1 agent-workdays per human workday, median researcher over $600 a day in inference. Over half of successful 4 to 8 hour tasks still needed a human to step in. Vendor post, real numbers.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "ai-adoption",
+        "measuring-ai-leverage",
+        "inference-cost",
+        "hn-thread"
+      ]
     }
   ]
 }
