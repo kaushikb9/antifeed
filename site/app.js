@@ -425,7 +425,18 @@ function applyTheme(id) {
   id ? localStorage.setItem(THEME_KEY, id) : localStorage.removeItem(THEME_KEY);
   document.querySelectorAll("#themes button").forEach((b) =>
     b.classList.toggle("sel", b.dataset.theme === id));
+  syncThemeColor();
 }
+
+// Installed-app title bars paint with theme-color; keep it equal to the page
+// background so the chrome blends with whichever preset is active. The two
+// media-tagged metas in index.html cover first paint; this covers switches.
+function syncThemeColor() {
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  if (!bg) return;
+  document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute("content", bg));
+}
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncThemeColor);
 
 (function initThemes() {
   const row = document.createElement("nav");
