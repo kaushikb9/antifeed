@@ -45,7 +45,19 @@
   "2026-07-25-last-technical-interview": {
     "r": true
   },
+  "2026-07-20-whos-afraid-chinese-models": {
+    "x": true
+  },
   "2026-08-05-3b1b-neural-networks": {
+    "x": true
+  },
+  "2026-08-06-eight-myths-genai": {
+    "x": true
+  },
+  "2026-08-07-agent-approval-blindspots": {
+    "x": true
+  },
+  "2026-08-08-managing-ai-coding-costs": {
     "x": true
   },
   "2026-08-10-hypomnemata": {
@@ -56,10 +68,37 @@
   "2026-08-11-agent-language-evals": {
     "f": true
   },
+  "2026-08-29-rumour-is-the-exploit": {
+    "x": true
+  },
+  "2026-08-30-keyboard-driven-guis": {
+    "x": true
+  },
+  "2026-09-01-p99-0ms-autocomplete": {
+    "x": true
+  },
+  "2026-09-04-metr-agent-collusion": {
+    "x": true
+  },
+  "2026-09-04-static-allocation-constant-work": {
+    "x": true
+  },
   "2026-09-04-which-tools-agents-choose": {
     "f": true
   },
+  "2026-09-05-amiga-godot-68000": {
+    "x": true
+  },
+  "2026-09-05-eebench-circuit-boards": {
+    "x": true
+  },
+  "2026-09-05-formalizing-fermat": {
+    "r": false
+  },
   "2026-09-05-spotify-portal-token-shunt": {
+    "f": true
+  },
+  "2026-09-06-collusion-wiki": {
     "f": true
   },
   "__probe": {
