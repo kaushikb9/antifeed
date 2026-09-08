@@ -1958,6 +1958,29 @@
         "inference-cost",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-08-ramp-background-agent",
+      "date": "2026-09-08",
+      "title": "Why We Built Our Own Background Agent",
+      "author": "Zach Bruggeman, Jason Quense, Rahul Sengottuvelu",
+      "source": "Ramp Builders",
+      "url": "https://builders.ramp.com/post/why-we-built-our-background-agent",
+      "hn_url": "https://news.ycombinator.com/item?id=46589842",
+      "published": "2026-01-12",
+      "hn_points": 122,
+      "hn_comments": 27,
+      "read_minutes": 9,
+      "hook": "Ramp built its own background coding agent. With no mandate it now writes about 30% of merged PRs, reached in a couple of months. Adoption came from instant sandboxes and sessions that run in public.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "ai-adoption",
+        "internal-platform",
+        "harness-design",
+        "hn-thread"
+      ]
     }
   ]
 }
