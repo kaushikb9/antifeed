@@ -1981,6 +1981,30 @@
         "harness-design",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-09-danluu-agentic-testing",
+      "date": "2026-09-09",
+      "title": "How well do agents use test/verification techniques?",
+      "author": "Dan Luu",
+      "source": "danluu.com",
+      "url": "https://danluu.com/agentic-testing/",
+      "hn_url": "https://news.ycombinator.com/item?id=49605246",
+      "published": "2026-09-07",
+      "hn_points": 177,
+      "hn_comments": 64,
+      "read_minutes": 48,
+      "hook": "Dan Luu ran 80 Codex runs per condition across 26 testing prompts. Naming TDD, fuzzing or Lean barely beat no instructions, and TDD did worse. About 50 minutes, and the appendix on writing skills alone earns it.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "coding-agents",
+        "evals",
+        "testing",
+        "skills",
+        "hn-thread"
+      ]
     }
   ]
 }
