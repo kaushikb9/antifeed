@@ -2005,6 +2005,50 @@
         "skills",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-10-ramp-oca-on-call-assistant",
+      "date": "2026-09-10",
+      "title": "How we built OCA, our AI on-call assistant",
+      "author": "Richard Marmorstein and Austin Ray",
+      "source": "Ramp Engineering",
+      "url": "https://builders.ramp.com/post/how-we-built-oca-our-ai-on-call-assistant",
+      "hn_url": null,
+      "published": "2026-09-09",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 6,
+      "hook": "Ramp's on-call agent assisted 575 of 1,220 incident fix PRs in four weeks, with about half the engineer time. The harness lessons transfer: hooks that inject instructions right before the agent acts, and a helpful rating after every incident.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness-design",
+        "internal-platform",
+        "incidents",
+        "measurement"
+      ]
+    },
+    {
+      "id": "2026-09-10-ramp-thompson-sampling-routing",
+      "date": "2026-09-10",
+      "title": "Online Learning for Cost-Efficient LLM Routing",
+      "author": "Kedar Thakkar",
+      "source": "Ramp Engineering",
+      "url": "https://builders.ramp.com/post/thompson-sampling-model-routing",
+      "hn_url": null,
+      "published": "2026-07-20",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 4,
+      "hook": "Ramp's gateway learns each model's live latency and failure rate, then picks the cheapest route that will still make the caller's deadline. It cut LLM spend 25% with no quality loss. Four minutes, one idea you could copy.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "inference-cost",
+        "model-routing",
+        "llm-gateway"
+      ]
     }
   ]
 }
