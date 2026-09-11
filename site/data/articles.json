@@ -2049,6 +2049,28 @@
         "model-routing",
         "llm-gateway"
       ]
+    },
+    {
+      "id": "2026-09-11-shopify-back-to-native",
+      "date": "2026-09-11",
+      "title": "Native is now the future of mobile at Shopify",
+      "author": "Mustafa Ali",
+      "source": "Shopify Engineering",
+      "url": "https://shopify.engineering/back-to-native",
+      "hn_url": "https://news.ycombinator.com/item?id=49643982",
+      "published": "2026-09-10",
+      "hn_points": 773,
+      "hn_comments": 524,
+      "read_minutes": 11,
+      "hook": "Shopify is leaving React Native for Swift and Kotlin because agents now do the second platform. The Shop app was rebuilt in 12 weeks through small, tested, human-approved checkpoints. A real org reversing a structural bet. Thread worth it.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "ai-adoption",
+        "org-design",
+        "harness"
+      ]
     }
   ]
 }
