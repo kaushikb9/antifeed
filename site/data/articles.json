@@ -2071,6 +2071,29 @@
         "org-design",
         "harness"
       ]
+    },
+    {
+      "id": "2026-09-12-quesma-rtk-token-savings",
+      "date": "2026-09-12",
+      "title": "RTK reports huge token savings, but our cost benchmarks disagree",
+      "author": "Bartosz Kotrys and Jacek Migdal",
+      "source": "Quesma",
+      "url": "https://quesma.com/blog/does-rtk-make-ai-coding-cheaper/",
+      "hn_url": "https://news.ycombinator.com/item?id=49656471",
+      "published": "2026-09-11",
+      "hn_points": 165,
+      "hn_comments": 80,
+      "read_minutes": 12,
+      "hook": "Quesma ran 1,740 Terminal-Bench attempts with and without RTK, which compresses shell output for agents. Costs moved under 5% either way and pass rates fell. Hold every token-saving claim to this test. The HN thread is worth it.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "inference-cost",
+        "harness-design",
+        "benchmarks",
+        "developer-productivity"
+      ]
     }
   ]
 }
