@@ -2094,6 +2094,29 @@
         "benchmarks",
         "developer-productivity"
       ]
+    },
+    {
+      "id": "2026-09-13-pragmatic-engineer-code-reviews",
+      "date": "2026-09-13",
+      "title": "What is happening with code reviews?",
+      "author": "Gergely Orosz",
+      "source": "The Pragmatic Engineer",
+      "url": "https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews",
+      "hn_url": null,
+      "published": "2026-09-08",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 20,
+      "hook": "GitHub pull requests are up fivefold in three years. Seven teams show how review changed to cope: triage by blast radius, review the plan not the diff, humans reviewing AI reviews. Approaches four to seven sit behind the paywall.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "developer-productivity",
+        "engineering-management",
+        "code-review",
+        "coding-agents"
+      ]
     }
   ]
 }
