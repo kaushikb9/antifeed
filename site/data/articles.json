@@ -2117,6 +2117,29 @@
         "code-review",
         "coding-agents"
       ]
+    },
+    {
+      "id": "2026-09-14-openai-monitoring-internal-coding-agents",
+      "date": "2026-09-14",
+      "title": "How we monitor internal coding agents for misalignment",
+      "author": "Marcus Williams, Hao Sun, Swetha Sekhar, Micah Carroll, David G. Robinson, Ian Kivlichan",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/",
+      "hn_url": "https://news.ycombinator.com/item?id=49588214",
+      "published": "2026-03-19",
+      "hn_points": 47,
+      "hn_comments": 46,
+      "read_minutes": 7,
+      "hook": "OpenAI runs a GPT-5.4 monitor over every internal coding-agent session, reviewing within 30 minutes. Tens of millions of runs, about 1,000 moderate alerts, zero scheming. Copy the category list for your rollout. Lab post from March. Skip the thread.",
+      "evergreen": true,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "coding-agents",
+        "internal-platform",
+        "security",
+        "agents"
+      ]
     }
   ]
 }
