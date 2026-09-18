@@ -104,6 +104,21 @@
   "2026-09-08-ramp-background-agent": {
     "r": true
   },
+  "2026-09-09-danluu-agentic-testing": {
+    "f": true
+  },
+  "2026-09-13-pragmatic-engineer-code-reviews": {
+    "f": true
+  },
+  "2026-09-14-openai-monitoring-internal-coding-agents": {
+    "f": true
+  },
+  "2026-09-15-entelligence-luna-vs-astra-code-review": {
+    "f": true
+  },
+  "2026-09-17-harnesstax-berkeley": {
+    "f": true
+  },
   "__probe": {
     "r": false
   }
