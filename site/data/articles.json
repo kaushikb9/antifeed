@@ -2186,6 +2186,29 @@
         "evals",
         "benchmarks"
       ]
+    },
+    {
+      "id": "2026-09-18-glm-infra-agent-dense-feedback",
+      "date": "2026-09-18",
+      "title": "Toward Recursive Self-Improvement: How GLM Built Its Own Inference Infrastructure",
+      "author": "Z.ai",
+      "source": "Z.ai",
+      "url": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+      "hn_url": "https://news.ycombinator.com/item?id=49737922",
+      "published": "2026-09-17",
+      "hn_points": 377,
+      "hn_comments": 264,
+      "read_minutes": 15,
+      "hook": "Z.ai had an agent take GLM-5.3-Flash from first run to production on 100,000 Chinese chips in two weeks, tripling throughput. The transferable part is the harness: local, cheap, verifiable feedback beats logs. Vendor post; skip the recursive self-improvement framing.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "harness-design",
+        "inference-cost",
+        "coding-agents",
+        "agent-feedback",
+        "serving"
+      ]
     }
   ]
 }
