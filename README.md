@@ -15,8 +15,10 @@ A two-part system — a static reader and a curation brain:
   ✕ skip (neutral hide-from-feed, not a downvote; the ✕ filter view
   un-skips). The whole "database" is `site/data/articles.json`.
 - **`functions/api/`** — Cloudflare Pages Functions: `flags.js` (cross-device
-  flag sync) and `inbox.js` (manually added links), both in KV behind a
-  shared token. The client falls back to localStorage when offline.
+  flag sync) and `inbox.js` (manually added links), both in KV behind
+  kb-auth (`auth/`: a paired device's cookie, or `Authorization: Bearer
+  $KB_TOKEN`). The reader itself is public. The client falls back to
+  localStorage when offline.
 - **`brain/`** — curation brain, headless Claude Code driven by
   `brain/prompt.md` + `brain/sources.md`. Appends at most one pick a day
   to the JSON (or resurfaces an old one), retires what the pick
@@ -88,16 +90,17 @@ Two capture paths besides the mine-tab form, both feeding the same inbox:
   form) to the bookmarks bar. Clicking it on any page opens
   `antifeed.pages.dev/?add=<url>&t=<title>` in a new tab (`#add=` also
   still works, for bookmarklets dragged before the query switch); the app
-  posts it to the inbox using the sync token already in that browser's
-  localStorage (so no token ever lives in the bookmarklet) and lands on
-  the mine tab with the pending row visible. If that browser context has
-  no token yet (bookmarks sync across profiles and machines; localStorage
-  doesn't), it prompts for the sync token inline and completes the clip.
-- **iOS share sheet** — build once in Shortcuts (~3 min, needs the token):
+  posts it to the inbox with the pairing cookie that browser already holds
+  (nothing lives in the bookmarklet) and lands on the mine tab with the
+  pending row visible. An unpaired browser (bookmarks sync across profiles
+  and machines; pairing doesn't) gets a toast that the clip wasn't saved
+  and nothing more — the reader never mentions pairing; `/usage/` does.
+- **iOS share sheet** — build once in Shortcuts (~3 min; this is the one
+  place the token itself sits on the phone, inside the Shortcut):
   1. New shortcut → name it "Save to antifeed" → shortcut settings →
      enable **Show in Share Sheet**, accept **URLs** and **Safari web pages**.
   2. Add **Get Contents of URL**: URL `https://antifeed.pages.dev/api/inbox`,
-     Method **POST**, Header `x-af-token` = the sync token,
+     Method **POST**, Header `Authorization` = `Bearer <KB_TOKEN>`,
      Request Body **JSON** with one field: `url` = **Shortcut Input**.
   3. (Optional) Add **Show Notification** ("saved to antifeed").
   Then any app's share sheet → Save to antifeed.
@@ -118,23 +121,24 @@ First time:
    it stays on your machine), then
    `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
    `wrangler.toml`
-3. Deploy once (creates the project), then set the sync token:
-   `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
-   (pick any long random string)
-4. On each device, tap "sync off — connect" in the footer and enter that token.
-   First connect merges the device's local flags into KV.
+3. Deploy once (creates the project), then set the secret:
+   `npx wrangler pages secret put KB_TOKEN --project-name antifeed`
+   (the same value as in `~/.config/kb/config.json`; see `auth/README.md`)
+4. Pair each device: `npm run pair` prints a one-time link; open it on the
+   device. First sync merges the device's local flags into KV.
 
 Custom domain (e.g. `antifeed.kaushikbhat.com`) is added in the Cloudflare
 dashboard under the Pages project → Custom domains.
 
-Local dev with the sync API: `npx wrangler pages dev` (token `dev-token`
-via `.dev.vars`, KV simulated locally).
+Local dev with the sync API: `npm run dev` (`KB_TOKEN=devtoken`, KV
+simulated locally); pair the local browser with
+`node auth/pair.mjs http://localhost:8788`.
 
 ## Usage — was the read read?
 
 `/usage/` is a fourth page and it is **unlisted on purpose**: nothing links to
 it, it is `noindex`, and `/api/telemetry` answers **404** — not 401 — to anyone
-without the sync token, so the endpoint does not confirm it exists. Keep it out
+from an unpaired device, so the endpoint does not confirm it exists. Keep it out
 of the nav, the footer and any sitemap.
 
 It exists because antifeed publishes exactly one thing a day and had no way of
@@ -146,7 +150,7 @@ of opens. That distinction is load-bearing and was found by shipping the wrong
 one: a reader who opens the article and then its HN thread produces two opens
 against one visit, and the first version of the page proudly reported
 `200% reached the read`. A reader who got there once got there. Identity is
-whatever the server recorded — `kb` when the token proved it, otherwise the
+whatever the server recorded — `kb` when the pairing cookie proved it, otherwise the
 day's rotating stranger hash — so across a day boundary the same stranger
 counts twice, which the page says out loud.
 
@@ -164,10 +168,10 @@ if the thread consistently beats the article, the curation is picking arguments
 to read about rather than essays to read, and the page says so in a sentence.
 
 **What the client is allowed to say is only what happened.** Everything that
-could be lied about, the server works out for itself: who from the token it
+could be lied about, the server works out for itself: who from the cookie it
 verifies (never a flag in the body), where from Cloudflare's own headers, when
 from the server clock. **No IP is stored**, in a field or in a key. Traffic
-without the token gets six characters of HMAC over ip+UA salted with today's
+from an unpaired device gets six characters of HMAC over ip+UA salted with today's
 date — enough to say "three strangers this week", not enough to follow anybody.
 
 Two things that are noise control and **not** security controls, and should
@@ -226,11 +230,11 @@ brain scripts push after committing — no duplicate picks).
    then verify with `npx wrangler whoami`. Create the local config:
    `cp wrangler.toml.example wrangler.toml`, then paste the existing KV id
    from `npx wrangler kv namespace list` (wrangler.toml is gitignored).
-5. Sync token: `.af-token.local` at repo root is gitignored and cannot be
-   recovered from Cloudflare. Ask KB to copy it from the other laptop
-   (AirDrop/scp). Verify:
-   `curl -sf -H "x-af-token: $(cat .af-token.local)" https://antifeed.pages.dev/api/flags`
-   → must return JSON, not "unauthorized".
+5. The secret: `~/.config/kb/config.json` (`{ token }`) cannot be recovered
+   from Cloudflare. Ask KB to copy it from the other laptop (AirDrop/scp).
+   Verify:
+   `curl -sf -H "Authorization: Bearer $(jq -r .token ~/.config/kb/config.json)" https://antifeed.pages.dev/api/flags`
+   → must return JSON, not a 401.
 6. Install the auto-curation agent. First replace `/Users/YOURNAME` inside
    `brain/com.kb.antifeed.plist` with this repo's absolute path. Then:
    `cp brain/com.kb.antifeed.plist ~/Library/LaunchAgents/`
@@ -254,13 +258,14 @@ it's aimed at one person. To run it for yourself:
    `npx wrangler kv namespace create ANTIFEED_KV` → paste the id into
    `wrangler.toml` (gitignored — your infra ids stay local).
 4. Deploy once (`./deploy.sh` creates the Pages project), then set your
-   sync token: `npx wrangler pages secret put AF_TOKEN --project-name antifeed`
-   (any long random string; also save it to `.af-token.local` — gitignored —
-   so the brain scripts can reach your inbox). Update `BASE_URL` in
-   `brain/*.sh` to your pages.dev URL.
+   secret: `npx wrangler pages secret put KB_TOKEN --project-name antifeed`
+   (any long random string; also save it as `{ "token": "…" }` in
+   `~/.config/kb/config.json` so the brain scripts can reach your inbox).
+   Update `BASE_URL` in `brain/*.sh` and the host in `package.json`'s `pair`
+   to your pages.dev URL.
 5. Seed your backlog: `./brain/curate.sh backfill 15`. Then daily:
    `./brain/curate.sh`. Requires [Claude Code](https://claude.com/claude-code).
-6. On each device, tap "sync off — connect" in the footer, paste your token.
+6. Pair each device: `npm run pair`, open the printed link on the device.
 
 Total setup: ~30 minutes. Your picks, your hooks, your flags.
 

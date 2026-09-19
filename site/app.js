@@ -1,5 +1,4 @@
 const LS_KEY = "antifeed:flags";
-const TOKEN_KEY = "antifeed:token";
 const MERGED_KEY = "antifeed:merged";
 const QUEUE_KEY = "antifeed:queue";
 const ICONS = {
@@ -17,7 +16,10 @@ let articles = [];
 let flags = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]");
 let tab = "must"; // must | more | mine | f (starred) | r (read) | x (skipped)
-let token = localStorage.getItem(TOKEN_KEY);
+// Paired = this browser holds the kb_session cookie. The page cannot read it
+// (HttpOnly), so the first /api call is the probe: 401 means not paired.
+// Until it answers, `paired` is null. The page never shows this state.
+let paired = null;
 let synced = false;
 let inbox = [];
 const expanded = new Set();
@@ -43,7 +45,6 @@ async function flushQueue() {
       saveQueue();
     } catch (e) {
       synced = false;
-      paintSync();
       return false;
     }
   }
@@ -53,15 +54,17 @@ async function flushQueue() {
 async function api(path, method, body) {
   const r = await fetch("api/" + path, {
     method,
-    headers: { "x-af-token": token, "content-type": "application/json" },
+    headers: { "content-type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
   });
+  if (r.status === 401) { paired = false; throw new Error("unpaired"); }
   if (!r.ok) throw new Error("api " + r.status);
+  paired = true;
   return r.json();
 }
 
 async function syncLoad() {
-  if (!token) return;
+  if (paired === false) return;
   try {
     if (!localStorage.getItem(MERGED_KEY)) {
       // first connect from this device: push local flags up, take the union
@@ -80,8 +83,10 @@ async function syncLoad() {
   } catch (e) {
     synced = false;
   }
+  // "mine" is personal — on an unpaired device the tab has no point
+  $('#tabs [data-tab="mine"]').hidden = !paired;
+  if (!paired && tab === "mine") setTab("must");
   render();
-  paintSync();
 }
 
 function toggleFlag(id, key) {
@@ -92,9 +97,9 @@ function toggleFlag(id, key) {
   queue.push({ id, key, value: f[key] });
   saveQueue();
   render();
-  if (token) {
+  if (paired) {
     flushQueue().then((ok) => {
-      if (ok && !synced) { synced = true; paintSync(); }
+      if (ok && !synced) synced = true;
     });
   }
 }
@@ -281,15 +286,12 @@ async function handleClip() {
   const title = (p.get("t") || "").trim();
   if (!url) return;
   history.replaceState(null, "", location.pathname);
-  if (!token) {
-    // bookmarks sync across browsers/profiles; the token doesn't — connect
-    // right here so the clip isn't lost
-    const t = prompt("connect sync to save this clip — sync token (same one on every device):");
-    if (!t) return;
-    token = t.trim();
-    localStorage.setItem(TOKEN_KEY, token);
-    $('#tabs [data-tab="mine"]').hidden = false;
-    await syncLoad();
+  if (paired === null) await syncLoad();
+  if (!paired) {
+    // the clip would be lost; the reader is public and says nothing about
+    // pairing, so the toast is the whole message (the how is on /usage/)
+    toast("this device isn't paired — the clip wasn't saved");
+    return;
   }
   setTab("mine");
   const norm = (s) => s.replace(/\/+$/, "");
@@ -304,36 +306,12 @@ async function handleClip() {
   }
 }
 
-/* ---- sync control ---- */
-
-function paintSync() {
-  $("#sync-btn").textContent = !token ? "sync off — connect"
-    : synced ? "sync on" : "sync error — retry";
-}
-
-$("#sync-btn").addEventListener("click", () => {
-  if (!token) {
-    const t = prompt("sync token (same one on every device):");
-    if (!t) return;
-    localStorage.setItem(TOKEN_KEY, t.trim());
-    location.reload();
-  } else if (!synced) {
-    // the error state must not be a dead end: a wrong or rotated token used
-    // to leave "retry" looping forever with no way to enter a new one
-    if (confirm("Sync is failing. Re-enter the token? (Cancel just retries.)")) {
-      const t = prompt("sync token (same one on every device):");
-      if (!t) return;
-      localStorage.setItem(TOKEN_KEY, t.trim());
-      location.reload();
-    } else {
-      syncLoad();
-    }
-  } else if (confirm("Disconnect sync on this device?")) {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(MERGED_KEY);
-    location.reload();
-  }
-});
+/* ---- sync has no control ----
+   The reader is public and shows nothing about pairing or sync: a paired
+   device syncs silently, an unpaired one is just a reader. The only place
+   pairing state is visible is /usage/, which is unlisted. A sync error
+   degrades to local flags and says nothing (INVARIANTS: failure is silent
+   and empty); the next load or toggle retries. */
 
 /* ---- wiring ---- */
 
@@ -385,7 +363,7 @@ $("#archive").addEventListener("click", (e) => {
 
 $("#add-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (!token) { alert("connect sync first (footer) — saved links live in the shared store."); return; }
+  if (!paired) { toast("this device isn't paired — links aren't saved"); return; }
   let url = $("#add-url").value.trim();
   if (!url) return;
   if (!/^https?:\/\//i.test(url)) url = "https://" + url;
@@ -456,16 +434,11 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncThemeC
   applyTheme(THEMES.some(([id]) => id === mapped) ? mapped : "");
 })();
 
-// "mine" is personal — without sync (no token) the tab has no point
-$('#tabs [data-tab="mine"]').hidden = !token;
-if (!token && tab === "mine") tab = "must";
-
 fetch("data/articles.json", { cache: "no-cache" })
   .then((r) => r.json())
   .then((d) => {
     articles = d.articles.slice().sort((x, y) => when(y).localeCompare(when(x)));
     render();
-    paintSync();
     syncLoad();
     handleClip();
   })

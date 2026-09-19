@@ -3,12 +3,15 @@
 // duplicated into KV metadata, letting GET read everything with list() alone.
 // The pre-migration blob under `flags` stays as a read-only base layer —
 // per-article keys shadow it, so no migration run is needed.
+import schema from "../../brain/schema.json" with { type: "json" };
+
 const LEGACY_KEY = "flags";
 const PREFIX = "flag:";
+// The flag vocabulary comes from the schema, so the API can never store a key
+// the reader does not draw (or kaizen does not write).
+const KEYS = new Set(schema.flags.keys);
 
-function authed(request, env) {
-  return env.AF_TOKEN && request.headers.get("x-af-token") === env.AF_TOKEN;
-}
+// Auth is the middleware's job (functions/_middleware.js gates this route).
 
 async function readAll(env) {
   const flags = (await env.ANTIFEED_KV.get(LEGACY_KEY, "json")) || {};
@@ -33,24 +36,24 @@ async function writeOne(env, id, f) {
   await env.ANTIFEED_KV.put(PREFIX + id, JSON.stringify(f), { metadata: f });
 }
 
-export async function onRequestGet({ request, env }) {
-  if (!authed(request, env)) return new Response("unauthorized", { status: 401 });
+export async function onRequestGet({ env }) {
   return Response.json({ flags: await readAll(env) });
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!authed(request, env)) return new Response("unauthorized", { status: 401 });
   const body = await request.json();
   const legacy = (await env.ANTIFEED_KV.get(LEGACY_KEY, "json")) || {};
   const written = {};
   if (body.merge) {
     // one-time import of a device's local flags: OR them into the server copy
     for (const [id, f] of Object.entries(body.merge)) {
-      const cur = Object.assign(await readOne(env, legacy, id), f);
+      const known = Object.fromEntries(Object.entries(f).filter(([k]) => KEYS.has(k)).map(([k, v]) => [k, !!v]));
+      const cur = Object.assign(await readOne(env, legacy, id), known);
       await writeOne(env, id, cur);
       written[id] = cur;
     }
   } else if (body.id && body.key) {
+    if (!KEYS.has(body.key)) return new Response(`bad request: key must be one of ${[...KEYS].join("|")}`, { status: 400 });
     const f = await readOne(env, legacy, body.id);
     f[body.key] = !!body.value;
     await writeOne(env, body.id, f);

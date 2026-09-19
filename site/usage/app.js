@@ -1,8 +1,8 @@
 /* usage — was the read read.
    =========================================================================
    The third page, and the only one that is not the product: nothing links
-   here, and it is empty for everyone but KB, whose sync token doubles as the
-   admin key. /api/telemetry answers 404 to anybody else, so this page cannot
+   here, and it is empty for everyone but KB, whose paired device doubles as
+   the admin key. /api/telemetry answers 404 to anybody else, so this page cannot
    show anything it was not given.
 
    The aggregation lives here rather than in the Function on purpose. The
@@ -34,7 +34,6 @@
 (function () {
   "use strict";
 
-  var TOKEN_KEY = "antifeed:token";
   var main = document.getElementById("main");
 
   var RANGES = [
@@ -149,7 +148,7 @@
        not more reached.
 
        Identity here is the same thing the server recorded — "kb" when the
-       token proved it, otherwise the day's rotating stranger hash — so this
+       cookie proved it, otherwise the day's rotating stranger hash — so this
        is as honest as the data underneath and no more: across a day boundary
        the same stranger counts twice, which is stated on the page.
 
@@ -294,7 +293,7 @@
 
     html += '<p class="u-note">One line per page view, per tab tap and per link ' +
       "opened, kept ninety days, then forgotten automatically. No IP is stored and " +
-      "no id is minted in the page: a visit without the sync token is counted as a " +
+      "no id is minted in the page: a visit from an unpaired device is counted as a " +
       "stranger under a hash that changes daily, so the same person tomorrow is a " +
       "new one. Automated visits — the bookmark sweep, /browse dogfooding — are " +
       "dropped server-side rather than counted.</p>";
@@ -365,17 +364,9 @@
   /* ---------------- load ---------------- */
 
   function load() {
-    var token;
-    try { token = localStorage.getItem(TOKEN_KEY); } catch (err) { token = null; }
-
-    if (!token) {
-      main.innerHTML =
-        '<p class="empty">This page needs the sync token. Connect sync on ' +
-        '<a href="../">today</a> first — it is the same token on every device.</p>';
-      return;
-    }
-
-    fetch("/api/telemetry?days=" + range, { headers: { "x-af-token": token } })
+    // The pairing cookie travels on its own; an unpaired device gets the
+    // same 404 a stranger does, and the honest empty state below.
+    fetch("/api/telemetry?days=" + range)
       .then(function (r) {
         if (r.status === 404) throw new Error("nope");
         if (!r.ok) throw new Error("http " + r.status);
@@ -384,7 +375,9 @@
       .then(render)
       .catch(function (err) {
         main.innerHTML = err && err.message === "nope"
-          ? '<p class="empty">Nothing here.</p>'
+          ? '<p class="empty">This device isn\'t paired. Pair it from the laptop ' +
+            '(<code>npm run pair</code> in <code>~/Code/antifeed</code>, open the link here); ' +
+            'flags and clips then sync, and this page fills in.</p>'
           : '<p class="empty">Could not load usage. Reload to try again.</p>';
       });
   }

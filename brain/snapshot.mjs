@@ -4,12 +4,13 @@
 // restore path. Read-only against the API: it cannot corrupt anything.
 // (Deliberately under data/, not site/ — reading behaviour stays private.)
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { homedir } from "node:os";
 
-const token = readFileSync(".af-token.local", "utf8").trim();
+const token = JSON.parse(readFileSync(`${homedir()}/.config/kb/config.json`, "utf8")).token;
 const BASE = "https://antifeed.pages.dev";
 
 async function get(path) {
-  const res = await fetch(`${BASE}/api/${path}`, { headers: { "x-af-token": token } });
+  const res = await fetch(`${BASE}/api/${path}`, { headers: { Authorization: `Bearer ${token}` } });
   if (!res.ok) throw new Error(`GET /api/${path} → ${res.status}`);
   return res.json();
 }

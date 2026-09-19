@@ -5,7 +5,8 @@ name = "antifeed"
 pages_build_output_dir = "site"
 compatibility_date = "2026-07-01"
 
-# AF_TOKEN secret is set via: npx wrangler pages secret put AF_TOKEN --project-name antifeed
+# KB_TOKEN — the one secret shared by every KB app (see auth/README.md):
+#   npx wrangler pages secret put KB_TOKEN --project-name antifeed
 # (secrets attach at deploy time — redeploy after changing)
 [[kv_namespaces]]
 binding = "ANTIFEED_KV"

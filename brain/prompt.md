@@ -162,7 +162,9 @@ doubt, add nothing.
 ## Output
 
 Edit `site/data/articles.json` — append new entries to the `articles` array.
-Schema per entry:
+The authoritative shape is `brain/schema.json` — read it; it is closed (no
+fields beyond the ones it lists) and `node brain/validate.mjs` enforces it.
+An entry looks like this:
 
 ```json
 {
@@ -211,8 +213,8 @@ Rules:
 - Verify every URL actually loads (WebFetch) before including it.
 - The only edits allowed to existing entries are the two resurfacing fields
   and a retirement (move to `retired.json`). Nothing else changes.
-- After editing, run
-  `node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'));JSON.parse(require('fs').readFileSync('data/retired.json'))"`
-  via Bash to confirm both files are valid JSON.
+- After editing, run `node brain/validate.mjs` via Bash. It checks both files
+  against `brain/schema.json` and names every problem; fix each one and run it
+  again until it prints `ok`. Nothing is committed while it fails.
 - Append a short dated note to `brain/last-run.txt`: what went in, what was
   resurfaced or retired and why, what was deliberately passed over.

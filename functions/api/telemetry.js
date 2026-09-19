@@ -9,9 +9,10 @@
    WHAT IT IS HONEST ABOUT. The client says only WHAT HAPPENED. Everything
    that could be lied about the server works out for itself:
 
-     who      whether the post carried a VALID AF_TOKEN — checked here, never
-              believed from a flag in the body. A reader without it is
-              nobody, not "anonymous user 12".
+     who      whether the request is authenticated (a paired device's cookie,
+              or a Bearer KB_TOKEN) — checked here with kb-auth, never believed
+              from a flag in the body. A reader without it is nobody, not
+              "anonymous user 12".
      where    request.cf.country / .city, which Cloudflare hands us free.
      device   the UA reduced to one coarse word. Not a fingerprint.
      when     the server clock.
@@ -36,10 +37,13 @@
    listing already filters by its own prefix. A second namespace would buy
    nothing but another id to keep in wrangler.toml.
 
-   POST { e, p, s, k }  -> 204, always. Telemetry never breaks the page.
-   GET  ?days=7         -> { events } to a caller with x-af-token; 404 to
-                           everybody else.
+   POST { e, p, s }     -> 204, always. Telemetry never breaks the page.
+   GET  ?days=7         -> { events } to an authenticated caller; 404 to
+                           everybody else. The middleware leaves this route
+                           open on purpose so strangers can POST.
    ========================================================================= */
+
+import { authenticate } from "../../auth/kb-auth.js";
 
 const TTL = 60 * 60 * 24 * 90; // ninety days, then it forgets by itself
 const KEY_SPACE = 1e13; // comfortably past any ms timestamp this century
@@ -113,7 +117,7 @@ async function dailyId(env, request) {
   const ua = request.headers.get("user-agent") || "";
   if (!ip && !ua) return null;
   const day = new Date().toISOString().slice(0, 10);
-  return hex(await hmac(String(env.AF_TOKEN || "no-secret"), day + "|" + ip + "|" + ua), 3);
+  return hex(await hmac(String(env.KB_TOKEN || "no-secret"), day + "|" + ip + "|" + ua), 3);
 }
 
 /* Counts one bucket against a cap, and records the attempt.
@@ -131,7 +135,7 @@ async function overRate(env, request) {
   const ip = request.headers.get("cf-connecting-ip") || "";
   if (!ip) return false;
   const day = new Date().toISOString().slice(0, 10);
-  const id = hex(await hmac(String(env.AF_TOKEN || "no-secret"), day + "|" + ip), 3);
+  const id = hex(await hmac(String(env.KB_TOKEN || "no-secret"), day + "|" + ip), 3);
   const k = "telrate:" + id;
   const n = Number(await env.ANTIFEED_KV.get(k)) || 0;
   if (n >= RATE_LIMIT) return true;
@@ -154,18 +158,6 @@ async function overRate(env, request) {
 const isAutomated = (ua) =>
   /HeadlessChrome|Puppeteer|Playwright|\bbot\b|crawler|spider|curl\/|wget|python-requests/i
     .test(String(ua || ""));
-
-/* Constant-time-ish compare. The token is 30+ characters of entropy and this
-   endpoint is rate-limited, so this is belt and braces rather than a fix for
-   a real timing attack — but a plain === on a secret is a habit worth not
-   having. */
-function sameSecret(a, b) {
-  const x = String(a || ""), y = String(b || "");
-  if (!x || !y || x.length !== y.length) return false;
-  let diff = 0;
-  for (let i = 0; i < x.length; i++) diff |= x.charCodeAt(i) ^ y.charCodeAt(i);
-  return diff === 0;
-}
 
 /* ---------------- write ---------------- */
 
@@ -194,9 +186,10 @@ export async function onRequestPost({ request, env }) {
   if (isAutomated(request.headers.get("user-agent"))) return noContent();
   if (await overRate(env, request)) return noContent();
 
-  // The one claim the server checks rather than believes. `k` is the sync
-  // token; a valid one means this is KB on one of his own devices.
-  const mine = sameSecret(body && body.k, env.AF_TOKEN);
+  // The one claim the server checks rather than believes: the paired
+  // device's cookie rides along with sendBeacon, so a valid session means
+  // this is KB on one of his own devices. Nothing in the body says who.
+  const mine = !!(await authenticate(request, env));
   const id = mine ? null : await dailyId(env, request);
 
   const cf = request.cf || {};
@@ -229,13 +222,13 @@ const PAGE = 1000;
 const MAX_PAGES = 6;
 
 export async function onRequestGet({ request, env }) {
-  if (!env.ANTIFEED_KV || !env.AF_TOKEN) return notFound();
+  if (!env.ANTIFEED_KV || !env.KB_TOKEN) return notFound();
 
-  // Wrong token and no token are the same answer. A 401 would confirm the
+  // Wrong credential and no credential are the same answer. A 401 would confirm the
   // endpoint exists; the page is unlisted, so this is a 404. (flags.js and
   // inbox.js answer 401 because their existence is not a secret — they are
   // reachable from the site's own sync button. This one is not.)
-  if (!sameSecret(request.headers.get("x-af-token"), env.AF_TOKEN)) return notFound();
+  if (!(await authenticate(request, env))) return notFound();
 
   const url = new URL(request.url);
   const days = RANGES[Number(url.searchParams.get("days"))] || 7;

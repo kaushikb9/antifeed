@@ -16,8 +16,8 @@
    WHAT IT DOES NOT DO. No id is minted here, no cookie is set, nothing is
    kept in localStorage, and nothing about the reader is measured or sent.
    The post carries what happened and nothing else — the server works out who
-   from the sync token it already has, and where from Cloudflare's own
-   headers. See functions/api/telemetry.js.
+   from the pairing cookie the browser already holds, and where from
+   Cloudflare's own headers. See functions/api/telemetry.js.
 
    WHY IT IS A SEPARATE FILE AND ONE DELEGATED LISTENER. app.js does not know
    this exists. It listens in the capture phase on document, does no work but
@@ -26,11 +26,10 @@
    file plus one <script> line removes the feature completely. Nothing here
    can throw into app.js's own handlers.
 
-   THE TOKEN. If the reader has the sync token, the post carries it and the
-   SERVER checks it — that is how KB's own visits get told apart from a
-   stranger's. A body cannot claim to be KB; a valid token proves it. This is
-   the one thing antifeed can do that touchline's version cannot, because the
-   token is a real credential rather than a name typed into a field.
+   WHO. A paired device holds the HttpOnly kb_session cookie, and the browser
+   sends it with the post on its own; the SERVER checks it — that is how KB's
+   own visits get told apart from a stranger's. A body cannot claim to be KB,
+   and this script never sees the credential at all.
    ========================================================================= */
 
 (function () {
@@ -54,19 +53,11 @@
   var P = path();
   if (!P) return;
 
-  /* Read directly rather than caching: the reader can connect sync mid-visit,
-     and the next event should already know about it. */
-  function token() {
-    try { return localStorage.getItem("antifeed:token") || null; } catch (e) { return null; }
-  }
-
   function post(e, s) {
     if (sent >= MAX) return;
     sent++;
     var body = { e: e, p: P };
     if (s) body.s = s;
-    var t = token();
-    if (t) body.k = t;
     try {
       fetch("/api/telemetry", {
         method: "POST",

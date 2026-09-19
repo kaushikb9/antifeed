@@ -1,0 +1,49 @@
+{
+  "$comment": "The one description of an antifeed entry. brain/prompt.md cites it, brain/validate.mjs enforces it, functions/api/flags.js reads `flags`, tests/app.test.mjs holds site/app.js to it. Change it here and nowhere else.",
+  "tiers": ["must", "more"],
+  "flags": {
+    "$comment": "Per-article flag keys. kaizen's functions/api/pick.js writes these too — change both repos in the same sitting.",
+    "keys": ["f", "r", "x"],
+    "meaning": { "f": "star — favourite / for later", "r": "read", "x": "skip — hide from feed, not a downvote" }
+  },
+  "hook": {
+    "$comment": "Hook rules from 2026-09-06. Applied to live entries; retired entries keep their original hook as the record.",
+    "maxWords": 39,
+    "forbid": [ { "pattern": "—", "why": "no em dashes" } ]
+  },
+  "entry": {
+    "type": "object",
+    "required": ["id", "date", "title", "author", "source", "url", "hn_url", "published",
+                 "hn_points", "hn_comments", "read_minutes", "hook", "evergreen", "tier", "tags"],
+    "additionalProperties": false,
+    "properties": {
+      "id":            { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9][a-z0-9-]*$", "$comment": "YYYY-MM-DD-slug; never changes, even on resurface" },
+      "date":          { "type": "string", "format": "date", "$comment": "curation date, not publication" },
+      "title":         { "type": "string", "minLength": 1 },
+      "author":        { "type": "string", "minLength": 1 },
+      "source":        { "type": "string", "minLength": 1 },
+      "url":           { "type": "string", "pattern": "^https?://" },
+      "hn_url":        { "type": ["string", "null"], "pattern": "^https://news\\.ycombinator\\.com/item\\?id=\\d+$" },
+      "published":     { "type": ["string", "null"], "format": "date" },
+      "hn_points":     { "type": ["integer", "null"] },
+      "hn_comments":   { "type": ["integer", "null"] },
+      "read_minutes":  { "type": "integer", "minimum": 1 },
+      "hook":          { "type": "string", "minLength": 1 },
+      "evergreen":     { "type": "boolean" },
+      "tier":          { "enum": ["must", "more"] },
+      "tags":          { "type": "array", "items": { "type": "string" } },
+      "mine":          { "const": true, "$comment": "blanks are never zeros: present and true, or absent" },
+      "inbox_url":     { "type": "string", "$comment": "the URL as it arrived in the inbox, when the brain rewrote it" },
+      "resurfaced":    { "type": "string", "format": "date" },
+      "resurfaced_note": { "type": "string", "minLength": 1 },
+      "retired":       { "type": "string", "format": "date" },
+      "retired_why":   { "type": "string", "minLength": 1 }
+    },
+    "dependentRequired": {
+      "resurfaced": ["resurfaced_note"],
+      "resurfaced_note": ["resurfaced"],
+      "retired": ["retired_why"],
+      "retired_why": ["retired"]
+    }
+  }
+}

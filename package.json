@@ -1,0 +1,10 @@
+{
+  "name": "antifeed",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "./check.sh",
+    "dev": "npx wrangler pages dev site --kv ANTIFEED_KV --binding KB_TOKEN=devtoken",
+    "pair": "node auth/pair.mjs https://antifeed.pages.dev"
+  }
+}

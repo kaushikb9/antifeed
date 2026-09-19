@@ -5,9 +5,10 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 BASE_URL="https://antifeed.pages.dev"
-AF_TOKEN="$(cat .af-token.local)"
+KB_TOKEN="$(jq -r '.token // empty' ~/.config/kb/config.json)"
+[ -n "$KB_TOKEN" ] || { echo "no token in ~/.config/kb/config.json"; exit 1; }
 
-INBOX=$(curl -sf -H "x-af-token: $AF_TOKEN" "$BASE_URL/api/inbox")
+INBOX=$(curl -sf -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox")
 COUNT=$(node -e "console.log(JSON.parse(process.argv[1]).inbox.length)" "$INBOX")
 if [ "$COUNT" -eq 0 ]; then
   echo "inbox is empty — nothing to do"
@@ -53,7 +54,7 @@ REMOVE=$(INBOX_JSON="$INBOX" node -e '
   console.log(JSON.stringify({ remove: done }));
 ')
 if [ "$REMOVE" != '{"remove":[]}' ]; then
-  curl -sf -X POST -H "x-af-token: $AF_TOKEN" -H "content-type: application/json" \
+  curl -sf -X POST -H "Authorization: Bearer $KB_TOKEN" -H "content-type: application/json" \
     -d "$REMOVE" "$BASE_URL/api/inbox" >/dev/null && echo "ingested inbox items removed"
 fi
 

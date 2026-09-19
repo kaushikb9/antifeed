@@ -9,12 +9,15 @@ MODE="${1:-daily}"
 COUNT="${2:-15}"
 TODAY="$(date +%F)"
 BASE_URL="https://antifeed.pages.dev"
-AF_TOKEN="$(cat .af-token.local 2>/dev/null || true)"
+# KB_TOKEN: the one secret for every KB app; on the laptop it lives in
+# ~/.config/kb/config.json. Without it the run skips the inbox and the
+# snapshot rather than failing.
+KB_TOKEN="$(jq -r '.token // empty' ~/.config/kb/config.json 2>/dev/null || true)"
 DRY="${DRY:-}"
 
 INBOX='{"inbox":[]}'
-if [ -n "$AF_TOKEN" ]; then
-  INBOX=$(curl -sf -H "x-af-token: $AF_TOKEN" "$BASE_URL/api/inbox" || echo '{"inbox":[]}')
+if [ -n "$KB_TOKEN" ]; then
+  INBOX=$(curl -sf -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox" || echo '{"inbox":[]}')
 fi
 
 # THIS MONTH — the two signals the brain cannot reach from inside its sandbox
@@ -82,9 +85,14 @@ $INBOX" \
   --strict-mcp-config \
   --permission-mode acceptEdits
 
-# validate before publishing
-node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'));JSON.parse(require('fs').readFileSync('data/retired.json'))" \
-  || { echo 'articles.json or retired.json is invalid — aborting'; exit 1; }
+# validate before publishing: both data files against brain/schema.json.
+# On red nothing is committed or deployed; the brain's edits stay in the
+# working tree so the failure can be read, and auto.log carries every line.
+if ! node brain/validate.mjs; then
+  echo "CHECK FAILED after brain run $MODE $TODAY — nothing committed, nothing deployed."
+  echo "Inspect: git diff -- site/data/articles.json data/retired.json ; fix ; node brain/validate.mjs"
+  exit 1
+fi
 
 if [ -n "$DRY" ]; then
   echo "DRY run — brain output left uncommitted:"
@@ -98,7 +106,7 @@ git push -q || echo "push failed — run 'git push' manually"
 
 # remove ONLY snapshot inbox items that made it into articles.json —
 # skipped links and anything added mid-run stay in the inbox
-if [ -n "$AF_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
+if [ -n "$KB_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
   REMOVE=$(INBOX_JSON="$INBOX" node -e '
     const inbox = JSON.parse(process.env.INBOX_JSON).inbox;
     const arts = JSON.parse(require("fs").readFileSync("site/data/articles.json")).articles;
@@ -113,7 +121,7 @@ if [ -n "$AF_TOKEN" ] && [ "$INBOX" != '{"inbox":[]}' ]; then
     console.log(JSON.stringify({ remove: done }));
   ')
   if [ "$REMOVE" != '{"remove":[]}' ]; then
-    curl -sf -X POST -H "x-af-token: $AF_TOKEN" -H "content-type: application/json" \
+    curl -sf -X POST -H "Authorization: Bearer $KB_TOKEN" -H "content-type: application/json" \
       -d "$REMOVE" "$BASE_URL/api/inbox" >/dev/null \
       && echo "ingested inbox items removed" || echo "warning: could not update inbox"
   fi

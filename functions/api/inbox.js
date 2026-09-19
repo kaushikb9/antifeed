@@ -1,19 +1,15 @@
 const KEY = "inbox";
 
-function authed(request, env) {
-  return env.AF_TOKEN && request.headers.get("x-af-token") === env.AF_TOKEN;
-}
+// Auth is the middleware's job (functions/_middleware.js gates this route).
 
 const norm = (s) => s.replace(/\/+$/, "");
 
-export async function onRequestGet({ request, env }) {
-  if (!authed(request, env)) return new Response("unauthorized", { status: 401 });
+export async function onRequestGet({ env }) {
   const inbox = (await env.ANTIFEED_KV.get(KEY, "json")) || [];
   return Response.json({ inbox });
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!authed(request, env)) return new Response("unauthorized", { status: 401 });
   const body = await request.json();
   let inbox = (await env.ANTIFEED_KV.get(KEY, "json")) || [];
   if (body.clear) {
