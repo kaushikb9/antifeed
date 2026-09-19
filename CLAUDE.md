@@ -72,7 +72,7 @@ change both repos in the same sitting.
 The canonical list is README.md → "Deliberately not built (yet)"; wishlist
 items with sizes are in `IDEAS.md`; defects live in GitHub issues. Two
 standing no's beyond those: antifeed stays on pages.dev, not a
-kaushikbhat.com subdomain (it may be spun out), and no upvote/downvote —
+kaushik.sh subdomain (it may be spun out), and no upvote/downvote —
 ★ and ✕ already reach the brain through the THIS MONTH block.
 
 ## Learned the hard way

@@ -127,7 +127,7 @@ First time:
 4. Pair each device: `npm run pair` prints a one-time link; open it on the
    device. First sync merges the device's local flags into KV.
 
-Custom domain (e.g. `antifeed.kaushikbhat.com`) is added in the Cloudflare
+Custom domain (e.g. `antifeed.kaushik.sh`) is added in the Cloudflare
 dashboard under the Pages project → Custom domains.
 
 Local dev with the sync API: `npm run dev` (`KB_TOKEN=devtoken`, KV

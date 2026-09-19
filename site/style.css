@@ -76,7 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* masthead geometry mirrors kaushikbhat.com — same platform, different name */
+/* masthead geometry mirrors kaushik.sh — same platform, different name */
 .site-head {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 1rem; margin-bottom: 0.15rem;
