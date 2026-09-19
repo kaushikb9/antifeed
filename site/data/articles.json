@@ -2209,6 +2209,49 @@
         "agent-feedback",
         "serving"
       ]
+    },
+    {
+      "id": "2026-09-19-harness-design-empirical-study",
+      "date": "2026-09-19",
+      "title": "An Empirical Study of Harness Design for Coding Agents",
+      "author": "Run-Ze Fan et al.",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20804",
+      "hn_url": "https://news.ycombinator.com/item?id=49753878",
+      "published": "2026-09-17",
+      "hn_points": 204,
+      "hn_comments": 57,
+      "read_minutes": 38,
+      "hook": "Varies planning, tools and context management across 176 harness configurations on four models. Strong models did best with bash only, up to 53 percent cheaper; the weak one needed full tools. Forty minutes; the tables carry it.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness",
+        "evals",
+        "inference-cost"
+      ]
+    },
+    {
+      "id": "2026-09-19-danluu-brain-off",
+      "date": "2026-09-19",
+      "title": "There's no point at which turning your brain off will work",
+      "author": "Dan Luu",
+      "source": "danluu.com",
+      "url": "https://danluu.com/brain-off/",
+      "hn_url": "https://news.ycombinator.com/item?id=49757178",
+      "published": "2026-09-18",
+      "hn_points": 177,
+      "hn_comments": 150,
+      "read_minutes": 12,
+      "hook": "Dan Luu on approving agent output without thinking: it only works for low-value work and never becomes a career. His examples are agent-built products that shipped broken. The thread has engineers under pressure to maximise AI usage.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "agents",
+        "expertise",
+        "management"
+      ]
     }
   ]
 }
