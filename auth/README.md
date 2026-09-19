@@ -16,8 +16,18 @@ One secret, `KB_TOKEN`, the same value on every Pages project and in
 - **Bearer** — agents and scripts send `Authorization: Bearer <KB_TOKEN>`.
 - **Cookie** — a browser never sees the token. On the laptop, `npm run pair`
   asks the app (with Bearer) for a single-use 15-minute link; opening it on
-  the phone swaps it for a one-year HttpOnly cookie, HMAC-signed with the
-  token. Rotating `KB_TOKEN` signs every device out of every app.
+  the phone shows one button, **Pair this device**, and tapping it swaps the
+  link for a one-year HttpOnly cookie, HMAC-signed with the token. Rotating
+  `KB_TOKEN` signs every device out of every app.
+
+  The link itself is signed with the token (`exp.nonce.hmac`), so any edge
+  verifies it with no KV read; KV holds only the `used:*` burn record written
+  when the button is tapped. Opening the link (GET) never pairs and never
+  burns — only the POST does. Both are deliberate, learned 2026-09-19: a
+  link shared through WhatsApp/Messages gets fetched for a preview and by
+  the in-app browser before the person ever taps it, and a KV key written
+  on the laptop's edge can take up to a minute to reach the phone's edge on
+  cellular.
 
 No users table, no login form, no token typed on a phone. The "not paired"
 page is public-facing and says nothing about how pairing works; that lives in
@@ -30,7 +40,7 @@ token, which is only on the laptop and in the Pages project.
 // functions/_middleware.js
 import { createAuth } from '../auth/kb-auth.js';
 export const auth = createAuth({
-  kv: 'APP_KV',                                   // binding that holds magic:* links
+  kv: 'APP_KV',                                   // binding that holds used:* burn records
   app: { name: 'kaizen' },                        // named on the "not paired" page
   open: [/^\/favicon\.ico$/, /^\/icon\.svg$/],    // private app: everything else gated
   // or  gate: [/^\/api\/(flags|inbox|pair)$/],   // public site: only these gated
@@ -38,7 +48,7 @@ export const auth = createAuth({
 export const onRequest = auth.middleware;
 ```
 
-`functions/claim.js` exports `onRequestGet = auth.claim`; `functions/api/pair.js`
+`functions/claim.js` exports `onRequestGet` **and** `onRequestPost` `= auth.claim`; `functions/api/pair.js`
 exports `onRequestPost = auth.pair`. Routes then contain no auth code at all.
 In `gate` mode, list `/api/pair` yourself — the test for your list should
 prove it. Open icons and the manifest: iOS and Chrome fetch those without

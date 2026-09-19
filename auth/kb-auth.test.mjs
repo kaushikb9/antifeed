@@ -113,26 +113,58 @@ test("503 without KB_TOKEN in both modes, 302 to the canonical host when one is 
   assert.equal(same.status, 200);
 });
 
-test("pair mints a single-use 15-minute link in the app's KV; claim burns it and sets the cookie", async () => {
+test("pair mints a signed 15-minute link with no KV write; GET shows the button, POST burns it and sets the cookie", async () => {
   const e = { KB_TOKEN: SECRET, OTHER_KV: mockKV() };
   const a = createAuth({ kv: "OTHER_KV", app: APP, open: [] });
   const p = await a.pair({ request: new Request("https://app.test/api/pair", { method: "POST" }), env: e });
   const { url, expiresIn } = await p.json();
   assert.equal(expiresIn, 900);
   const t = new URL(url).searchParams.get("t");
-  assert.ok(t && t.length >= 20, "token is long");
-  assert.deepEqual(e.OTHER_KV.raw.get(`magic:${t}:opts`), { expirationTtl: 900 });
+  assert.match(t, /^\d+\.[a-z0-9]+\.[0-9a-f]{64}$/, "self-verifying token");
+  assert.equal(e.OTHER_KV.raw.size, 0, "minting writes nothing: a fresh key may not be at the phone's edge yet");
 
-  const c = await a.claim({ request: req(`/claim?t=${t}&next=/posts/x`), env: e });
+  // GET: the page with the button. Previews and in-app browsers stop here.
+  const g = await a.claim({ request: req(`/claim?t=${t}&next=/posts/x`), env: e });
+  assert.equal(g.status, 200);
+  const html = await g.text();
+  assert.match(html, /method="post" action="\/claim"/);
+  assert.match(html, new RegExp(`name="t" value="${t}"`));
+  assert.match(html, /name="next" value="\/posts\/x"/);
+  assert.equal(g.headers.get("Set-Cookie"), null, "a GET never pairs");
+  assert.equal(e.OTHER_KV.raw.size, 0, "a GET never burns");
+  const g2 = await a.claim({ request: req(`/claim?t=${t}`), env: e });
+  assert.equal(g2.status, 200, "opening the link twice is fine");
+
+  // POST: burn, cookie, redirect.
+  const post = (tok, next = "/posts/x") => new Request("https://app.test/claim", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ t: tok, next }),
+  });
+  const c = await a.claim({ request: post(t), env: e });
   assert.equal(c.status, 302);
   assert.equal(c.headers.get("Location"), "/posts/x");
   const cookie = c.headers.get("Set-Cookie");
   assert.match(cookie, /^kb_session=\d+\.[0-9a-f]{64}; .*HttpOnly; Secure/);
   assert.equal(await validSession(SECRET, cookie.match(/kb_session=([^;]+)/)[1]), true);
+  assert.deepEqual(e.OTHER_KV.raw.get(`used:${t}:opts`), { expirationTtl: 960 });
 
-  const again = await a.claim({ request: req(`/claim?t=${t}`), env: e });
-  assert.equal(again.status, 400, "second use of the same link");
+  assert.equal((await a.claim({ request: post(t), env: e })).status, 400, "second use of the same link");
+  assert.equal((await a.claim({ request: req(`/claim?t=${t}`), env: e })).status, 400, "used link on GET");
   assert.equal((await a.claim({ request: req("/claim"), env: e })).status, 400, "no token");
+
+  // Tampered or expired links fail before any KV read.
+  const [exp, nonce, sig] = t.split(".");
+  for (const bad of [`${exp}.${nonce}x.${sig}`, `${Number(exp) + 1}.${nonce}.${sig}`, `${exp}.${nonce}.${sig.replace(/^./, (ch) => (ch === "a" ? "b" : "a"))}`, `${Math.floor(Date.now() / 1000) - 5}.${nonce}.${sig}`])
+    assert.equal((await a.claim({ request: req(`/claim?t=${bad}`), env: e })).status, 400, bad);
+  assert.equal((await a.claim({ request: post(t.replace(/^\d+/, (d) => String(Number(d) + 1))), env: e })).status, 400, "tampered POST");
+
+  // A browser that already holds the cookie is just sent on its way.
+  const p2 = await a.pair({ request: new Request("https://app.test/api/pair", { method: "POST" }), env: e });
+  const t2 = new URL((await p2.json()).url).searchParams.get("t");
+  const paired = await a.claim({ request: req(`/claim?t=${t2}&next=/posts/y`, { Cookie: `kb_session=${(await mintSession(SECRET)).value}` }), env: e });
+  assert.equal(paired.status, 302);
+  assert.equal(paired.headers.get("Location"), "https://app.test/posts/y");
 });
 
 test("claim's next must be a same-site path: absolute and protocol-relative URLs go to /", async () => {
@@ -140,7 +172,9 @@ test("claim's next must be a same-site path: absolute and protocol-relative URLs
   for (const next of ["https://evil.test", "//evil.test", "evil"]) {
     const p = await priv.pair({ request: new Request("https://app.test/api/pair", { method: "POST" }), env: e });
     const t = new URL((await p.json()).url).searchParams.get("t");
-    const c = await priv.claim({ request: req(`/claim?t=${t}&next=${encodeURIComponent(next)}`), env: e });
+    const g = await priv.claim({ request: req(`/claim?t=${t}&next=${encodeURIComponent(next)}`), env: e });
+    assert.match(await g.text(), /name="next" value="\/"/, `GET form: ${next}`);
+    const c = await priv.claim({ request: new Request("https://app.test/claim", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams({ t, next }) }), env: e });
     assert.equal(c.headers.get("Location"), "/", next);
   }
 });
