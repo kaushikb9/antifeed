@@ -71,11 +71,20 @@
   "2026-08-29-rumour-is-the-exploit": {
     "x": true
   },
+  "2026-08-30-domain-driven-agents": {
+    "f": true
+  },
   "2026-08-30-keyboard-driven-guis": {
     "x": true
   },
+  "2026-09-01-agent-memory-file-format": {
+    "f": true
+  },
   "2026-09-01-p99-0ms-autocomplete": {
     "x": true
+  },
+  "2026-09-02-efficient-frontier-inference": {
+    "f": true
   },
   "2026-09-04-metr-agent-collusion": {
     "x": true
@@ -117,6 +126,15 @@
     "f": true
   },
   "2026-09-17-harnesstax-berkeley": {
+    "f": true
+  },
+  "2026-09-18-glm-infra-agent-dense-feedback": {
+    "f": true
+  },
+  "2026-09-19-danluu-brain-off": {
+    "f": true
+  },
+  "2026-09-19-harness-design-empirical-study": {
     "f": true
   },
   "__probe": {
