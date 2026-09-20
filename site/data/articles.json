@@ -2252,6 +2252,28 @@
         "expertise",
         "management"
       ]
+    },
+    {
+      "id": "2026-09-20-lethain-decisions-not-dates",
+      "date": "2026-09-20",
+      "title": "Roadmap decisions rather than dates",
+      "author": "Will Larson",
+      "source": "lethain.com",
+      "url": "https://lethain.com/decisions-not-dates/",
+      "hn_url": null,
+      "published": "2026-08-11",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 9,
+      "hook": "Larson argues projects are gated by decisions, not execution: a two-week passkey job stretched to two months over a dozen ambiguous calls. His fix: keep the external date, run the team on its decision list, give functions approval harnesses.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "engineering-management",
+        "org-design",
+        "ai-adoption",
+        "developer-productivity"
+      ]
     }
   ]
 }
