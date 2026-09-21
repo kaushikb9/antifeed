@@ -2274,6 +2274,28 @@
         "ai-adoption",
         "developer-productivity"
       ]
+    },
+    {
+      "id": "2026-09-21-lethain-agents-as-scaffolding",
+      "date": "2026-09-21",
+      "title": "Agents as scaffolding for recurring tasks",
+      "author": "Will Larson",
+      "source": "Irrational Exuberance",
+      "url": "https://lethain.com/agents-as-scaffolding/",
+      "hn_url": null,
+      "published": "2026-04-12",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 5,
+      "hook": "Will Larson's Dependabot agent kept passing high and medium alerts despite CRITICAL in the prompt. His fix: code does the filtering, agents only decide ownership, and it has held every time. A cheap pattern for any recurring internal workflow.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness",
+        "internal-platform",
+        "engineering-management"
+      ]
     }
   ]
 }
