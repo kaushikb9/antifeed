@@ -2296,6 +2296,28 @@
         "internal-platform",
         "engineering-management"
       ]
+    },
+    {
+      "id": "2026-09-22-linear-ci-bottleneck",
+      "date": "2026-09-22",
+      "title": "AI coding has made CI a bottleneck, so we reworked ours to keep up",
+      "author": "Mufeez Amjad",
+      "source": "Linear",
+      "url": "https://linear.app/now/ci-bottleneck-reworked",
+      "hn_url": "https://news.ycombinator.com/item?id=49792067",
+      "published": "2026-09-21",
+      "hn_points": 222,
+      "hn_comments": 237,
+      "read_minutes": 11,
+      "hook": "Linear's test suite grew 4x in eight months of agent coding, and PR wait time stayed near five minutes. Third-party runners, tsgo and batched checks did most of it. The bottleneck after your rollout is CI, with real numbers.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "developer-productivity",
+        "ai-adoption",
+        "coding-agents",
+        "internal-platform"
+      ]
     }
   ]
 }
