@@ -2318,6 +2318,29 @@
         "coding-agents",
         "internal-platform"
       ]
+    },
+    {
+      "id": "2026-09-23-stripe-kai-knowledge-platform",
+      "date": "2026-09-23",
+      "title": "Stripe's Knowledge AI Platform",
+      "author": "Anna Mason, Sharadh Krishnamurthy, Anupam Upadhyay",
+      "source": "Stripe Engineering",
+      "url": "https://stripe.dev/blog/meet-stripes-knowledge-ai-platform",
+      "hn_url": "https://news.ycombinator.com/item?id=49815982",
+      "published": "2026-07-30",
+      "hn_points": 77,
+      "hn_comments": 38,
+      "read_minutes": 8,
+      "hook": "Stripe's internal agent platform for non-coding work: 83% of staff use it weekly, 5,000 sessions a day, 1,000 tools behind a hybrid RAG router. What an internal agent platform becomes once it outgrows coding. Vendor post; skip the thread.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "internal-platform",
+        "ai-adoption",
+        "rag",
+        "knowledge-management"
+      ]
     }
   ]
 }
