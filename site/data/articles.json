@@ -2388,6 +2388,51 @@
         "developer-productivity",
         "code-review"
       ]
+    },
+    {
+      "id": "2026-09-26-plan-mode-is-dead",
+      "date": "2026-09-26",
+      "title": "Plan mode is dead",
+      "author": "Ayman Nadeem",
+      "source": "aymannadeem.com",
+      "url": "https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49840054",
+      "published": "2026-09-24",
+      "hn_points": 129,
+      "hn_comments": 138,
+      "read_minutes": 10,
+      "hook": "A GitHub engineer built a product around plan-then-build and watched users refuse to write specs. Planning and coding interleave, so a separate mode forces early closure. Claude Code's maintainer agrees in the HN thread.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "coding-agents",
+        "harness-design",
+        "developer-productivity",
+        "hn-thread"
+      ]
+    },
+    {
+      "id": "2026-09-26-karlsson-feedback-loops",
+      "date": "2026-09-26",
+      "title": "First we shape our feedback loops; then they shape us",
+      "author": "Henrik Karlsson",
+      "source": "Escaping Flatland",
+      "url": "https://www.henrikkarlsson.xyz/p/feedback-loops",
+      "hn_url": null,
+      "published": "2026-08-26",
+      "hn_points": null,
+      "hn_comments": null,
+      "read_minutes": 8,
+      "hook": "Karlsson indexed his journal in 2019 and found his writing improved within months without trying. Rereading your own work is a feedback loop that trains taste. A quiet argument for building loops on purpose.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "thinking",
+        "attention",
+        "writing",
+        "personal-growth"
+      ]
     }
   ]
 }
