@@ -47,7 +47,7 @@ cf_token() {
 # Harness for every brain: no slash commands/skill list, and only the
 # project's settings (not KB's interactive CLAUDE.md).
 BRAIN_FILES=()   # data files a brain edits; restored if the run fails
-BRAIN_FLAGS=(--disable-slash-commands --setting-sources project --output-format json --strict-mcp-config --permission-mode acceptEdits)
+BRAIN_FLAGS=(--safe-mode --disable-slash-commands --output-format json --strict-mcp-config --permission-mode acceptEdits)
 
 # run_brain <name> <prompt> <claude args…>: 45m cap, JSON result → one metrics
 # line; non-zero on a failed/hung run.
