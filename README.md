@@ -45,6 +45,7 @@ Logs land in `brain/auto.log` (gitignored). Manual runs still work anytime:
 ```sh
 ./brain/curate.sh              # daily: sweep sources + inbox, commit, deploy
 DRY=1 ./brain/curate.sh        # same brain run, but nothing committed or deployed
+node brain/replay.mjs <date>   # rerun a past day in scratch (--model/--effort/--prompt): shipped vs replay pick and hook word counts
 ./brain/inbox.sh               # fast: process ONLY manually added links
 ./brain/curate.sh backfill 15  # one-time: seed ~15 picks from recent weeks
 ```

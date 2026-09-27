@@ -64,6 +64,11 @@ THIS_MONTH=$(node -e '
   console.log(out.join("\n") || "(no signal available this run)");
 ')
 
+# archive this run's inputs for `node brain/replay.mjs <date>` (local,
+# gitignored). Never allowed to fail or change the run.
+AF_DATE="$TODAY" AF_MODE="$MODE" AF_THIS_MONTH="$THIS_MONTH" AF_INBOX="$INBOX" \
+  node brain/replay/archive.mjs >/dev/null 2>&1 || true
+
 if [ "$MODE" = "backfill" ]; then
   TASK="BACKFILL MODE: today is $TODAY. Curate the $COUNT best articles from roughly the last 4-6 weeks across the sources, plus 2-3 evergreen classics. Spread their 'date' fields plausibly across recent weeks. Tier them honestly: roughly a third 'must', the rest 'more'. Quality over quota — if only 10 clear the bar, add 10."
 else
