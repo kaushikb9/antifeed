@@ -42,6 +42,7 @@ test("a red validator moves the edits to brain/scratch and restores the committe
   const repo = tmp();
   mkdirSync(join(repo, "brain")); mkdirSync(join(repo, "data"));
   copyFileSync(JOBS, join(repo, "brain/jobs.sh"));
+  copyFileSync(resolve(ROOT, "brain/kit.sh"), join(repo, "brain/kit.sh")); // jobs.sh sources the vendored kit
   const git = (...a) => execFileSync("git", ["-C", repo, ...a], { encoding: "utf8" });
   git("init", "-q"); writeFileSync(join(repo, "data/a.json"), "good\n");
   git("add", "."); git("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "init");
