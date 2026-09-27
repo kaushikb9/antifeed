@@ -16,14 +16,17 @@ JOBS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 JOB_LOG="${JOB_LOG:-$JOBS_ROOT/brain/auto.log}"
 JOB="${JOB:?set JOB before sourcing brain/kit.sh}"
 
+# One wrangler for every app: an unpinned npx pulled whatever was latest.
+WRANGLER_VERSION="${WRANGLER_VERSION:-4.141.0}"
+
 # launchd's PATH may lack coreutils' timeout; fall back to gtimeout, then perl.
 if command -v timeout >/dev/null 2>&1; then TIMEOUT=timeout
 elif command -v gtimeout >/dev/null 2>&1; then TIMEOUT=gtimeout
 else TIMEOUT=perl; fi
-tmo() { # tmo 90 git push …   (durations: 90, 300, 45m)
+tmo() { # tmo 90 git push …   (durations: 90, 90s, 45m, 2h)
   local d="$1"; shift
   if [ "$TIMEOUT" = perl ]; then
-    case "$d" in *m) d=$(( ${d%m} * 60 ));; esac
+    case "$d" in *m) d=$(( ${d%m} * 60 ));; *h) d=$(( ${d%h} * 3600 ));; *s) d="${d%s}";; esac
     perl -e 'alarm shift; exec @ARGV' "$d" "$@"
   else "$TIMEOUT" "$d" "$@"; fi
 }
