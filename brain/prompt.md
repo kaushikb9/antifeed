@@ -216,5 +216,7 @@ Rules:
 - After editing, run `node brain/validate.mjs` via Bash. It checks both files
   against `brain/schema.json` and names every problem; fix each one and run it
   again until it prints `ok`. Nothing is committed while it fails.
+  The wrapper script then re-validates, commits and deploys on its own, so
+  don't try to run `./check.sh`, `./deploy.sh` or git.
 - Append a short dated note to `brain/last-run.txt`: what went in, what was
   resurfaced or retired and why, what was deliberately passed over.

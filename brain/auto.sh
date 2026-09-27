@@ -5,6 +5,8 @@ set -euo pipefail
 # launchd has a bare PATH; claude/node/npx live here
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 cd "$(dirname "$0")/.."
+JOB=antifeed-auto
+. brain/jobs.sh
 
 # picks are a morning ritual — don't curate in the middle of the night
 [ "$(date +%H)" -ge 7 ] || exit 0
@@ -17,8 +19,8 @@ cd "$(dirname "$0")/.."
 # A pull that still fails is logged loudly, never a bare `exit 0`.
 export GIT_TERMINAL_PROMPT=0
 export GIT_SSH_COMMAND="ssh -oBatchMode=yes -oConnectTimeout=15"
-timeout 90 git pull --rebase --autostash -q \
-  || { echo "[auto] $(date '+%F %T') — pull failed/timed out, standing down this hour"; exit 0; }
+tmo 90 git pull --rebase --autostash -q \
+  || fail pull "git pull failed or timed out" "check the network/ssh key; next hour retries"
 
 # already curated today? (source of truth: the data itself, not a stamp file)
 # a resurfaced pick counts as today's curation too — otherwise a "nothing new,

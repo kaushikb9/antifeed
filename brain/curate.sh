@@ -4,6 +4,8 @@
 #                             # push, inbox clear, snapshot or deploy
 set -euo pipefail
 cd "$(dirname "$0")/.."
+JOB=antifeed-curate
+. brain/jobs.sh
 
 MODE="${1:-daily}"
 COUNT="${2:-15}"
@@ -17,7 +19,7 @@ DRY="${DRY:-}"
 
 INBOX='{"inbox":[]}'
 if [ -n "$KB_TOKEN" ]; then
-  INBOX=$(curl -sf -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox" || echo '{"inbox":[]}')
+  INBOX=$(curl -sf --max-time 30 -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox" || echo '{"inbox":[]}')
 fi
 
 # THIS MONTH — the two signals the brain cannot reach from inside its sandbox
@@ -77,7 +79,9 @@ fi
 
 # Heavy work (judgement and writing) runs Opus at low effort (KB, 2026-09-27).
 # Pinned: an unpinned brain inherits the interactive default and shares its limit.
-caffeinate -i claude -p --model claude-opus-5-5 --effort low "$(cat brain/prompt.md)
+DATA=(site/data/articles.json data/retired.json)
+BRAIN_FILES=("${DATA[@]}")
+run_brain "curate-$MODE" "$(cat brain/prompt.md)
 
 ---
 
@@ -88,18 +92,14 @@ $THIS_MONTH
 
 MANUAL INBOX (process every item per the 'Manual inbox' section of the rules):
 $INBOX" \
-  --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)" \
-  --strict-mcp-config \
-  --permission-mode acceptEdits
+  --model claude-opus-5-5 --effort low \
+  --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)"
 
 # validate before publishing: both data files against brain/schema.json.
-# On red nothing is committed or deployed; the brain's edits stay in the
-# working tree so the failure can be read, and auto.log carries every line.
-if ! node brain/validate.mjs; then
-  echo "CHECK FAILED after brain run $MODE $TODAY — nothing committed, nothing deployed."
-  echo "Inspect: git diff -- site/data/articles.json data/retired.json ; fix ; node brain/validate.mjs"
-  exit 1
-fi
+# On red the edits move to brain/scratch, the committed files come back and
+# the run exits non-zero, so auto.sh retries next hour instead of seeing
+# today's date in an invalid tree and standing down all day.
+node brain/validate.mjs || restore_data validate "${DATA[@]}"
 
 if [ -n "$DRY" ]; then
   echo "DRY run — brain output left uncommitted:"
@@ -109,7 +109,7 @@ fi
 
 git add site/data/articles.json data/retired.json
 git commit -m "curate: $MODE $TODAY" || echo "nothing new committed"
-git push -q || echo "push failed — run 'git push' manually"
+tmo 90 git push -q || fail push "git push failed or timed out" "run 'git push' by hand"
 
 # remove ONLY snapshot inbox items that made it into articles.json —
 # skipped links and anything added mid-run stay in the inbox
@@ -140,10 +140,11 @@ if node brain/snapshot.mjs; then
   if [ -n "$(git status --porcelain -- data/snapshot)" ]; then
     git add data/snapshot
     git commit -q -m "snapshot: $TODAY" || true
-    git push -q || echo "push failed — run 'git push' manually"
+    tmo 90 git push -q || fail push "snapshot push failed or timed out" "run 'git push' by hand"
   fi
 else
   echo "snapshot failed — run continues"
 fi
 
-./deploy.sh || echo "deploy failed — run ./deploy.sh manually"
+tmo 300 ./deploy.sh || fail deploy "deploy.sh failed or timed out" "run ./deploy.sh; on a 401 check cloudflare_api_token in ~/.config/kb/config.json"
+job_line "ok · $MODE $TODAY published"

@@ -7,3 +7,4 @@ brain/last-run.txt
 brain/auto.log
 __pycache__/
 brain/replay/inputs/
+brain/scratch/

@@ -3,12 +3,14 @@
 # Use after adding links when you want them in the list without a full curation.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+JOB=antifeed-inbox
+. brain/jobs.sh
 
 BASE_URL="https://antifeed.pages.dev"
 KB_TOKEN="$(jq -r '.token // empty' ~/.config/kb/config.json)"
 [ -n "$KB_TOKEN" ] || { echo "no token in ~/.config/kb/config.json"; exit 1; }
 
-INBOX=$(curl -sf -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox")
+INBOX=$(curl -sf --max-time 30 -H "Authorization: Bearer $KB_TOKEN" "$BASE_URL/api/inbox")
 COUNT=$(node -e "console.log(JSON.parse(process.argv[1]).inbox.length)" "$INBOX")
 if [ "$COUNT" -eq 0 ]; then
   echo "inbox is empty — nothing to do"
@@ -18,7 +20,8 @@ echo "processing $COUNT inbox item(s)…"
 
 # KB already chose these links, so this is grunt work: Sonnet (KB, 2026-09-27).
 # Pinned: an unpinned brain inherits the interactive default and shares its limit.
-caffeinate -i claude -p --model sonnet --effort medium "$(cat brain/prompt.md)
+BRAIN_FILES=(site/data/articles.json data/retired.json)
+run_brain inbox "$(cat brain/prompt.md)
 
 ---
 
@@ -29,16 +32,15 @@ $(date +%F) with \"mine\": true. Tier honestly ('must' only if truly dope).
 
 MANUAL INBOX:
 $INBOX" \
-  --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)" \
-  --strict-mcp-config \
-  --permission-mode acceptEdits
+  --model sonnet --effort medium \
+  --allowedTools "WebSearch,WebFetch,Read,Edit,Write,Bash(node:*),Bash(curl:*)"
 
-node -e "JSON.parse(require('fs').readFileSync('site/data/articles.json'))" \
-  || { echo 'articles.json is invalid — aborting'; exit 1; }
+# full schema check, not just JSON.parse: red → edits to brain/scratch, files restored
+node brain/validate.mjs || restore_data validate site/data/articles.json data/retired.json
 
 git add site/data/articles.json
 git commit -m "inbox: $(date +%F)" || echo "nothing new committed"
-git push -q || echo "push failed — run 'git push' manually"
+tmo 90 git push -q || fail push "git push failed or timed out" "run 'git push' by hand"
 
 # remove ONLY snapshot inbox items that made it into articles.json —
 # skipped links and anything added mid-run stay in the inbox
@@ -60,4 +62,5 @@ if [ "$REMOVE" != '{"remove":[]}' ]; then
     -d "$REMOVE" "$BASE_URL/api/inbox" >/dev/null && echo "ingested inbox items removed"
 fi
 
-./deploy.sh || echo "deploy failed — run ./deploy.sh manually"
+tmo 300 ./deploy.sh || fail deploy "deploy.sh failed or timed out" "run ./deploy.sh; on a 401 check cloudflare_api_token in ~/.config/kb/config.json"
+job_line "ok · inbox $(date +%F) published"
