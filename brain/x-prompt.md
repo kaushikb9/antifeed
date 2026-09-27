@@ -18,15 +18,16 @@ shopping for a subscription to fix this.
 
 ## Auth (the part that bites)
 
-- KB's login does **not** live in Chrome — `cookie-import-browser` finds no
-  x.com cookies there, and decrypting the gstack Chromium profile fails because
-  there is no "Chromium Safe Storage" Keychain entry to derive the key from.
-- The working path is `browse connect`, which attaches to the **headed** browser
-  backed by the persistent profile at `~/.gstack/chromium-profile`. A real login
-  performed there survives across runs.
-- The **headless** browse context loses X cookies whenever the browse server
-  restarts, which `browse resume` triggers. If a sweep suddenly starts returning
-  login pages, that's what happened — re-run `x-sweep.sh login`.
+- KB's login does **not** live in Chrome, so there are no cookies to import
+  from there. It lives in one Playwright Chromium profile at
+  `~/.config/kb/x-profile`, outside the repo (moved from gstack's
+  `~/.gstack/chromium-profile` on 2026-09-27, login intact).
+- `brain/x-lib/browser.mjs` opens that profile for every step, headless for the
+  sweep and headed for `x-sweep.sh login`. Both use the same profile, so a login
+  made in the window holds for later headless runs. (Under gstack, headless and
+  headed were separate contexts and a server restart dropped the cookies.)
+- If a sweep says NOT LOGGED IN, the session has expired: run
+  `./brain/x-sweep.sh login`, and KB logs in in the window that opens.
 
 ## Harvesting gotchas
 
