@@ -72,7 +72,7 @@ security write-ups KB skips every time. The rules changed:
   way; the file is the record.
 - **THIS MONTH block.** `curate.sh` builds it outside the sandbox from two
   files the brain cannot reach itself: tag counts from kaizen's
-  `data/snapshot/todos.json` (tags only, never task text) and the starred /
+  `brain/interests.md` (hand-written, dated topics) and the starred /
   read / skipped titles from `data/snapshot/flags.json`. It weights the
   search; at most one pick a run leans on it. The old
   `interest-profile.json` handoff is gone — kaizen stopped writing it on

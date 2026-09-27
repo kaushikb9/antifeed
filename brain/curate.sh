@@ -23,34 +23,25 @@ if [ -n "$KB_TOKEN" ]; then
 fi
 
 # THIS MONTH — the two signals the brain cannot reach from inside its sandbox
-# (it can only read this repo): what KB is working on, from kaizen's own
-# task snapshot next door (tags only, never the task text), and what he has
+# (it can only read this repo): what KB is working on, from brain/interests.md
+# (hand-written and dated; it replaced kaizen's frozen todo tags), and what he has
 # starred / read / skipped here. Both are optional; a missing file yields an
 # empty section, never a failed run.
 THIS_MONTH=$(node -e '
   const fs = require("fs");
   const out = [];
   try {
-    const p = "../kaizen/data/snapshot/todos.json";
-    const j = JSON.parse(fs.readFileSync(p, "utf8"));
-    const items = Array.isArray(j) ? j : (j.todos || j.items || []);
-    // tags are mapped to plain domain words; anything unmapped (an internal
-    // programme, a product name, a personal tag) never leaves this machine
-    const DOMAIN = {
-      slash: "internal coding-agent rollout", devex: "developer experience and productivity",
-      cost: "inference cost and model routing", team: "team leadership", "org-design": "org design",
-      "discover-rkg": "enterprise knowledge graph / RAG", hiring: "hiring", harness: "agent harness design",
-      "agent-studio": "internal agent platform", "ai-perf": "measuring AI leverage per engineer",
-      partnerships: "model-provider partnerships", data: "engineering metrics data",
-      writing: "writing", "ai-stack": "AI stack strategy", "side-project": "side projects",
-    };
-    const n = {};
-    for (const t of items) if (!t.done) for (const g of (t.tags || [])) {
-      const d = DOMAIN[g]; if (d) n[d] = (n[d] || 0) + 1;
+    // brain/interests.md: topics KB wrote by hand, dated on its first line.
+    // It replaced kaizen's todo tags (frozen since 2026-09-05, when kaizen
+    // dropped todos). Stale after 90 days: the brain is told so.
+    const txt = fs.readFileSync("brain/interests.md", "utf8");
+    const m = txt.match(/^Updated:\s*(\d{4}-\d{2}-\d{2})/m);
+    const topics = txt.split("\n").filter((l) => /^- /.test(l)).map((l) => l.slice(2).trim());
+    if (topics.length) {
+      const age = m ? Math.floor((Date.now() - Date.parse(m[1])) / 864e5) : null;
+      const when = m ? ` (written ${m[1]}${age > 90 ? ", over 90 days old, treat as a loose guide" : ""})` : "";
+      out.push("What KB is working on and reading about" + when + ": " + topics.join(", ") + ".");
     }
-    const top = Object.entries(n).sort((a, b) => b[1] - a[1]).slice(0, 10)
-      .map(([g, c]) => `${g} (${c})`).join(", ");
-    if (top) out.push("Open-task domains this month, most frequent first: " + top + ".");
   } catch {}
   try {
     const flags = JSON.parse(fs.readFileSync("data/snapshot/flags.json", "utf8"));
