@@ -90,3 +90,14 @@ here:
 - **`git config user.email kaushikb9@users.noreply.github.com`** in this repo on
   any new machine. (2026-09-10: this file replaced a three-hop chain
   `AGENTS.md → CLAUDE.md → README` on the one repo that deploys unattended.)
+
+## Jobs reliability (2026-09-27)
+
+`brain/jobs.sh` is sourced by curate/inbox/x-bookmarks/auto/deploy: `tmo` time-boxes
+every `claude -p` (45m), git push/pull (90s) and deploy (300s); a failed leg
+calls `fail`, which writes `YYYY-MM-DD HH:MM <job>: FAILED at <step> · <reason> · fix: <hint>`
+to `brain/auto.log`, raises a macOS notification and exits 1. A red validator
+moves the brain's edits to `brain/scratch/red-*` and restores the data files, so
+the next hour retries. Deploys use `cloudflare_api_token` from
+`~/.config/kb/config.json` and a pinned wrangler. `--setting-sources project`
+does not stop `~/.claude/CLAUDE.md` loading (probe, 2026-09-27).
