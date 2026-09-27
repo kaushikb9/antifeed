@@ -5,6 +5,5 @@ wrangler.toml
 .dev.vars
 brain/last-run.txt
 brain/auto.log
-.gstack/
 __pycache__/
 brain/replay/inputs/
