@@ -16,7 +16,9 @@ if [ "$COUNT" -eq 0 ]; then
 fi
 echo "processing $COUNT inbox item(s)…"
 
-caffeinate -i claude -p "$(cat brain/prompt.md)
+# KB already chose these links, so this is grunt work: Sonnet (KB, 2026-09-27).
+# Pinned: an unpinned brain inherits the interactive default and shares its limit.
+caffeinate -i claude -p --model sonnet --effort medium "$(cat brain/prompt.md)
 
 ---
 
