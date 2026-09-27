@@ -21,7 +21,9 @@ CANDIDATES="$WORK/candidates.json"
 
 cp site/data/articles.json "$WORK/articles.before.json"
 
-caffeinate -i claude -p "$(cat brain/prompt.md)
+# Heavy work (judgement and writing) runs Opus at low effort (KB, 2026-09-27).
+# Pinned: an unpinned brain inherits the interactive default and shares its limit.
+caffeinate -i claude -p --model claude-opus-5-5 --effort low "$(cat brain/prompt.md)
 
 ---
 
