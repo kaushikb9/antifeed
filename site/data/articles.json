@@ -2433,6 +2433,51 @@
         "writing",
         "personal-growth"
       ]
+    },
+    {
+      "id": "2026-09-27-valim-evolving-languages",
+      "date": "2026-09-27",
+      "title": "Evolving programming languages in the AI era",
+      "author": "José Valim",
+      "source": "Dashbit",
+      "url": "https://dashbit.co/blog/evolving-ai-era",
+      "hn_url": "https://news.ycombinator.com/item?id=49839567",
+      "published": "2026-09-24",
+      "hn_points": 31,
+      "hn_comments": 14,
+      "read_minutes": 9,
+      "hook": "Valim argues languages should now optimise for agents: fewer syntax niceties, more guarantees, a queryable program database instead of a language server. First-hand, from building Tidewave across six languages. A useful lens on which languages to bet on.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "coding-agents",
+        "harness-design",
+        "developer-productivity"
+      ]
+    },
+    {
+      "id": "2026-09-27-kastner-teaching-after-ai",
+      "date": "2026-09-27",
+      "title": "How I changed teaching after AI managed to do all my homework assignments",
+      "author": "Christian Kästner",
+      "source": "The Last Software Engineer (Substack)",
+      "url": "https://thelastsoftwareengineer.substack.com/p/how-i-changed-teaching-after-ai-managed",
+      "hn_url": "https://news.ycombinator.com/item?id=49836579",
+      "published": "2026-09-23",
+      "hn_points": 139,
+      "hn_comments": 140,
+      "read_minutes": 12,
+      "hook": "Kästner moved grades from homework to 15-minute in-person check-ins and pass or fail demos, and halved TA grading time with an LLM judge. When AI can do the exercise, assess the understanding instead. Same problem as agent-rollout L&D.",
+      "evergreen": false,
+      "tier": "more",
+      "tags": [
+        "ai-adoption",
+        "learning",
+        "expertise",
+        "developer-productivity",
+        "hn-thread"
+      ]
     }
   ]
 }
