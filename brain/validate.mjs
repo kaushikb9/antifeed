@@ -55,13 +55,14 @@ export function validateEntry(a, { live }) {
     if (a.id && a.date && !String(a.id).startsWith(a.date)) out.push(`id ${a.id} does not start with its date ${a.date}`);
     if (live) {
       if ("retired" in a) out.push("live entry carries a retired field");
+      const max = schema.hook.tight && String(a.date) >= schema.hook.tight.from ? schema.hook.tight.maxWords : schema.hook.maxWords;
       if (typeof a.hook === "string") {
         const n = words(a.hook);
-        if (n > schema.hook.maxWords) out.push(`hook is ${n} words; the rule is under ${schema.hook.maxWords + 1}`);
+        if (n > max) out.push(`hook is ${n} words; the rule is under ${max + 1}`);
         for (const f of schema.hook.forbid) if (new RegExp(f.pattern).test(a.hook)) out.push(`hook: ${f.why}`);
       }
-      if (typeof a.resurfaced_note === "string" && words(a.resurfaced_note) > schema.hook.maxWords)
-        out.push(`resurfaced_note is ${words(a.resurfaced_note)} words; under ${schema.hook.maxWords + 1}`);
+      if (typeof a.resurfaced_note === "string" && words(a.resurfaced_note) > max)
+        out.push(`resurfaced_note is ${words(a.resurfaced_note)} words; under ${max + 1}`);
     } else {
       if (!("retired" in a)) out.push("retired entry has no retired date");
       // Enforced from the day the validator landed; one earlier retirement

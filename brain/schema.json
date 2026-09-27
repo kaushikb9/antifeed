@@ -9,6 +9,7 @@
   "hook": {
     "$comment": "Hook rules from 2026-09-06. Applied to live entries; retired entries keep their original hook as the record.",
     "maxWords": 39,
+    "tight": { "$comment": "KB, 2026-09-27: hooks under 32 words from this date; earlier live hooks keep the 40 rule.", "from": "2026-09-28", "maxWords": 31 },
     "forbid": [ { "pattern": "—", "why": "no em dashes" } ]
   },
   "entry": {

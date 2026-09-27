@@ -179,7 +179,7 @@ An entry looks like this:
   "hn_points": 123,
   "hn_comments": 456,
   "read_minutes": 12,
-  "hook": "Two or three short sentences, under 40 words, see Hook rules",
+  "hook": "Two or three short sentences, under 32 words, see Hook rules",
   "evergreen": false,
   "tier": "must",
   "tags": ["agents", "llm-systems"]
@@ -193,19 +193,19 @@ Rules:
 - `hook` is the product, and it is read in a glance on a phone. Rules,
   rewritten 2026-09-06 after the first six weeks of hooks ran 60 to 160
   words and read as cryptic:
-  - **Under 40 words. Two or three short sentences.** One idea per sentence.
+  - **Under 32 words. Two or three short sentences.** One idea per sentence.
   - Sentence one: what the piece claims or shows, with its single strongest
     specific (a number, a mechanism, a named move). Sentence two: why it
-    matters to him, in plain words. An optional third: a caveat (vendor
-    post, long, discount the last third) or that the HN thread is worth it.
+    matters to him, in plain words. An optional third: a caveat the reader
+    should weigh before reading, or that the HN thread is worth it. Name the
+    caveat in your own words for this piece; there is no stock phrasing.
   - Plain words a tired reader parses on the first pass. No "the exact thing
     you build", no "half the value", no "load-bearing", no "the sharpest
     statement yet". No em dashes, no rhetorical questions, no "it's not X,
     it's Y", no closing flourish.
-  - Do not cross-reference other entries in the list ("pairs with
-    Wednesday's Pi post"). Each hook stands alone.
-  - For `mine` entries, the sharer earns at most four words ("José Valim's
-    must-read"), and only when that is the reason the link exists.
+  - Do not cross-reference other entries in the list.
+    Each hook stands alone.
+  - For `mine` entries, the sharer earns at most four words, and only when that is the reason the link exists.
   - Say the length only when it is over 25 minutes.
 - `read_minutes`: honest estimate from word count (~230 wpm).
 - `published` is the article's real publication date. `hn_points` and
