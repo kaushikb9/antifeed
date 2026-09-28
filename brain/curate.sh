@@ -32,7 +32,7 @@ THIS_MONTH=$(node -e '
   const out = [];
   try {
     // brain/interests.md: topics KB wrote by hand, dated on its first line.
-    // It replaced kaizen's todo tags (frozen since 2026-09-05, when kaizen
+    // It replaced the kaizen todo tags (frozen since 2026-09-05, when kaizen
     // dropped todos). Stale after 90 days: the brain is told so.
     const txt = fs.readFileSync("brain/interests.md", "utf8");
     const m = txt.match(/^Updated:\s*(\d{4}-\d{2}-\d{2})/m);
