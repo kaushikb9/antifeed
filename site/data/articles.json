@@ -2478,6 +2478,26 @@
         "developer-productivity",
         "hn-thread"
       ]
+    },
+    {
+      "id": "2026-09-28-allspaw-code-review-detection",
+      "date": "2026-09-28",
+      "title": "There is more to code review than (automatable) detection",
+      "author": "John Allspaw",
+      "source": "Adaptive Capacity Labs",
+      "url": "https://www.adaptivecapacitylabs.com/2026/08/24/there-is-more-to-code-review-than-automatable-detection/",
+      "hn_url": "https://news.ycombinator.com/item?id=49857281",
+      "published": "2026-08-24",
+      "hn_points": 76,
+      "hn_comments": 41,
+      "read_minutes": 6,
+      "hook": "Allspaw argues review is coordination and accountability, not just bug detection, and agents miss what is absent from a diff. Useful before you let an agent approve PRs. Argument, no data.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "code-review",
+        "agents"
+      ]
     }
   ]
 }
