@@ -152,6 +152,9 @@
   "2026-09-24-claude-ai-3x-faster-two-weeks": {
     "f": true
   },
+  "2026-09-25-shopify-helix-migration-harness": {
+    "f": true
+  },
   "__probe": {
     "r": false
   }
