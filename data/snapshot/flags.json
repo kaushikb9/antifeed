@@ -155,6 +155,15 @@
   "2026-09-25-shopify-helix-migration-harness": {
     "f": true
   },
+  "2026-09-26-plan-mode-is-dead": {
+    "x": true
+  },
+  "2026-09-27-valim-evolving-languages": {
+    "x": true
+  },
+  "2026-09-28-allspaw-code-review-detection": {
+    "f": true
+  },
   "__probe": {
     "r": false
   }
