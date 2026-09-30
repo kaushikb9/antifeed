@@ -2500,6 +2500,26 @@
         "code-review",
         "agents"
       ]
+    },
+    {
+      "id": "2026-09-30-staff-engineer-inventing-work",
+      "date": "2026-09-30",
+      "title": "A Staff Engineer's Guide to Inventing Work",
+      "author": "Sujith Jay Nair",
+      "source": "HN",
+      "url": "https://sujithjay.com/inventing-work",
+      "hn_url": "https://news.ycombinator.com/item?id=49878857",
+      "published": "2026-09-22",
+      "hn_points": 192,
+      "hn_comments": 40,
+      "read_minutes": 8,
+      "hook": "Platform teams have no PM, so staff engineers must invent the roadmap from signals like cost lines, overloaded use-cases and migration laggards. Useful for deciding what your agent platform builds next.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "engineering-management",
+        "platforms"
+      ]
     }
   ]
 }
