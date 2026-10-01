@@ -2520,6 +2520,26 @@
         "engineering-management",
         "platforms"
       ]
+    },
+    {
+      "id": "2026-10-01-you-said-no-mcp",
+      "date": "2026-10-01",
+      "title": "You Said No MCP!",
+      "author": "Earendil Engineering",
+      "source": "Earendil",
+      "url": "https://earendil.com/posts/you-said-no-mcp/",
+      "hn_url": "https://news.ycombinator.com/item?id=49906637",
+      "published": "2026-09-29",
+      "hn_points": 619,
+      "hn_comments": 349,
+      "read_minutes": 8,
+      "hook": "The Pi team moved MCP into their harness core once a JavaScript sandbox let agents chain tool calls in code, keeping results out of context. A pattern worth copying.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness"
+      ]
     }
   ]
 }
