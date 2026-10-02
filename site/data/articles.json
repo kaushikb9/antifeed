@@ -1817,6 +1817,8 @@
       "hn_points": 121,
       "hn_comments": 30,
       "read_minutes": 6,
+      "resurfaced": "2026-10-02",
+      "resurfaced_note": "You starred it and haven't read it yet. It's six minutes of cost-versus-latency vocabulary to have ready for this month's model routing calls.",
       "hook": "Some inference techniques move you along the latency-throughput frontier; others push it outward. Six minutes of vocabulary for questioning a vendor's cost-per-token number.",
       "evergreen": false,
       "tier": "more",
