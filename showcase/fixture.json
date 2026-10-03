@@ -1,0 +1,120 @@
+{
+ "articles": [
+  {
+   "id": "2026-09-30-the-quiet-economics-of",
+   "date": "2026-09-30",
+   "title": "The quiet economics of a library that never closes",
+   "author": "Maren Holt",
+   "source": "river-notes.example",
+   "url": "https://river-notes.example/the-quiet-economics-of",
+   "hn_url": null,
+   "published": "2026-09-30",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 9,
+   "hook": "A city kept one branch open all night and counted who came. Shift workers, students and insomniacs, mostly. Holt argues the cost per visit beat every daytime branch.",
+   "evergreen": true,
+   "tier": "must",
+   "tags": [
+    "reading",
+    "cities"
+   ]
+  },
+  {
+   "id": "2026-09-29-why-your-build-is",
+   "date": "2026-09-29",
+   "title": "Why your build is slow, told by the cache",
+   "author": "Tomas Ilves",
+   "source": "buildlog.example",
+   "url": "https://buildlog.example/why-your-build-is",
+   "hn_url": null,
+   "published": "2026-09-29",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 12,
+   "hook": "Most slow builds are cache misses nobody looked at. Ilves walks one repo from 14 minutes to 90 seconds by reading the miss log, with no new tools.",
+   "evergreen": true,
+   "tier": "must",
+   "tags": [
+    "engineering"
+   ]
+  },
+  {
+   "id": "2026-09-28-a-field-guide-to",
+   "date": "2026-09-28",
+   "title": "A field guide to the bees on your balcony",
+   "author": "Asha Rao",
+   "source": "smallgreen.example",
+   "url": "https://smallgreen.example/a-field-guide-to",
+   "hn_url": null,
+   "published": "2026-09-28",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 7,
+   "hook": "Twelve species turn up on an ordinary city balcony in a summer. Rao shows how to tell them apart with a phone and patience, and which plants keep them coming.",
+   "evergreen": true,
+   "tier": "more",
+   "tags": [
+    "nature"
+   ]
+  },
+  {
+   "id": "2026-09-27-notes-from-a-year",
+   "date": "2026-09-27",
+   "title": "Notes from a year of writing by hand",
+   "author": "Jun Park",
+   "source": "paperdesk.example",
+   "url": "https://paperdesk.example/notes-from-a-year",
+   "hn_url": null,
+   "published": "2026-09-27",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 6,
+   "hook": "Park drafted everything on paper for a year. Fewer words, fewer rewrites, and a habit of deciding before typing. The cost was search, which he solved with an index card box.",
+   "evergreen": true,
+   "tier": "more",
+   "tags": [
+    "writing"
+   ]
+  },
+  {
+   "id": "2026-09-26-what-a-lighthouse-keepers",
+   "date": "2026-09-26",
+   "title": "What a lighthouse keeper's log teaches about on-call",
+   "author": "Ines Moreau",
+   "source": "oncall.example",
+   "url": "https://oncall.example/what-a-lighthouse-keepers",
+   "hn_url": null,
+   "published": "2026-09-26",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 10,
+   "hook": "Nineteenth-century keepers logged weather, oil and visitors every four hours. Moreau reads three logs as incident reports and finds the same handoff mistakes teams make today.",
+   "evergreen": true,
+   "tier": "must",
+   "tags": [
+    "engineering",
+    "history"
+   ]
+  },
+  {
+   "id": "2026-09-25-the-case-for-boring",
+   "date": "2026-09-25",
+   "title": "The case for boring maps",
+   "author": "Lena Fischer",
+   "source": "cartography.example",
+   "url": "https://cartography.example/the-case-for-boring",
+   "hn_url": null,
+   "published": "2026-09-25",
+   "hn_points": null,
+   "hn_comments": null,
+   "read_minutes": 8,
+   "hook": "Fischer compares two transit maps of one city. The plain one wins on every rider test, and she explains why decoration costs more than it looks.",
+   "evergreen": false,
+   "tier": "more",
+   "tags": [
+    "design"
+   ]
+  }
+ ]
+}
