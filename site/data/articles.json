@@ -2542,6 +2542,26 @@
         "agents",
         "harness"
       ]
+    },
+    {
+      "id": "2026-10-03-month-on-glm-flash",
+      "date": "2026-10-03",
+      "title": "One month coding with GLM 5.3 Flash",
+      "author": "Thibaud Colas",
+      "source": "Wagtail",
+      "url": "https://wagtail.org/blog/one-month-on-glm-53-flash/",
+      "hn_url": "https://news.ycombinator.com/item?id=49934620",
+      "published": "2026-10-02",
+      "hn_points": 111,
+      "hn_comments": 85,
+      "read_minutes": 6,
+      "hook": "A Wagtail maintainer spent a month on a cheap open model and only managed half of 2 billion tokens on it. It shows where routing to small models breaks in practice.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "inference-cost",
+        "model-routing"
+      ]
     }
   ]
 }
