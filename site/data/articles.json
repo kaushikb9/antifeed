@@ -2189,7 +2189,9 @@
         "coding-agents",
         "evals",
         "benchmarks"
-      ]
+      ],
+      "resurfaced": "2026-10-04",
+      "resurfaced_note": "You starred this and have not opened it; the harness-cost question is still on your list this month."
     },
     {
       "id": "2026-09-18-glm-infra-agent-dense-feedback",
