@@ -2120,7 +2120,9 @@
         "engineering-management",
         "code-review",
         "coding-agents"
-      ]
+      ],
+      "resurfaced": "2026-10-05",
+      "resurfaced_note": "Your rollout is raising PR volume this month, and these seven teams show where review breaks first and what they changed."
     },
     {
       "id": "2026-09-14-openai-monitoring-internal-coding-agents",
