@@ -2233,6 +2233,8 @@
       "hook": "Varies planning, tools and context management across 176 harness configurations on four models. Strong models did best with bash only, up to 53 percent cheaper; the weak one needed full tools. Forty minutes; the tables carry it.",
       "evergreen": false,
       "tier": "must",
+      "resurfaced": "2026-10-06",
+      "resurfaced_note": "You starred this but haven't read it; skip to the tables on which tools strong versus weak models need before your next harness change.",
       "tags": [
         "agents",
         "harness",
