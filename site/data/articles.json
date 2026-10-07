@@ -2350,7 +2350,9 @@
         "ai-adoption",
         "rag",
         "knowledge-management"
-      ]
+      ],
+      "resurfaced": "2026-10-07",
+      "resurfaced_note": "You starred this and haven't read it yet; it's the closest real-world write-up to your enterprise RAG and internal agent platform work this month."
     },
     {
       "id": "2026-09-24-claude-ai-3x-faster-two-weeks",
