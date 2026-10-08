@@ -1888,6 +1888,8 @@
       "hook": "A hook blocks any read over 350 lines and forces delegation, so a cheap model eats the corpus and only a summary reaches the expensive one. Routing enforced by the harness, not asked for in a prompt.",
       "evergreen": false,
       "tier": "must",
+      "resurfaced": "2026-10-08",
+      "resurfaced_note": "Meta and Microsoft are reportedly cutting staff Claude usage on cost, and this is the harness-level answer you starred but haven't read.",
       "tags": [
         "coding-agents",
         "harness-design",
