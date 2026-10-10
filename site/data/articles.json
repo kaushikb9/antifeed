@@ -1849,7 +1849,9 @@
         "coding-agents",
         "developer-productivity",
         "benchmarks"
-      ]
+      ],
+      "resurfaced": "2026-10-10",
+      "resurfaced_note": "Your rollout's agents are picking dependencies for hundreds of engineers; this shows how arbitrary those picks are."
     },
     {
       "id": "2026-09-05-formalizing-fermat",
