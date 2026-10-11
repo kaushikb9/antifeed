@@ -2576,6 +2576,27 @@
         "inference-cost",
         "model-routing"
       ]
+    },
+    {
+      "id": "2026-10-11-cockroach-hospital-agents",
+      "date": "2026-10-11",
+      "title": "Five months treating bugs like patients and coding agents like a medical team",
+      "author": "Adam Storm and Rafi Shamim",
+      "source": "Cockroach Labs Engineering",
+      "url": "https://www.cockroachlabs.com/blog/experiment-running-hospital-code/",
+      "hn_url": "https://news.ycombinator.com/item?id=50021899",
+      "published": "2026-10-09",
+      "hn_points": 142,
+      "hn_comments": 57,
+      "read_minutes": 24,
+      "hook": "Cockroach Labs ran an agent pipeline for five months: 1,238 merged PRs, 7 reverts, $135K in tokens, about $84 per issue. It is a real cost and review baseline.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness-design",
+        "measuring-ai"
+      ]
     }
   ]
 }
