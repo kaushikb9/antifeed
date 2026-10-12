@@ -2597,6 +2597,26 @@
         "harness-design",
         "measuring-ai"
       ]
+    },
+    {
+      "id": "2026-10-12-you-still-have-to-think",
+      "date": "2026-10-12",
+      "title": "I'm sorry, but you still have to think",
+      "author": "Piotr Sarnacki",
+      "source": "HN",
+      "url": "https://itsallaboutthebit.com/i-am-sorry-but-you-still-have-to-think/",
+      "hn_url": "https://news.ycombinator.com/item?id=50043689",
+      "published": "2026-10-11",
+      "hn_points": 329,
+      "hn_comments": 150,
+      "read_minutes": 8,
+      "hook": "Sarnacki load-tests DHH's AI-written Rust and Elixir rewrites. Rust delivered 14% of events until one buffer change lifted it to 90%. Agents write the code; someone still has to understand it.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "coding-agents"
+      ]
     }
   ]
 }
