@@ -2166,6 +2166,8 @@
       "hook": "A $1.20 model found 75% of the verified bugs the frontier model found, for 3.6% of the cost. It fell apart on auth and permission code, and one comment in four was wrong. Vendor post, but copy the method.",
       "evergreen": false,
       "tier": "must",
+      "resurfaced": "2026-10-13",
+      "resurfaced_note": "HN spent yesterday arguing code review is now the bottleneck. This tells you whether a cheap model can take some of that load.",
       "tags": [
         "inference-cost",
         "model-routing",
