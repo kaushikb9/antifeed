@@ -2619,6 +2619,27 @@
         "agents",
         "coding-agents"
       ]
+    },
+    {
+      "id": "2026-10-14-redesigning-source-control",
+      "date": "2026-10-14",
+      "title": "Redesigning source control at Anthropic",
+      "author": "Nick G. and the Anthropic source control team",
+      "source": "Anthropic Engineering",
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "hn_url": "https://news.ycombinator.com/item?id=50073633",
+      "published": "2026-10-13",
+      "hn_points": 623,
+      "hn_comments": 598,
+      "read_minutes": 20,
+      "hook": "Agents pushed Anthropic from 2,500 to 30,000 merges a day in four months, and git broke. Seven people rebuilt source control in five months. Your rollout's load lands here next.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "coding-agents",
+        "internal-platform",
+        "developer-productivity"
+      ]
     }
   ]
 }
