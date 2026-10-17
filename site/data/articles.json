@@ -2640,6 +2640,27 @@
         "internal-platform",
         "developer-productivity"
       ]
+    },
+    {
+      "id": "2026-10-17-claude-code-team-code-review",
+      "date": "2026-10-17",
+      "title": "How the Claude Code team does code review",
+      "author": "Addy Osmani, Morgan Westlee Lunt and Qing Wang",
+      "source": "Claude Blog",
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+      "hn_url": "https://news.ycombinator.com/item?id=50122951",
+      "published": "2026-10-15",
+      "hn_points": 305,
+      "hn_comments": 279,
+      "read_minutes": 14,
+      "hook": "Merged PRs doubled while reverts fell 40%, after machines took over most review reading. Humans keep architecture, risk and ownership. Gives you the metrics to judge your own review pipeline.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "coding-agents",
+        "code-review",
+        "developer-productivity"
+      ]
     }
   ]
 }
