@@ -2311,7 +2311,9 @@
         "harness",
         "internal-platform",
         "engineering-management"
-      ]
+      ],
+      "resurfaced": "2026-10-18",
+      "resurfaced_note": "A quiet news day, and this is the one you starred but never opened: a short piece on handing recurring platform chores to agents."
     },
     {
       "id": "2026-09-22-linear-ci-bottleneck",
