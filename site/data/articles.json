@@ -2665,6 +2665,27 @@
         "code-review",
         "developer-productivity"
       ]
+    },
+    {
+      "id": "2026-10-20-employment-at-anthropic",
+      "date": "2026-10-20",
+      "title": "How employment is changing at Anthropic",
+      "author": "Nathan Wilmers, Regina Catipon, Maxim Massenkoff, Peter McCrory",
+      "source": "Anthropic",
+      "url": "https://www.anthropic.com/research/employment-at-anthropic",
+      "hn_url": "https://news.ycombinator.com/item?id=50139873",
+      "published": "2026-10-16",
+      "hn_points": 152,
+      "hn_comments": 251,
+      "read_minutes": 26,
+      "hook": "Anthropic measured its own staff: commits per engineer up 5x, junior technical hires down from 27% to 9%. Your rollout will face this data. 26 minutes; self-reported, no control group.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "ai-adoption",
+        "measurement",
+        "org-design"
+      ]
     }
   ]
 }
