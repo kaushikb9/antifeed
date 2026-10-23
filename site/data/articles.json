@@ -2005,6 +2005,8 @@
       "hook": "Dan Luu ran 80 Codex runs per condition across 26 testing prompts. Naming TDD, fuzzing or Lean barely beat no instructions, and TDD did worse. About 50 minutes, and the appendix on writing skills alone earns it.",
       "evergreen": false,
       "tier": "must",
+      "resurfaced": "2026-10-23",
+      "resurfaced_note": "You starred this but haven't read it, and it's the best evidence for what a skill or prompt actually changes in your rollout.",
       "tags": [
         "agents",
         "coding-agents",
