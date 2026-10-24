@@ -2291,7 +2291,9 @@
         "org-design",
         "ai-adoption",
         "developer-productivity"
-      ]
+      ],
+      "resurfaced": "2026-10-24",
+      "resurfaced_note": "Your rollout is likely stalled on approvals, not code; this gives you a way to run the team on its decision list instead of a date."
     },
     {
       "id": "2026-09-21-lethain-agents-as-scaffolding",
