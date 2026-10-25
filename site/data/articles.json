@@ -2690,6 +2690,26 @@
         "measurement",
         "org-design"
       ]
+    },
+    {
+      "id": "2026-10-25-danluu-ambitious",
+      "date": "2026-10-25",
+      "title": "We should be more ambitious with the software we build",
+      "author": "Dan Luu",
+      "source": "danluu.com",
+      "url": "https://danluu.com/ambitious/",
+      "hn_url": "https://news.ycombinator.com/item?id=50225695",
+      "published": "2026-10-24",
+      "hn_points": 359,
+      "hn_comments": 305,
+      "read_minutes": 28,
+      "hook": "Dan Luu argues agents make once-impossible projects feasible, citing pgrust, a Postgres rewrite whose testing found real Postgres bugs. The bar is testing and benchmarking. 28 minutes, mostly worked examples.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "engineering"
+      ]
     }
   ]
 }
