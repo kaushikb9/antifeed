@@ -2710,6 +2710,26 @@
         "agents",
         "engineering"
       ]
+    },
+    {
+      "id": "2026-10-26-ubicloud-vllm-tool-calls",
+      "date": "2026-10-26",
+      "title": "Fixing Tool-Call Accuracy in vLLM",
+      "author": "Jesse Donkervliet and Junhao Li",
+      "source": "Ubicloud",
+      "url": "https://www.ubicloud.com/blog/fixing-tool-call-accuracy-in-vllm",
+      "hn_url": "https://news.ycombinator.com/item?id=50242870",
+      "published": "2026-10-20",
+      "hn_points": 107,
+      "hn_comments": 53,
+      "read_minutes": 8,
+      "hook": "Kimi K2.6 on vLLM broke 8% of tool calls until constrained decoding, now off by default, was re-enabled. Then it hit 100%. Before blaming a cheap model, check serving config.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "inference",
+        "agents"
+      ]
     }
   ]
 }
