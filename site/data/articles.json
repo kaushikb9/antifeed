@@ -1715,7 +1715,9 @@
         "agents",
         "codebase",
         "developer-productivity"
-      ]
+      ],
+      "resurfaced": "2026-10-27",
+      "resurfaced_note": "Your agent platform needs boundaries per domain, not one giant agent; this is the clearest model for drawing them."
     },
     {
       "id": "2026-08-31-coordination-headwind",
