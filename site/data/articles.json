@@ -2267,6 +2267,8 @@
       "hook": "Dan Luu on approving agent output without thinking: it only works for low-value work and never becomes a career. His examples are agent-built products that shipped broken. The thread has engineers under pressure to maximise AI usage.",
       "evergreen": false,
       "tier": "more",
+      "resurfaced": "2026-10-31",
+      "resurfaced_note": "Deskilling is HN's top AI thread this week; this is the version with real examples instead of borrowed studies.",
       "tags": [
         "agents",
         "expertise",
