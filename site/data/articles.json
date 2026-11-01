@@ -2394,7 +2394,9 @@
         "ai-adoption",
         "internal-platform",
         "performance"
-      ]
+      ],
+      "resurfaced": "2026-11-01",
+      "resurfaced_note": "A slow news day, and this is the clearest picture yet of what humans still did once agents wrote 3,000 PRs."
     },
     {
       "id": "2026-09-25-shopify-helix-migration-harness",
