@@ -2529,7 +2529,9 @@
       "tags": [
         "code-review",
         "agents"
-      ]
+      ],
+      "resurfaced": "2026-11-22",
+      "resurfaced_note": "You starred this but haven't read it. It takes six minutes and is worth having in mind before any agent gets approval rights on your PRs."
     },
     {
       "id": "2026-09-30-staff-engineer-inventing-work",
