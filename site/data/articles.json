@@ -2419,7 +2419,9 @@
         "harness-design",
         "developer-productivity",
         "code-review"
-      ]
+      ],
+      "resurfaced": "2026-11-23",
+      "resurfaced_note": "A quiet day on HN, so here is a real internal agent platform write-up you starred and never opened: worth it before your next rollout decision."
     },
     {
       "id": "2026-09-26-plan-mode-is-dead",
