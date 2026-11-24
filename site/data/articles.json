@@ -2740,6 +2740,27 @@
         "inference",
         "agents"
       ]
+    },
+    {
+      "id": "2026-11-24-ai-firm-review-bottleneck",
+      "date": "2026-11-24",
+      "title": "Artificial Intelligence in the Firm: Bottlenecks in Software Production",
+      "author": "Fiona Chen and James Stratton",
+      "source": "Harvard working paper",
+      "url": "https://fion.ac/jellyfish.pdf",
+      "hn_url": "https://news.ycombinator.com/item?id=50538303",
+      "published": "2026-11-19",
+      "hn_points": 332,
+      "hn_comments": 471,
+      "read_minutes": 60,
+      "hook": "Across 655 firms, agents raised pull requests 36%, merge time 56%, resolved issues 14% (borderline significant). Benchmark your rollout against it. The full hour buys method; pages 2-6 carry the findings.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "measurement",
+        "code-review",
+        "agents"
+      ]
     }
   ]
 }
