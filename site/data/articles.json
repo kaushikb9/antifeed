@@ -2761,6 +2761,27 @@
         "code-review",
         "agents"
       ]
+    },
+    {
+      "id": "2026-11-25-hubspot-aviator-harness",
+      "date": "2026-11-25",
+      "title": "Aviator: HubSpot's Agent Harness",
+      "author": "Ze'ev Klapow",
+      "source": "HubSpot Engineering",
+      "url": "https://hubspot.engineering/blog/aviator-hubspots-agent-harness/",
+      "hn_url": "https://news.ycombinator.com/item?id=50562442",
+      "published": "2026-11-19",
+      "hn_points": 31,
+      "hn_comments": 3,
+      "read_minutes": 8,
+      "hook": "HubSpot's shared harness lets agents switch models mid-conversation and search 3,000 tools. Its coding agent merges 2,500 pull requests weekly. Useful platform blueprint, though it gives no cost or quality data.",
+      "evergreen": false,
+      "tier": "must",
+      "tags": [
+        "agents",
+        "harness",
+        "platform"
+      ]
     }
   ]
 }
