@@ -1116,7 +1116,9 @@
         "agents",
         "harness-engineering",
         "evals"
-      ]
+      ],
+      "resurfaced": "2026-11-27",
+      "resurfaced_note": "You starred this and never opened it; quiet front page today, and it bears directly on which repos to point the rollout at first."
     },
     {
       "id": "2026-08-12-copilot-mitm",
