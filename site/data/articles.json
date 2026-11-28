@@ -2764,7 +2764,9 @@
         "measurement",
         "code-review",
         "agents"
-      ]
+      ],
+      "resurfaced": "2026-11-28",
+      "resurfaced_note": "You starred this but have not read it yet; a quiet day is a good time for its review-bottleneck argument."
     },
     {
       "id": "2026-11-25-hubspot-aviator-harness",
